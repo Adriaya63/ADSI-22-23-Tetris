@@ -2,20 +2,19 @@ package com.zetcode.Extensiones;
 
 
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import java.awt.BorderLayout;
+import com.zetcode.Controlador;
+
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MenuRanking extends JFrame
 {
     private JPanel contentPane;
-    private JButton btnPersonal;
-    private JButton btnGlobal;
+    public static JButton btnPersonal;
+    public static JButton btnGlobal;
     private JButton btnVolver;
     private static MenuRanking miMenuRanking;
     
@@ -49,25 +48,32 @@ public class MenuRanking extends JFrame
 		contentPane.add(titulo);
 		contentPane.add(Box.createRigidArea(new Dimension(0, 100)));
 		JButton btnGlobal = new JButton("Ranking global");
+        btnGlobal.addActionListener(Controlador.getControlador());
 		btnGlobal.setAlignmentX(CENTER_ALIGNMENT);
         btnGlobal.setMinimumSize(new Dimension(10,10));
         btnGlobal.setMaximumSize(new Dimension(300,30));
         btnGlobal.setPreferredSize(new Dimension(150,20));
+        
 		contentPane.add(btnGlobal);
 		contentPane.add(Box.createRigidArea(new Dimension(0, 30)));
 		JButton btnPersonal = new JButton("Ranking Personal");
 		btnPersonal.setAlignmentX(CENTER_ALIGNMENT);
         btnPersonal.setMaximumSize(new Dimension(300,30));
+        btnPersonal.addActionListener(Controlador.getControlador());
 		contentPane.add(btnPersonal);
 		contentPane.add(Box.createRigidArea(new Dimension(0, 30)));
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.setAlignmentX(CENTER_ALIGNMENT);
         btnVolver.setMaximumSize(new Dimension(300,30));
+        btnVolver.addActionListener(Controlador.getControlador());
 		contentPane.add(btnVolver);
         setVisible(true);
         setResizable(false);
     }
+
     public static void main(String args[]) {
         MenuRanking.getMiMenuRanking();
         }
+
+
 }
