@@ -1,7 +1,10 @@
 package com.zetcode.Extensiones;
 import javax.swing.border.EmptyBorder;
 
+import org.json.JSONArray;
+
 import com.zetcode.Gestores.Controlador;
+import com.zetcode.Gestores.Gestor_ranking;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,12 +12,12 @@ import java.util.ArrayList;
 public class Ranking extends JFrame {
     private JPanel panelBotones= new JPanel();
     private JPanel panelBotonestipos= new JPanel(new GridLayout(1,2));
-    private JPanel ranking = new JPanel();
+    private JTable tabla;
     public static JButton btnVolver;
     private boolean estado=false;
+    public static JButton btnVer;
     boolean iniciado=false;
     private static Ranking miRanking;
-    private JTextArea textarea1;
 private Ranking(){
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         int height = pantalla.height;
@@ -25,7 +28,7 @@ private Ranking(){
         setLayout(new GridLayout(1,2));
         setTitle("Ranking");
         add(panelBotones);
-        panelBotones.setLayout(new GridLayout(6,1));
+        panelBotones.setLayout(new GridLayout(7,1));
         panelBotones.add(this.panelBotonestipos);
         JRadioButton rbtn1t=new JRadioButton("Personal",true);
         JRadioButton rbtn2t=new JRadioButton("Global",true);
@@ -47,15 +50,21 @@ private Ranking(){
         panelBotones.add(rbtn2);
         panelBotones.add(rbtn3);
         panelBotones.add(rbtn4);
+        btnVer = new JButton("Mostrar");
+        btnVer.addActionListener(Controlador.getControlador());
         btnVolver= new JButton("Volver");
         btnVolver.addActionListener(Controlador.getControlador());
         btnVolver.setMaximumSize(new Dimension(300,30));
+        panelBotones.add(btnVer);
         panelBotones.add(btnVolver);
+        JPanel ranking =new JPanel(new GridLayout(1,2));
         add(ranking);
-        textarea1=new JTextArea();        
-        JScrollPane scrollpane1=new JScrollPane(textarea1);    
-        scrollpane1.setBounds(10,50,400,300);
-        add(scrollpane1);
+        tabla=this.generarRanking();
+        ranking.add(tabla);
+        ranking.add(new JScrollPane(tabla));
+        
+
+        
         
     }
 public static Ranking  getmiRanking(){
@@ -74,15 +83,17 @@ public void alternar(){
         estado=true;
     }
 }
-public void annadirResultado(ArrayList<String>  lista){
-    String texto="";
-    for(String a:lista){
-        texto=texto + a + "\n";
-            }
-    this.textarea1.append(texto);
+public JTable generarRanking(JSONArray json){
+    String[] columnas = {"Puesto","Nombre","puntuación"};
+    Object[][] filas= {{1,"Juan",30},{2,"María",20}};
+    JTable tabla =new JTable(filas,columnas);
+    return tabla;
+}
+private Object[][] ordenar(JSONArray json){
+    
+    for(Object a:json){
 
     }
-public void borrar(){
-    textarea1=new JTextArea();
 }
+
 }

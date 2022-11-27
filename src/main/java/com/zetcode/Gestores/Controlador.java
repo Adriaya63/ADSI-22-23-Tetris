@@ -25,14 +25,19 @@ public class Controlador implements ActionListener
         while(true){
         if (e.getSource().equals(MenuRanking.btnPersonal)) {
             Ranking.getmiRanking().alternar();
-			Ranking.getmiRanking().annadirResultado(Gestor_ranking.getmiGestorRanking().getlistaRanking(1));
+			
 			MenuRanking.getMiMenuRanking().alternar();
 			break;
         }
         if (e.getSource().equals(MenuRanking.btnGlobal)) {
 			Ranking.getmiRanking().alternar();
-			Ranking.getmiRanking().annadirResultado(Gestor_ranking.getmiGestorRanking().getlistaRanking(2));
+			
 			MenuRanking.getMiMenuRanking().alternar();
+			break;
+        }
+		if (e.getSource().equals(Ranking.btnVer)) {
+			MenuRanking.getMiMenuRanking().alternar();
+			Ranking.getmiRanking().generarRanking(Gestor_ranking.getmiGestorRanking().generarRanking("fácil"));
 			break;
         }
 		if (e.getSource().equals(Ranking.btnVolver)) {
