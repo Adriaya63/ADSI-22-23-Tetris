@@ -4,8 +4,7 @@ package com.zetcode.Extensiones;
 
 import javax.swing.border.EmptyBorder;
 
-import com.zetcode.Controlador;
-
+import com.zetcode.Gestores.Controlador;
 
 import javax.swing.*;
 import java.awt.*;

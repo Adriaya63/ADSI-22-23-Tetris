@@ -1,9 +1,9 @@
-package com.zetcode;
+package com.zetcode.Gestores;
 import java.awt.event.*;
 
 import com.zetcode.Extensiones.MenuRanking;
-import com.zetcode.Extensiones.RankingGlobal;
-import com.zetcode.Extensiones.RankingPersonal;
+import com.zetcode.Extensiones.Ranking;
+
 public class Controlador implements ActionListener
 {
 	private static Controlador controler =null;
@@ -24,23 +24,21 @@ public class Controlador implements ActionListener
     public void actionPerformed(ActionEvent e) {
         while(true){
         if (e.getSource().equals(MenuRanking.btnPersonal)) {
-            RankingPersonal.getmRankigPersonal().alternar();;
+            Ranking.getmiRanking().alternar();
+			Ranking.getmiRanking().annadirResultado(Gestor_ranking.getmiGestorRanking().getlistaRanking(1));
 			MenuRanking.getMiMenuRanking().alternar();
 			break;
         }
         if (e.getSource().equals(MenuRanking.btnGlobal)) {
-            RankingGlobal.getmRankigGlobal().alternar();
+			Ranking.getmiRanking().alternar();
+			Ranking.getmiRanking().annadirResultado(Gestor_ranking.getmiGestorRanking().getlistaRanking(2));
 			MenuRanking.getMiMenuRanking().alternar();
 			break;
         }
-		if (e.getSource().equals(RankingPersonal.btnVolver)) {
+		if (e.getSource().equals(Ranking.btnVolver)) {
 			MenuRanking.getMiMenuRanking().alternar();
-			RankingPersonal.getmRankigPersonal().alternar();
-			break;
-        }
-		if (e.getSource().equals(RankingGlobal.btnVolver)) {
-			MenuRanking.getMiMenuRanking().alternar();
-			RankingGlobal.getmRankigGlobal().alternar();
+			
+			Ranking.getmiRanking().alternar();
 			break;
         }
        } 
