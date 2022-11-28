@@ -12,8 +12,7 @@ import java.awt.*;
 public class MenuRanking extends JFrame
 {
     private JPanel contentPane;
-    public static JButton btnPersonal;
-    public static JButton btnGlobal;
+    public static JButton btnRanking;
     public static JButton btnVolver;
     private static MenuRanking miMenuRanking;
     private boolean estado=false;
@@ -60,19 +59,14 @@ public class MenuRanking extends JFrame
 		titulo.setAlignmentX(CENTER_ALIGNMENT);
 		contentPane.add(titulo);
 		contentPane.add(Box.createRigidArea(new Dimension(0, 100)));
-		btnGlobal = new JButton("Ranking global");
-        btnGlobal.addActionListener(Controlador.getControlador());
-		btnGlobal.setAlignmentX(CENTER_ALIGNMENT);
-        btnGlobal.setMinimumSize(new Dimension(10,10));
-        btnGlobal.setMaximumSize(new Dimension(300,30));
-        btnGlobal.setPreferredSize(new Dimension(150,20));
-		contentPane.add(btnGlobal);
+		btnRanking = new JButton("Ranking global");
+        btnRanking.addActionListener(Controlador.getControlador());
+		btnRanking.setAlignmentX(CENTER_ALIGNMENT);
+        btnRanking.setMinimumSize(new Dimension(10,10));
+        btnRanking.setMaximumSize(new Dimension(300,30));
+        btnRanking.setPreferredSize(new Dimension(150,20));
+		contentPane.add(btnRanking);
 		contentPane.add(Box.createRigidArea(new Dimension(0, 30)));
-		btnPersonal = new JButton("Ranking Personal");
-		btnPersonal.setAlignmentX(CENTER_ALIGNMENT);
-        btnPersonal.setMaximumSize(new Dimension(300,30));
-        btnPersonal.addActionListener(Controlador.getControlador());
-		contentPane.add(btnPersonal);
 		contentPane.add(Box.createRigidArea(new Dimension(0, 30)));
 		btnVolver = new JButton("Volver");
 		btnVolver.setAlignmentX(CENTER_ALIGNMENT);

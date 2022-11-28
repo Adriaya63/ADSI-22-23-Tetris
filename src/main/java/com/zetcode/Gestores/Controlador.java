@@ -23,20 +23,17 @@ public class Controlador implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
         while(true){
-        if (e.getSource().equals(MenuRanking.btnPersonal)) {
-            Ranking.getmiRanking().alternar();
-			
-			MenuRanking.getMiMenuRanking().alternar();
-			break;
-        }
-        if (e.getSource().equals(MenuRanking.btnGlobal)) {
+        if (e.getSource().equals(MenuRanking.btnRanking)) {
 			Ranking.getmiRanking().alternar();
 			
 			MenuRanking.getMiMenuRanking().alternar();
 			break;
         }
 		if (e.getSource().equals(Ranking.btnVer)) {
-			Ranking.getmiRanking().generarRanking(Gestor_ranking.getmiGestorRanking().generarRanking("fácil"));
+			String tipo= Ranking.getmiRanking().getTip();
+			String dif = Ranking.getmiRanking().getdif();
+			System.out.println(dif);
+			Ranking.getmiRanking().generarRanking(Gestor_ranking.getmiGestorRanking().generarRanking(dif));
 			break;
         }
 		if (e.getSource().equals(Ranking.btnVolver)) {

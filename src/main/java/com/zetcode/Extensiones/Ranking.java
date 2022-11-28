@@ -22,13 +22,20 @@ public class Ranking extends JFrame {
     private JPanel panelBotonestipos= new JPanel(new GridLayout(1,2));
     private JTable tabla;
     public static JButton btnVolver;
+    private JRadioButton rbtn1t;
+    private JRadioButton rbtn2t;
+    private JRadioButton rbtn1;
+    private JRadioButton rbtn2;
+    private JRadioButton rbtn3;
+    private JRadioButton rbtn4;
     private boolean estado=false;
     public static JButton btnVer;
-    boolean iniciado=false;
+    private ButtonGroup grupo2 ;
+    private ButtonGroup grupo1;
     private static Ranking miRanking;
     private JPanel ranking =new JPanel(new GridLayout(1,2));
-    private String[] columnas = {"Puesto","puntuación"};
-    private String[][] filas= {{"Puesto","puntuación"},{"Puesto","puntuación"}};
+    private String[] columnas = {"Nombre","puntuación"};
+    private String[][] filas= {};
 private Ranking(){
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         int height = pantalla.height;
@@ -41,18 +48,24 @@ private Ranking(){
         add(panelBotones);
         panelBotones.setLayout(new GridLayout(7,1));
         panelBotones.add(this.panelBotonestipos);
-        JRadioButton rbtn1t=new JRadioButton("Personal",true);
-        JRadioButton rbtn2t=new JRadioButton("Global",true);
-        JRadioButton rbtn1=new JRadioButton("Fácil",true);
-        JRadioButton rbtn2=new JRadioButton("Medio",false);
-        JRadioButton rbtn3=new JRadioButton("Difícil",false);
-        JRadioButton rbtn4=new JRadioButton("Histórico",false);
-        ButtonGroup grupo2 = new ButtonGroup();
+        rbtn1t=new JRadioButton("Personal",true);
+        rbtn1t.setActionCommand("Personal");
+        rbtn2t=new JRadioButton("Global",true);
+        rbtn2t.setActionCommand("Global");
+        rbtn1=new JRadioButton("Fácil",true);
+        rbtn1.setActionCommand("Fácil");
+        rbtn2=new JRadioButton("Medio",false);
+        rbtn2.setActionCommand("Medio");
+        rbtn3=new JRadioButton("Difícil",false);
+        rbtn3.setActionCommand("Dificil");
+        rbtn4=new JRadioButton("Absoluto",false);
+        rbtn4.setActionCommand("Absoluto");
+        grupo2 = new ButtonGroup();
         grupo2.add(rbtn1t);
         grupo2.add(rbtn2t);
         panelBotonestipos.add(rbtn1t);
         panelBotonestipos.add(rbtn2t);
-        ButtonGroup grupo1 = new ButtonGroup();
+        grupo1 = new ButtonGroup();
         grupo1.add(rbtn1);
         grupo1.add(rbtn2);
         grupo1.add(rbtn3);
@@ -68,13 +81,7 @@ private Ranking(){
         btnVolver.setMaximumSize(new Dimension(300,30));
         panelBotones.add(btnVer);
         panelBotones.add(btnVolver);
-        
         add(ranking);
-        
-        tabla=new JTable(filas,columnas);
-        ranking.add(tabla);
-        ranking.add(new JScrollPane(tabla));
-        
 
         
         
@@ -96,7 +103,6 @@ public void alternar(){
     }
 }
 public JTable generarRanking(JSONArray json){
-
     Object[][] a= new Object[json.length()][2];
     JSONObject objeto ;
     String user;
@@ -109,11 +115,18 @@ public JTable generarRanking(JSONArray json){
         String[] f= {user,puntuacion};
         a[i]=f;
     }
-    tabla= new JTable(a,columnas);
-    ranking.remove(tabla);
-    ranking.getGraphics();
+    ranking.removeAll();
+    JTable ntab= new JTable(a,columnas); 
+    ranking.add(ntab);
+    ranking.add(new JScrollPane(ntab));
+    ranking.updateUI();
     return null;
 }
-
+public String getdif(){
+    return grupo1.getSelection().getActionCommand();
+}
+public String getTip(){
+    return grupo2.getSelection().getActionCommand();
+}
 }
 
