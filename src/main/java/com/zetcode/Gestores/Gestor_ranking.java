@@ -29,7 +29,7 @@ public class Gestor_ranking {
         try {
           con = DriverManager.getConnection(sURL,"root","");
           try (
-            PreparedStatement query = con.prepareStatement("SELECT user, puntuacion from info_ranking where dificultad = ?")) {
+            PreparedStatement query = con.prepareStatement("SELECT user, puntuacion from info_ranking where dificultad = ? ORDER BY puntuacion DESC")) {
                 query.setString(1, dificultad);    
             // Ejecutamos Query
             ResultSet rs = query.executeQuery();
