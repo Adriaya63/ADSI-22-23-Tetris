@@ -1,14 +1,22 @@
 package com.zetcode.Extensiones;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.TabSet;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.zetcode.Gestores.Controlador;
 import com.zetcode.Gestores.Gestor_ranking;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 public class Ranking extends JFrame {
     private JPanel panelBotones= new JPanel();
     private JPanel panelBotonestipos= new JPanel(new GridLayout(1,2));
@@ -18,6 +26,9 @@ public class Ranking extends JFrame {
     public static JButton btnVer;
     boolean iniciado=false;
     private static Ranking miRanking;
+    private JPanel ranking =new JPanel(new GridLayout(1,2));
+    private String[] columnas = {"Puesto","puntuación"};
+    private String[][] filas= {{"Puesto","puntuación"},{"Puesto","puntuación"}};
 private Ranking(){
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         int height = pantalla.height;
@@ -57,9 +68,10 @@ private Ranking(){
         btnVolver.setMaximumSize(new Dimension(300,30));
         panelBotones.add(btnVer);
         panelBotones.add(btnVolver);
-        JPanel ranking =new JPanel(new GridLayout(1,2));
+        
         add(ranking);
-        tabla=this.generarRanking();
+        
+        tabla=new JTable(filas,columnas);
         ranking.add(tabla);
         ranking.add(new JScrollPane(tabla));
         
@@ -84,16 +96,24 @@ public void alternar(){
     }
 }
 public JTable generarRanking(JSONArray json){
-    String[] columnas = {"Puesto","Nombre","puntuación"};
-    Object[][] filas= {{1,"Juan",30},{2,"María",20}};
-    JTable tabla =new JTable(filas,columnas);
-    return tabla;
-}
-private Object[][] ordenar(JSONArray json){
-    
-    for(Object a:json){
 
+    Object[][] a= new Object[json.length()][2];
+    JSONObject objeto ;
+    String user;
+    String puntuacion;
+    String[] c;
+    for(int i=0;i<=json.length()-1;i++){
+        objeto = json.getJSONObject(i);
+        user= objeto.getString("user");
+        puntuacion= String.valueOf(objeto.getInt("puntuacion"));
+        String[] f= {user,puntuacion};
+        a[i]=f;
     }
+    tabla= new JTable(a,columnas);
+    ranking.remove(tabla);
+    ranking.getGraphics();
+    return null;
 }
 
 }
+
