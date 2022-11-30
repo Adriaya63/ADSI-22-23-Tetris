@@ -1,22 +1,15 @@
 package com.zetcode.Extensiones;
-import javax.swing.border.EmptyBorder;
-import javax.swing.text.TabSet;
+
 
 import org.json.JSONArray;
-import org.json.JSONException;
+
 import org.json.JSONObject;
 
 import com.zetcode.Gestores.Controlador;
-import com.zetcode.Gestores.Gestor_ranking;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+
 public class Ranking extends JFrame {
     private JPanel panelBotones= new JPanel();
     private JPanel panelBotonestipos= new JPanel(new GridLayout(1,2));
@@ -35,7 +28,7 @@ public class Ranking extends JFrame {
     private static Ranking miRanking;
     private JPanel ranking =new JPanel(new GridLayout(1,2));
     private String[] columnas = {"Nombre","puntuación"};
-    private String[][] filas= {};
+
 private Ranking(){
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         int height = pantalla.height;
