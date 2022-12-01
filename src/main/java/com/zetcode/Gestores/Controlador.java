@@ -43,7 +43,11 @@ public class Controlador implements ActionListener
 			break;
         }
        } 
-    
-    
-}
+	}  
+	public void annadirPuntuacionAlRanking(int numLinesRemoved){
+		String dificultad="medio";
+		String usuario="Fran";
+		Gestor_ranking.getmiGestorRanking().ingresarPuntuacion(usuario, numLinesRemoved, dificultad);
+		 
+	}
 }

@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.Gestores.Controlador;
 import com.zetcode.Shape.Tetrominoe;
 
 import javax.swing.JLabel;
@@ -186,6 +187,7 @@ public class Board extends JPanel {
 
             var msg = String.format("Game over. Score: %d", numLinesRemoved);
             statusbar.setText(msg);
+            Controlador.getControlador().annadirPuntuacionAlRanking(numLinesRemoved);
         }
     }
 

@@ -23,6 +23,7 @@ public class Gestor_ranking {
     }
     
     public JSONArray generarRanking(String dificultad, String usuario){
+
         Connection con = null;
         String sURL = "jdbc:mariadb://localhost:3306/ADSI";
         JSONArray jsonArray = new JSONArray(); 
@@ -102,6 +103,39 @@ public class Gestor_ranking {
       return jsonArray;
   }
     }
+
+
+    public void ingresarPuntuacion(String usuario, int numLinesRemoved, String dificultad){
+      Connection con = null;
+      String sURL = "jdbc:mariadb://localhost:3306/ADSI";
+      try {
+        con = DriverManager.getConnection(sURL,"root","");
+        try (
+          PreparedStatement query = con.prepareStatement("INSERT INTO info_ranking VALUES(?,?,?)")) {
+              query.setString(1, usuario);   
+              query.setString(2, dificultad);
+              query.setInt(3, numLinesRemoved);
+          // Ejecutamos Query
+          query.executeQuery();
+          }catch (SQLException sqle) { 
+            System.out.println("Error en la ejecución:" 
+          + sqle.getErrorCode() + " " + sqle.getMessage());    
+          }
+      } catch (Exception e) { 
+        System.out.println("Error en la conexión:" + e.toString() );
+      } finally {
+        try {
+          // Cerramos posibles conexiones abiertas
+          if (con!=null) con.close();    
+        } catch (Exception e) {
+          System.out.println("Error cerrando conexiones: "
+            + e.toString());
+        } 
+      }
+      
+  
+    }
   }
+
 
 
