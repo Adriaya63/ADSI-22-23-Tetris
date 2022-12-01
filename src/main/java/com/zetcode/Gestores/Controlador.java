@@ -33,7 +33,7 @@ public class Controlador implements ActionListener
 			String tipo= Ranking.getmiRanking().getTip();
 			String dif = Ranking.getmiRanking().getdif();
 			System.out.println(dif);
-			Ranking.getmiRanking().generarRanking(Gestor_ranking.getmiGestorRanking().generarRanking(dif));
+			Ranking.getmiRanking().generarRanking(Gestor_ranking.getmiGestorRanking().generarRanking(dif,tipo));
 			break;
         }
 		if (e.getSource().equals(Ranking.btnVolver)) {
