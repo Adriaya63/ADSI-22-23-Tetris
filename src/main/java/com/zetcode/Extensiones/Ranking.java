@@ -25,7 +25,7 @@ public class Ranking extends JFrame {
     private ButtonGroup grupo1;
     private static Ranking miRanking;
     private JPanel ranking =new JPanel(new GridLayout(1,2));
-    private String[] columnas = {"Nombre","puntuación"};
+    private String[] columnas = {"Puesto","Nombre","puntuación"};
 private Ranking(){
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         int height = pantalla.height;
@@ -102,7 +102,7 @@ public JTable generarRanking(JSONArray json){
         objeto = json.getJSONObject(i);
         user= objeto.getString("user");
         puntuacion= String.valueOf(objeto.getInt("puntuacion"));
-        String[] f= {user,puntuacion};
+        String[] f= {String.valueOf(i+1),user,puntuacion};
         a[i]=f;
     }
     ranking.removeAll();
