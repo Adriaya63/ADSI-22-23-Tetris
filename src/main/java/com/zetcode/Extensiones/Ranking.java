@@ -1,19 +1,23 @@
 package com.zetcode.Extensiones;
-
+import javax.swing.border.EmptyBorder;
+import javax.swing.text.TabSet;
 
 import org.json.JSONArray;
-
 import org.json.JSONObject;
 
 import com.zetcode.Gestores.Controlador;
 
 import javax.swing.*;
 import java.awt.*;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 public class Ranking extends JFrame {
     private JPanel panelBotones= new JPanel();
     private JPanel panelBotonestipos= new JPanel(new GridLayout(1,2));
-    private JTable tabla;
     public static JButton btnVolver;
     private JRadioButton rbtn1t;
     private JRadioButton rbtn2t;
@@ -28,7 +32,7 @@ public class Ranking extends JFrame {
     private static Ranking miRanking;
     private JPanel ranking =new JPanel(new GridLayout(1,2));
     private String[] columnas = {"Nombre","puntuación"};
-
+    private String[][] filas= {};
 private Ranking(){
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         int height = pantalla.height;
@@ -95,17 +99,16 @@ public void alternar(){
         estado=true;
     }
 }
-public JTable generarRanking(JSONArray json){
+public void Update(JSONArray json){
     Object[][] a= new Object[json.length()][2];
     JSONObject objeto ;
     String user;
     String puntuacion;
-    String[] c;
     for(int i=0;i<=json.length()-1;i++){
         objeto = json.getJSONObject(i);
         user= objeto.getString("user");
         puntuacion= String.valueOf(objeto.getInt("puntuacion"));
-        String[] f= {user,puntuacion};
+        String[] f= {String.valueOf(i+1),user,puntuacion};
         a[i]=f;
     }
     ranking.removeAll();
@@ -113,7 +116,7 @@ public JTable generarRanking(JSONArray json){
     ranking.add(ntab);
     ranking.add(new JScrollPane(ntab));
     ranking.updateUI();
-    return null;
+    
 }
 public String getdif(){
     return grupo1.getSelection().getActionCommand();
