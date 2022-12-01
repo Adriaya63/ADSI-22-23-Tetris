@@ -92,12 +92,11 @@ public void alternar(){
         estado=true;
     }
 }
-public JTable generarRanking(JSONArray json){
+public void Update(JSONArray json){
     Object[][] a= new Object[json.length()][2];
     JSONObject objeto ;
     String user;
     String puntuacion;
-    String[] c;
     for(int i=0;i<=json.length()-1;i++){
         objeto = json.getJSONObject(i);
         user= objeto.getString("user");
@@ -110,7 +109,7 @@ public JTable generarRanking(JSONArray json){
     ranking.add(ntab);
     ranking.add(new JScrollPane(ntab));
     ranking.updateUI();
-    return null;
+    
 }
 public String getdif(){
     return grupo1.getSelection().getActionCommand();
