@@ -25,7 +25,7 @@ public class Gestor_ranking {
     public JSONArray generarRanking(String dificultad, String usuario){
 
         Connection con = null;
-        String sURL = "jdbc:h2:~/test";
+        String sURL = "jdbc:h2:./test";
         JSONArray jsonArray = new JSONArray(); 
         if(usuario!="Global"){
         try {
@@ -107,7 +107,7 @@ public class Gestor_ranking {
 
     public void ingresarPuntuacion(String usuario, int numLinesRemoved, String dificultad){
       Connection con = null;
-      String sURL = "jdbc:h2:~/test";
+      String sURL = "jdbc:h2:./test";
       try {
         con = DriverManager.getConnection(sURL,"sa","1234");
         try (

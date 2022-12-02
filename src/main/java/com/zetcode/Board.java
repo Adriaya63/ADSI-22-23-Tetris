@@ -19,7 +19,7 @@ public class Board extends JPanel {
     private final int BOARD_WIDTH = 10;
     private final int BOARD_HEIGHT = 22;
     private final int PERIOD_INTERVAL = 300;
-
+    private boolean fin = false;
     private Timer timer;
     private boolean isFallingFinished = false;
     private boolean isPaused = false;
@@ -166,7 +166,7 @@ public class Board extends JPanel {
             int y = curY - curPiece.y(i);
             board[(y * BOARD_WIDTH) + x] = curPiece.getShape();
         }
-
+        fin=true;
         removeFullLines();
 
         if (!isFallingFinished) {
@@ -188,7 +188,12 @@ public class Board extends JPanel {
 
             var msg = String.format("Game over. Score: %d", numLinesRemoved);
             statusbar.setText(msg);
-         
+            if (fin){
+            Controlador.getControlador().annadirPuntuacionAlRanking(numLinesRemoved);
+            JOptionPane.showMessageDialog(new JOptionPane(),"Puntuacion ingresada");
+            }
+            
+            
         }
     }
 
@@ -199,14 +204,18 @@ public class Board extends JPanel {
             int x = newX + newPiece.x(i);
             int y = newY - newPiece.y(i);
 
-            if (x < 0 || x >= BOARD_WIDTH || y < 0 || y >= BOARD_HEIGHT) {
-
+            if (x < 0 || x >= BOARD_WIDTH ||  y < 0 || y >= BOARD_HEIGHT) {
+                if(y >= BOARD_HEIGHT){
+                    fin=true;
+                    return false;
+                }
                 return false;
             }
+           
 
             if (shapeAt(x, y) != Tetrominoe.NoShape) {
 
-                return false;
+                 return false;
             }
         }
 
