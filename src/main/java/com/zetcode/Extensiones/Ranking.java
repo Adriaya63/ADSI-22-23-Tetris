@@ -99,7 +99,7 @@ public void Update(JSONArray json){
     String puntuacion;
     for(int i=0;i<=json.length()-1;i++){
         objeto = json.getJSONObject(i);
-        user= objeto.getString("user");
+        user= objeto.getString("nombre");
         puntuacion= String.valueOf(objeto.getInt("puntuacion"));
         String[] f= {String.valueOf(i+1),user,puntuacion};
         a[i]=f;

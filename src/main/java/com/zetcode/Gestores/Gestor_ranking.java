@@ -25,13 +25,13 @@ public class Gestor_ranking {
     public JSONArray generarRanking(String dificultad, String usuario){
 
         Connection con = null;
-        String sURL = "jdbc:mariadb://localhost:3306/ADSI";
+        String sURL = "jdbc:h2:~/test";
         JSONArray jsonArray = new JSONArray(); 
         if(usuario!="Global"){
         try {
-          con = DriverManager.getConnection(sURL,"root","");
+          con = DriverManager.getConnection(sURL,"sa","1234");
           try (
-            PreparedStatement query = con.prepareStatement("SELECT user, puntuacion from info_ranking where dificultad = ? AND user = ? AND ORDER BY puntuacion DESC")) {
+            PreparedStatement query = con.prepareStatement("SELECT nombre, puntuacion from info_ranking where dificultad = ? AND nombre = ? AND ORDER BY puntuacion DESC")) {
                 query.setString(1, dificultad);   
                 query.setString(2, usuario);
             // Ejecutamos Query
@@ -67,9 +67,9 @@ public class Gestor_ranking {
     }
     else{
       try {
-        con = DriverManager.getConnection(sURL,"root","");
+        con = DriverManager.getConnection(sURL,"sa","1234");
         try (
-          PreparedStatement query = con.prepareStatement("SELECT user, puntuacion from info_ranking where dificultad = ? ORDER BY puntuacion DESC")) {
+          PreparedStatement query = con.prepareStatement("SELECT nombre, puntuacion from info_ranking where dificultad = ? ORDER BY puntuacion DESC")) {
               query.setString(1, dificultad);    
           // Ejecutamos Query
           ResultSet rs = query.executeQuery();
@@ -107,16 +107,17 @@ public class Gestor_ranking {
 
     public void ingresarPuntuacion(String usuario, int numLinesRemoved, String dificultad){
       Connection con = null;
-      String sURL = "jdbc:mariadb://localhost:3306/ADSI";
+      String sURL = "jdbc:h2:~/test";
       try {
-        con = DriverManager.getConnection(sURL,"root","");
+        con = DriverManager.getConnection(sURL,"sa","1234");
         try (
           PreparedStatement query = con.prepareStatement("INSERT INTO info_ranking VALUES(?,?,?)")) {
-              query.setString(1, usuario);   
-              query.setString(2, dificultad);
-              query.setInt(3, numLinesRemoved);
+              query.setString(1, usuario);  
+              query.setInt(2, numLinesRemoved); 
+              query.setString(3, dificultad);
+              
           // Ejecutamos Query
-          query.executeQuery();
+          query.execute();
           }catch (SQLException sqle) { 
             System.out.println("Error en la ejecución:" 
           + sqle.getErrorCode() + " " + sqle.getMessage());    

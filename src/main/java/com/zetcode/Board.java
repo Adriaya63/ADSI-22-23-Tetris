@@ -188,8 +188,7 @@ public class Board extends JPanel {
 
             var msg = String.format("Game over. Score: %d", numLinesRemoved);
             statusbar.setText(msg);
-            Controlador.getControlador().annadirPuntuacionAlRanking(numLinesRemoved);
-            JOptionPane.showMessageDialog(new JOptionPane(),"Puntuacion ingresada");
+         
         }
     }
 

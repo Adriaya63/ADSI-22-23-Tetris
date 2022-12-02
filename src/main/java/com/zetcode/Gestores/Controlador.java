@@ -54,8 +54,8 @@ public class Controlador implements ActionListener
 
 	}  
 	public void annadirPuntuacionAlRanking(int numLinesRemoved){
-		String dificultad="medio";
-		String usuario="Fran";
+		String dificultad="Medio";
+		String usuario="Jose";
 		Gestor_ranking.getmiGestorRanking().ingresarPuntuacion(usuario, numLinesRemoved, dificultad);
 		 
 	}
