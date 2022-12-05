@@ -30,6 +30,28 @@ public class Board extends JPanel {
     private Shape curPiece;
     private Tetrominoe[] board;
 
+    private Color colorsDefault[] = { new Color(0, 0, 0), new Color(204, 102, 102),
+        new Color(102, 204, 102), new Color(102, 102, 204),
+        new Color(204, 204, 102), new Color(204, 102, 204),
+        new Color(102, 204, 204), new Color(218, 170, 0)
+    };
+    private Color colorsClasic[] = { new Color(0, 0, 0), new Color(255, 255, 255),
+        new Color(255, 255, 255), new Color(255, 255, 255),
+        new Color(255, 255, 255), new Color(255, 255, 255),
+        new Color(255, 255, 255), new Color(255, 255, 255)
+    };
+    private Color colorsBlack[] = { new Color(0, 0, 0), new Color(10, 10, 10),
+        new Color(10, 10, 10), new Color(10, 10, 10),
+        new Color(10, 10, 10), new Color(10, 10, 10),
+        new Color(10, 10, 10), new Color(10, 10, 10)
+    };
+     
+    private Color colors[] = { new Color(0, 0, 0), new Color(204, 102, 102),
+        new Color(102, 204, 102), new Color(102, 102, 204),
+        new Color(204, 204, 102), new Color(204, 102, 204),
+        new Color(102, 204, 204), new Color(218, 170, 0)
+    };
+
     public Board(Tetris parent) {
 
         initBoard(parent);
@@ -259,14 +281,15 @@ public class Board extends JPanel {
         }
     }
 
+    public void changeColor(int n) {
+        if(n==1){colors = colorsDefault;}
+        else if(n==2){colors = colorsClasic;}
+        else if(n==3){colors = colorsBlack;}
+    }
+
     private void drawSquare(Graphics g, int x, int y, Tetrominoe shape) {
-
-        Color colors[] = { new Color(0, 0, 0), new Color(204, 102, 102),
-                new Color(102, 204, 102), new Color(102, 102, 204),
-                new Color(204, 204, 102), new Color(204, 102, 204),
-                new Color(102, 204, 204), new Color(218, 170, 0)
-        };
-
+        //Modificar apariencia ladrillos.
+        
         var color = colors[shape.ordinal()];
 
         g.setColor(color);

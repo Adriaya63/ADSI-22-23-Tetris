@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.zetcode.Gestores.Controlador;
+
 import javax.swing.JLabel;
 import javax.swing.JDesktopPane;
 import javax.swing.SwingConstants;
@@ -17,15 +20,18 @@ import javax.swing.ButtonGroup;
 
 public class IU_Personalizacion extends JFrame {
 
+	private static IU_Personalizacion miPer;
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
 	private JPanel panel;
-	private JButton bAceptar;
+	public static JButton bAceptar;
+	public static JButton bVolver;
 	private JPanel panel_1;
-	private JRadioButton rbSonido;
-	private JRadioButton rbFondo;
-	private JRadioButton rbLadrillos;
+	public static JRadioButton rbSonido;
+	public static JRadioButton rbFondo;
+	public static JRadioButton rbLadrillos;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private boolean estado = false;
 
 	/**
 	 * Launch the application.
@@ -43,10 +49,28 @@ public class IU_Personalizacion extends JFrame {
 		});
 	}
 
+	public void alternar(){
+        if(estado){
+            setVisible(false);
+            estado=false;
+        }
+        else{
+            setVisible(true);
+            estado=true;
+        }
+    }
+
+	public static IU_Personalizacion getMiPer(){
+		if(miPer==null){
+			miPer = new IU_Personalizacion();
+		}
+		return miPer;
+	}
+
 	/**
 	 * Create the frame.
 	 */
-	public IU_Personalizacion() {
+	private IU_Personalizacion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -69,14 +93,23 @@ public class IU_Personalizacion extends JFrame {
 		if (panel == null) {
 			panel = new JPanel();
 			panel.add(getBAceptar());
+			panel.add(getBVolver());
 		}
 		return panel;
 	}
 	private JButton getBAceptar() {
 		if (bAceptar == null) {
 			bAceptar = new JButton("Aceptar");
+			bAceptar.addActionListener(Controlador.getControlador());
 		}
 		return bAceptar;
+	}
+	private JButton getBVolver() {
+		if (bVolver == null) {
+			bVolver = new JButton("Volver");
+			bVolver.addActionListener(Controlador.getControlador());
+		}
+		return bVolver;
 	}
 	private JPanel getPanel_1_1() {
 		if (panel_1 == null) {
@@ -93,6 +126,7 @@ public class IU_Personalizacion extends JFrame {
 			rbSonido = new JRadioButton("Sonido");
 			buttonGroup.add(rbSonido);
 			rbSonido.setHorizontalAlignment(SwingConstants.CENTER);
+			rbSonido.addActionListener(Controlador.getControlador());
 		}
 		return rbSonido;
 	}
@@ -101,6 +135,7 @@ public class IU_Personalizacion extends JFrame {
 			rbFondo = new JRadioButton("Fondo");
 			buttonGroup.add(rbFondo);
 			rbFondo.setHorizontalAlignment(SwingConstants.CENTER);
+			rbFondo.addActionListener(Controlador.getControlador());
 		}
 		return rbFondo;
 	}
@@ -109,6 +144,7 @@ public class IU_Personalizacion extends JFrame {
 			rbLadrillos = new JRadioButton("Ladrillos");
 			buttonGroup.add(rbLadrillos);
 			rbLadrillos.setHorizontalAlignment(SwingConstants.CENTER);
+			rbLadrillos.addActionListener(Controlador.getControlador());
 		}
 		return rbLadrillos;
 	}
