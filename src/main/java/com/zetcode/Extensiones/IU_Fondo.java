@@ -12,6 +12,8 @@ import com.zetcode.Gestores.Controlador;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.JRadioButton;
@@ -28,6 +30,7 @@ public class IU_Fondo extends JFrame {
 	public static JRadioButton rdbtnNewRadioButton;
 	public static JRadioButton rdbtnNewRadioButton_1;
 	public static JRadioButton rdbtnNewRadioButton_2;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private boolean estado = false;
 
 	/**
@@ -122,6 +125,7 @@ public class IU_Fondo extends JFrame {
 	private JRadioButton getRdbtnNewRadioButton() {
 		if (rdbtnNewRadioButton == null) {
 			rdbtnNewRadioButton = new JRadioButton("New radio button");
+			buttonGroup.add(rdbtnNewRadioButton);
 			rdbtnNewRadioButton.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 		return rdbtnNewRadioButton;
@@ -129,6 +133,7 @@ public class IU_Fondo extends JFrame {
 	private JRadioButton getRdbtnNewRadioButton_1() {
 		if (rdbtnNewRadioButton_1 == null) {
 			rdbtnNewRadioButton_1 = new JRadioButton("New radio button");
+			buttonGroup.add(rdbtnNewRadioButton_1);
 			rdbtnNewRadioButton_1.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 		return rdbtnNewRadioButton_1;
@@ -136,6 +141,7 @@ public class IU_Fondo extends JFrame {
 	private JRadioButton getRdbtnNewRadioButton_2() {
 		if (rdbtnNewRadioButton_2 == null) {
 			rdbtnNewRadioButton_2 = new JRadioButton("New radio button");
+			buttonGroup.add(rdbtnNewRadioButton_2);
 			rdbtnNewRadioButton_2.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 		return rdbtnNewRadioButton_2;

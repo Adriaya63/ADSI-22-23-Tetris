@@ -12,6 +12,8 @@ import com.zetcode.Gestores.Controlador;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.JRadioButton;
@@ -25,9 +27,10 @@ public class IU_Ladrillos extends JFrame {
 	public static JButton bGuardar;
 	public static JButton bVolver;
 	private JPanel panel_1;
-	public static JRadioButton rdbtnNewRadioButton;
-	public static JRadioButton rdbtnNewRadioButton_1;
-	public static JRadioButton rdbtnNewRadioButton_2;
+	public static JRadioButton rbDefault;
+	public static JRadioButton rbClasic;
+	public static JRadioButton rbBlack;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private boolean estado = false;
 
 	/**
@@ -113,31 +116,37 @@ public class IU_Ladrillos extends JFrame {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
 			panel_1.setLayout(new GridLayout(3, 0, 0, 0));
-			panel_1.add(getRdbtnNewRadioButton_1());
-			panel_1.add(getRdbtnNewRadioButton_2());
-			panel_1.add(getRdbtnNewRadioButton());
+			panel_1.add(getRbDefault());
+			panel_1.add(getRbBlack());
+			panel_1.add(getRbClasic());
 		}
 		return panel_1;
 	}
-	private JRadioButton getRdbtnNewRadioButton() {
-		if (rdbtnNewRadioButton == null) {
-			rdbtnNewRadioButton = new JRadioButton("New radio button");
-			rdbtnNewRadioButton.setHorizontalAlignment(SwingConstants.CENTER);
+	private JRadioButton getRbDefault() {
+		if (rbDefault == null) {
+			rbDefault = new JRadioButton("Default");
+			buttonGroup.add(rbDefault);
+			rbDefault.setHorizontalAlignment(SwingConstants.CENTER);
+			rbDefault.addActionListener(Controlador.getControlador());
 		}
-		return rdbtnNewRadioButton;
+		return rbDefault;
 	}
-	private JRadioButton getRdbtnNewRadioButton_1() {
-		if (rdbtnNewRadioButton_1 == null) {
-			rdbtnNewRadioButton_1 = new JRadioButton("New radio button");
-			rdbtnNewRadioButton_1.setHorizontalAlignment(SwingConstants.CENTER);
+	private JRadioButton getRbClasic() {
+		if (rbClasic == null) {
+			rbClasic = new JRadioButton("Clasic");
+			buttonGroup.add(rbClasic);
+			rbClasic.setHorizontalAlignment(SwingConstants.CENTER);
+			rbClasic.addActionListener(Controlador.getControlador());
 		}
-		return rdbtnNewRadioButton_1;
+		return rbClasic;
 	}
-	private JRadioButton getRdbtnNewRadioButton_2() {
-		if (rdbtnNewRadioButton_2 == null) {
-			rdbtnNewRadioButton_2 = new JRadioButton("New radio button");
-			rdbtnNewRadioButton_2.setHorizontalAlignment(SwingConstants.CENTER);
+	private JRadioButton getRbBlack() {
+		if (rbBlack == null) {
+			rbBlack = new JRadioButton("Black");
+			buttonGroup.add(rbBlack);
+			rbBlack.setHorizontalAlignment(SwingConstants.CENTER);
+			rbBlack.addActionListener(Controlador.getControlador());
 		}
-		return rdbtnNewRadioButton_2;
+		return rbBlack;
 	}
 }

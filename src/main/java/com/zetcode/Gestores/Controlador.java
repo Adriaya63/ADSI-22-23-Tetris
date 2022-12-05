@@ -15,6 +15,7 @@ public class Controlador implements ActionListener
 
 	private int dir=0;
 	private int seleccionPer=0;
+	private int colorLad;
 
 	private Controlador() {};
 	
@@ -92,6 +93,7 @@ public class Controlador implements ActionListener
 			break;
 		}
 		if(e.getSource().equals(IU_Ladrillos.bGuardar)){
+			Gestor_Personalizacion.getGestorPer().cambiarColor(colorLad);
 			break;
 		}
 		if(e.getSource().equals(IU_Ladrillos.bVolver)){
@@ -99,6 +101,9 @@ public class Controlador implements ActionListener
 			IU_Personalizacion.getMiPer().alternar();
 			break;
 		}
+		if(e.getSource().equals(IU_Ladrillos.rbDefault)){colorLad=1; break;}
+		if(e.getSource().equals(IU_Ladrillos.rbClasic)){colorLad=2; break;}
+		if(e.getSource().equals(IU_Ladrillos.rbBlack)){colorLad=3; break;}
 		if(e.getSource().equals(IU_Sonido.bGuardar)){
 			break;
 		}
