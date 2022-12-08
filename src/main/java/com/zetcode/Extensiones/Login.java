@@ -42,8 +42,8 @@ public class Login extends JFrame {
 	public static JButton bLog;
 	public static JButton bVolver;
 	public static JButton bRegistro;
-	public static Login miLogin;
-	private static boolean estado=false;
+	private static Login miLogin;
+	private boolean estado=false;
 
 	/**
 	 * Launch the application.

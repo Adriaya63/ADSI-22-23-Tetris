@@ -24,23 +24,13 @@ public class MenuRegistroInicio extends JFrame {
 	public static JButton btnNewButton;
 	public static JButton btnNewButton_1;
 	private JLabel lblNewLabel;
-	private static boolean estado = false;
-	public static Object getMiMenuRegsitroInicio;
+	private boolean estado = false;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuRegistroInicio frame = new MenuRegistroInicio();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
 	}
 
 	public static MenuRegistroInicio getMiMenuRegistroInicio() {

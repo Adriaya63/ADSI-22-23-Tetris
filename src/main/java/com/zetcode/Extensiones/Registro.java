@@ -41,7 +41,7 @@ public class Registro extends JFrame {
 	private JTextField textField_2;
 	private JLabel lblNewLabel_1_1_1;
 	public static Registro miRegistro;
-	private static boolean estado = false;
+	private boolean estado = false;
 
 	/**
 	 * Launch the application.
