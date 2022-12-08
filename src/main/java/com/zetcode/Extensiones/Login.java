@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.zetcode.Gestores.Controlador;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -35,9 +38,9 @@ public class Login extends JFrame {
 	private JTextField textField;
 	private JLabel lblNewLabel_1_1;
 	private JTextField textField_1;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
+	public static JButton bLog;
+	public static JButton bVolver;
+	public static JButton bRegistro;
 
 	/**
 	 * Launch the application.
@@ -81,9 +84,9 @@ public class Login extends JFrame {
 	private JPanel getPanel_2() {
 		if (panel == null) {
 			panel = new JPanel();
-			panel.add(getBtnNewButton());
-			panel.add(getBtnNewButton_1());
-			panel.add(getBtnNewButton_2());
+			panel.add(getBLog());
+			panel.add(getBVolver());
+			panel.add(getBRegistro());
 		}
 		return panel;
 	}
@@ -154,23 +157,26 @@ public class Login extends JFrame {
 		}
 		return textField_1;
 	}
-	private JButton getBtnNewButton() {
-		if (btnNewButton == null) {
-			btnNewButton = new JButton("Login");
+	private JButton getBLog() {
+		if (bLog == null) {
+			bLog = new JButton("Login");
+			bLog.addActionListener(Controlador.getControlador());
 		}
-		return btnNewButton;
+		return bLog;
 	}
-	private JButton getBtnNewButton_1() {
-		if (btnNewButton_1 == null) {
-			btnNewButton_1 = new JButton("Volver");
+	private JButton getBVolver() {
+		if (bVolver == null) {
+			bVolver = new JButton("Volver");
+			bVolver.addActionListener(Controlador.getControlador());
 		}
-		return btnNewButton_1;
+		return bVolver;
 	}
-	private JButton getBtnNewButton_2() {
-		if (btnNewButton_2 == null) {
-			btnNewButton_2 = new JButton("Registrarse");
+	private JButton getBRegistro() {
+		if (bRegistro == null) {
+			bRegistro = new JButton("Registrarse");
+			bRegistro.addActionListener(Controlador.getControlador());
 		}
-		return btnNewButton_2;
+		return bRegistro;
 	}
 
 }

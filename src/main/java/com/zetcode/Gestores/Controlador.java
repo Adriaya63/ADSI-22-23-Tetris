@@ -2,7 +2,9 @@ package com.zetcode.Gestores;
 import java.awt.event.*;
 
 import com.zetcode.Tetris;
+import com.zetcode.Extensiones.Login;
 import com.zetcode.Extensiones.Menu;
+import com.zetcode.Extensiones.MenuRegistroInicio;
 import com.zetcode.Extensiones.Ranking;
 
 public class Controlador implements ActionListener
@@ -24,6 +26,16 @@ public class Controlador implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
         while(true){
+		if(e.getSource().equals(Login.bVolver)){
+			Login.getMiLogin().alternar();
+			//MenuRegistroInicio.get
+			break;
+		}
+		if(e.getSource().equals(Login.bRegistro)){
+			Login.getMiLogin().alternar();
+			//Registro.alternar
+			break;
+		}
         if (e.getSource().equals(Menu.btnRanking)) {
 			Ranking.getmiRanking().alternar();
 			
