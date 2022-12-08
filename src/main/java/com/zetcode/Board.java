@@ -16,7 +16,7 @@ public class Board extends JPanel {
 
     private final int BOARD_WIDTH = 10;
     private final int BOARD_HEIGHT = 22;
-    private final int PERIOD_INTERVAL = 300;
+    private static int PERIOD_INTERVAL = 300;
 
     private Timer timer;
     private boolean isFallingFinished = false;
@@ -32,7 +32,9 @@ public class Board extends JPanel {
 
         initBoard(parent);
     }
-
+    public static void modificarTiempo(int x){
+        PERIOD_INTERVAL=x;
+    }
     private void initBoard(Tetris parent) {
 
         setFocusable(true);
