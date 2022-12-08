@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.zetcode.Gestores.Controlador;
+
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -15,11 +18,14 @@ import java.awt.Color;
 
 public class MenuRegistroInicio extends JFrame {
 
+	private static MenuRegistroInicio miMenuRegistroInicio;
 	private JPanel contentPane;
 	private JPanel panel;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
+	public static JButton btnNewButton;
+	public static JButton btnNewButton_1;
 	private JLabel lblNewLabel;
+	private static boolean estado = false;
+	public static Object getMiMenuRegsitroInicio;
 
 	/**
 	 * Launch the application.
@@ -35,6 +41,23 @@ public class MenuRegistroInicio extends JFrame {
 				}
 			}
 		});
+	}
+
+	public static MenuRegistroInicio getMiMenuRegistroInicio() {
+		if (miMenuRegistroInicio == null) {
+			miMenuRegistroInicio = new MenuRegistroInicio();
+		}
+		return miMenuRegistroInicio;
+	}
+
+	public void alternar() {
+		if (estado) {
+			setVisible(false);
+			estado = false;
+		} else {
+			setVisible(true);
+			estado = true;
+		}
 	}
 
 	/**
@@ -62,20 +85,26 @@ public class MenuRegistroInicio extends JFrame {
 		}
 		return panel;
 	}
-	private JButton getBtnNewButton() {
+
+	public JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("INICIA SESI\u00D3N");
 			btnNewButton.setBounds(10, 163, 193, 56);
+			btnNewButton.addActionListener(Controlador.getControlador());
 		}
 		return btnNewButton;
 	}
-	private JButton getBtnNewButton_1() {
+
+	public JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("REGISTRATE");
 			btnNewButton_1.setBounds(213, 163, 203, 56);
+			btnNewButton_1.addActionListener(Controlador.getControlador());
+
 		}
 		return btnNewButton_1;
 	}
+
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("TETRIS");

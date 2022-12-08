@@ -26,6 +26,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Login extends JFrame {
 
+
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
 	private JPanel panel;
@@ -41,6 +42,8 @@ public class Login extends JFrame {
 	public static JButton bLog;
 	public static JButton bVolver;
 	public static JButton bRegistro;
+	public static Login miLogin;
+	private static boolean estado=false;
 
 	/**
 	 * Launch the application.
@@ -57,6 +60,24 @@ public class Login extends JFrame {
 			}
 		});
 	}
+	public static Login getMiLogin()
+    {
+        if(miLogin == null)
+        {
+            miLogin = new Login();
+        }
+        return miLogin;
+    }
+	public  void alternar(){
+        if(estado){
+            setVisible(false);
+            estado=false;
+        }
+        else{
+            setVisible(true);
+            estado=true;
+        }
+    }
 
 	/**
 	 * Create the frame.
