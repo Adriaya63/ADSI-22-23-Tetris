@@ -46,7 +46,7 @@ public class Controlador implements ActionListener
 		if (e.getSource().equals(Menu.btnJugar)){
 			
 			Tetris t = new Tetris();
-			t.jugar();
+			 t.jugar();
 			Menu.getMiMenuRanking().alternar();
 			break;
 		}
@@ -54,9 +54,11 @@ public class Controlador implements ActionListener
 
 	}  
 	public void annadirPuntuacionAlRanking(int numLinesRemoved){
-		String dificultad="Medio";
-		String usuario="Jose";
-		Gestor_ranking.getmiGestorRanking().ingresarPuntuacion(usuario, numLinesRemoved, dificultad);
+		//Gestor_ranking.getmiGestorRanking().ingresarPuntuacion(Gestor_Usuarios.getmiGestorRanking().nombreUsuarioAct(), numLinesRemoved, dificultad);
 		 
+	}
+	public void cerrarPartida(){
+		Menu.getMiMenuRanking().alternar();
+		
 	}
 }
