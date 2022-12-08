@@ -27,9 +27,9 @@ public class IU_Fondo extends JFrame {
 	public static JButton bGuardar;
 	public static JButton bVolver;
 	private JPanel panel_1;
-	public static JRadioButton rdbtnNewRadioButton;
-	public static JRadioButton rdbtnNewRadioButton_1;
-	public static JRadioButton rdbtnNewRadioButton_2;
+	public static JRadioButton rbFondo1;
+	public static JRadioButton rbFondo2;
+	public static JRadioButton rbFondo3;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private boolean estado = false;
 
@@ -116,34 +116,37 @@ public class IU_Fondo extends JFrame {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
 			panel_1.setLayout(new GridLayout(3, 0, 0, 0));
-			panel_1.add(getRdbtnNewRadioButton_1());
-			panel_1.add(getRdbtnNewRadioButton_2());
-			panel_1.add(getRdbtnNewRadioButton());
+			panel_1.add(getRbFondo2());
+			panel_1.add(getRbFondo3());
+			panel_1.add(getRbFondo1());
 		}
 		return panel_1;
 	}
-	private JRadioButton getRdbtnNewRadioButton() {
-		if (rdbtnNewRadioButton == null) {
-			rdbtnNewRadioButton = new JRadioButton("New radio button");
-			buttonGroup.add(rdbtnNewRadioButton);
-			rdbtnNewRadioButton.setHorizontalAlignment(SwingConstants.CENTER);
+	private JRadioButton getRbFondo1() {
+		if (rbFondo1 == null) {
+			rbFondo1 = new JRadioButton("Fondo Negro");
+			buttonGroup.add(rbFondo1);
+			rbFondo1.setHorizontalAlignment(SwingConstants.CENTER);
+			rbFondo1.addActionListener(Controlador.getControlador());
 		}
-		return rdbtnNewRadioButton;
+		return rbFondo1;
 	}
-	private JRadioButton getRdbtnNewRadioButton_1() {
-		if (rdbtnNewRadioButton_1 == null) {
-			rdbtnNewRadioButton_1 = new JRadioButton("New radio button");
-			buttonGroup.add(rdbtnNewRadioButton_1);
-			rdbtnNewRadioButton_1.setHorizontalAlignment(SwingConstants.CENTER);
+	private JRadioButton getRbFondo2() {
+		if (rbFondo2 == null) {
+			rbFondo2 = new JRadioButton("Fondo Madera");
+			buttonGroup.add(rbFondo2);
+			rbFondo2.setHorizontalAlignment(SwingConstants.CENTER);
+			rbFondo2.addActionListener(Controlador.getControlador());
 		}
-		return rdbtnNewRadioButton_1;
+		return rbFondo2;
 	}
-	private JRadioButton getRdbtnNewRadioButton_2() {
-		if (rdbtnNewRadioButton_2 == null) {
-			rdbtnNewRadioButton_2 = new JRadioButton("New radio button");
-			buttonGroup.add(rdbtnNewRadioButton_2);
-			rdbtnNewRadioButton_2.setHorizontalAlignment(SwingConstants.CENTER);
+	private JRadioButton getRbFondo3() {
+		if (rbFondo3 == null) {
+			rbFondo3 = new JRadioButton("Fondo Blanco");
+			buttonGroup.add(rbFondo3);
+			rbFondo3.setHorizontalAlignment(SwingConstants.CENTER);
+			rbFondo3.addActionListener(Controlador.getControlador());
 		}
-		return rdbtnNewRadioButton_2;
+		return rbFondo3;
 	}
 }

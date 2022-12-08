@@ -15,7 +15,8 @@ public class Controlador implements ActionListener
 
 	private int dir=0;
 	private int seleccionPer=0;
-	private int colorLad;
+	private int colorLad=0;
+	private int fondo=0;
 
 	private Controlador() {};
 	
@@ -85,8 +86,12 @@ public class Controlador implements ActionListener
 			break;
 		}
 		if(e.getSource().equals(IU_Fondo.bGuardar)){
+			Gestor_Personalizacion.getGestorPer().cambiarImgFondo(fondo);
 			break;
 		}
+		if(e.getSource().equals(IU_Fondo.rbFondo1)){fondo=1; break;}
+		if(e.getSource().equals(IU_Fondo.rbFondo2)){fondo=2; break;}
+		if(e.getSource().equals(IU_Fondo.rbFondo3)){fondo=3; break;}
 		if(e.getSource().equals(IU_Fondo.bVolver)){
 			IU_Fondo.getMiFondo().alternar();
 			IU_Personalizacion.getMiPer().alternar();

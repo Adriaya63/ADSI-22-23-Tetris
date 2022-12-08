@@ -22,6 +22,7 @@ public class Gestor_Personalizacion {
     }; 
 
     public Color colors[] = colorsDefault;
+    public String imgName = "img/Fondo1.jpg";
 
     public static Gestor_Personalizacion getGestorPer() {
         if(miPer==null){
@@ -34,6 +35,12 @@ public class Gestor_Personalizacion {
         if(n==1){colors=colorsDefault;}
         else if(n==2){colors=colorsClasic;}
         else if(n==3){colors=colorsBlack;}
+    }
+
+    public void cambiarImgFondo(int n){
+        if(n==1){imgName="img/Fondo1.jpg";}
+        else if(n==2){imgName="img/Fondo2.jpg";}
+        else if(n==3){imgName="img/Fondo3.jpg";}
     }
 
 
