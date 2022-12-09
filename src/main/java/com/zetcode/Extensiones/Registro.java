@@ -32,13 +32,13 @@ public class Registro extends JFrame {
 	private JPanel panel_4;
 	private JPanel panel_5;
 	private JLabel lblNewLabel_1;
-	private JTextField textField;
+	public static JTextField textFieldUser;
 	private JLabel lblNewLabel_1_1;
-	private JTextField textField_1;
-	public static JButton btnNewButton;
-	public static JButton btnNewButton_1;
-	public static JButton btnNewButton_2;
-	private JTextField textField_2;
+	public static JTextField textFieldPass;
+	public static JButton bReg;
+	public static JButton bVolver;
+	public static JButton bLog;
+	public static JTextField textFieldEmail;
 	private JLabel lblNewLabel_1_1_1;
 	public static Registro miRegistro;
 	private boolean estado = false;
@@ -104,9 +104,9 @@ public class Registro extends JFrame {
 	private JPanel getPanel_2() {
 		if (panel == null) {
 			panel = new JPanel();
-			panel.add(getBtnNewButton());
-			panel.add(getBtnNewButton_1());
-			panel.add(getBtnNewButton_2());
+			panel.add(getBReg());
+			panel.add(getBVolver());
+			panel.add(getBLog());
 		}
 		return panel;
 	}
@@ -127,7 +127,7 @@ public class Registro extends JFrame {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
 			panel_2.add(getLblNewLabel_1_1_1());
-			panel_2.add(getTextField_2());
+			panel_2.add(getTextFieldEmail());
 		}
 		return panel_2;
 	}
@@ -136,7 +136,7 @@ public class Registro extends JFrame {
 		if (panel_3 == null) {
 			panel_3 = new JPanel();
 			panel_3.add(getLblNewLabel_1_1());
-			panel_3.add(getTextField_1());
+			panel_3.add(getTextFieldPass());
 		}
 		return panel_3;
 	}
@@ -145,7 +145,7 @@ public class Registro extends JFrame {
 		if (panel_4 == null) {
 			panel_4 = new JPanel();
 			panel_4.add(getLblNewLabel_1());
-			panel_4.add(getTextField());
+			panel_4.add(getTextFieldUser());
 		}
 		return panel_4;
 	}
@@ -165,12 +165,12 @@ public class Registro extends JFrame {
 		return lblNewLabel_1;
 	}
 
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setColumns(10);
+	private JTextField getTextFieldUser() {
+		if (textFieldUser == null) {
+			textFieldUser = new JTextField();
+			textFieldUser.setColumns(10);
 		}
-		return textField;
+		return textFieldUser;
 	}
 
 	private JLabel getLblNewLabel_1_1() {
@@ -181,48 +181,45 @@ public class Registro extends JFrame {
 		return lblNewLabel_1_1;
 	}
 
-	private JTextField getTextField_1() {
-		if (textField_1 == null) {
-			textField_1 = new JTextField();
-			textField_1.setColumns(10);
+	private JTextField getTextFieldPass() {
+		if (textFieldPass == null) {
+			textFieldPass = new JTextField();
+			textFieldPass.setColumns(10);
 		}
-		return textField_1;
+		return textFieldPass;
 	}
 
-	private JButton getBtnNewButton() {
-		if (btnNewButton == null) {
-			btnNewButton = new JButton("Register");
-			btnNewButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
+	private JButton getBReg() {
+		if (bReg == null) {
+			bReg = new JButton("Register");
+			bReg.addActionListener(Controlador.getControlador());
 		}
-		return btnNewButton;
+		return bReg;
 	}
 
-	private JButton getBtnNewButton_1() {
-		if (btnNewButton_1 == null) {
-			btnNewButton_1 = new JButton("Volver");
-			btnNewButton_1.addActionListener(Controlador.getControlador());
+	private JButton getBVolver() {
+		if (bVolver == null) {
+			bVolver = new JButton("Volver");
+			bVolver.addActionListener(Controlador.getControlador());
 		}
-		return btnNewButton_1;
+		return bVolver;
 	}
 
-	private JButton getBtnNewButton_2() {
-		if (btnNewButton_2 == null) {
-			btnNewButton_2 = new JButton("Loguearse");
-			btnNewButton_2.addActionListener(Controlador.getControlador());
+	private JButton getBLog() {
+		if (bLog == null) {
+			bLog = new JButton("Loguearse");
+			bLog.addActionListener(Controlador.getControlador());
 
 		}
-		return btnNewButton_2;
+		return bLog;
 	}
 
-	private JTextField getTextField_2() {
-		if (textField_2 == null) {
-			textField_2 = new JTextField();
-			textField_2.setColumns(10);
+	private JTextField getTextFieldEmail() {
+		if (textFieldEmail == null) {
+			textFieldEmail = new JTextField();
+			textFieldEmail.setColumns(10);
 		}
-		return textField_2;
+		return textFieldEmail;
 	}
 
 	private JLabel getLblNewLabel_1_1_1() {

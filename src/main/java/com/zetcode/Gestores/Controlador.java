@@ -33,13 +33,22 @@ public class Controlador implements ActionListener {
 				MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
 				break;
 			}
-			if (e.getSource().equals(Registro.btnNewButton_1)) {
+			if(e.getSource().equals(Registro.bReg)){
+				String user = Registro.textFieldUser.getText();
+				if(!Gestor_Usuarios.getMiGestorUser().existeUser(user)){
+					String pass = Registro.textFieldPass.getText();
+					String email = Registro.textFieldEmail.getText();
+					Gestor_Usuarios.getMiGestorUser().insertarUsuario(user, pass, email);
+				}else{System.out.println("El usuario ya existe");}
+				break;
+			}
+			if (e.getSource().equals(Registro.bVolver)) {
 				Registro.getMiRegitro().alternar();
 				MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
 
 				break;
 			}
-			if (e.getSource().equals(Registro.btnNewButton_2)) {
+			if (e.getSource().equals(Registro.bLog)) {
 				Registro.getMiRegitro().alternar();
 				Login.getMiLogin().alternar();
 
