@@ -2,6 +2,8 @@ package com.zetcode;
 
 import java.util.Random;
 
+import javax.swing.JLabel;
+
 public class Shape {
 
     protected enum Tetrominoe { NoShape, ZShape, SShape, LineShape,
@@ -125,4 +127,5 @@ public class Shape {
 
         return result;
     }
+ 
 }

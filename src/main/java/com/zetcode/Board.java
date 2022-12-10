@@ -19,7 +19,6 @@ public class Board extends JPanel {
     private final int BOARD_WIDTH = 10;
     private final int BOARD_HEIGHT = 22;
     private final int PERIOD_INTERVAL = 300;
-    private boolean fin = false;
     private Timer timer;
     private boolean isFallingFinished = false;
     private boolean isPaused = false;
@@ -29,10 +28,12 @@ public class Board extends JPanel {
     private JLabel statusbar;
     private Shape curPiece;
     private Tetrominoe[] board;
+    private Tetris parent;
+    public Board(Tetris pParent) {
 
-    public Board(Tetris parent) {
+        initBoard(pParent);
+        this.parent=pParent;
 
-        initBoard(parent);
     }
 
     private void initBoard(Tetris parent) {
@@ -178,21 +179,26 @@ public class Board extends JPanel {
         curPiece.setRandomShape();
         curX = BOARD_WIDTH / 2 + 1;
         curY = BOARD_HEIGHT - 1 + curPiece.minY();
-
+        
         if (!tryMove(curPiece, curX, curY)) {
-
+            
             curPiece.setShape(Tetrominoe.NoShape);
             timer.stop();
-
-            var msg = String.format("Game over. Score: %d", numLinesRemoved);
-            statusbar.setText(msg);
+            parent.cerrarFrame();
+            System.out.println(parent.getBoardStatus());
+           /*  if (!parent.getBoardStatus()){
+                Controlador.getControlador().Finalizar();
+            } */
+          /*   var msg = String.format("Game over. Score: %d", numLinesRemoved);
+            statusbar.setText(msg); */
+           
         }
     }
 
     private boolean tryMove(Shape newPiece, int newX, int newY) {
-
+       
         for (int i = 0; i < 4; i++) {
-
+            
             int x = newX + newPiece.x(i);
             int y = newY - newPiece.y(i);
             
@@ -220,7 +226,7 @@ public class Board extends JPanel {
     private void removeFullLines() {
 
         int numFullLines = 0;
-
+        
         for (int i = BOARD_HEIGHT - 1; i >= 0; i--) {
 
             boolean lineIsFull = true;
