@@ -1,6 +1,10 @@
 package com.zetcode.Gestores;
 import java.awt.event.*;
 
+import org.apache.logging.log4j.core.pattern.TextRenderer;
+
+import com.zetcode.Board;
+import com.zetcode.FinPartida;
 import com.zetcode.Tetris;
 import com.zetcode.Extensiones.Menu;
 import com.zetcode.Extensiones.Ranking;
@@ -46,7 +50,7 @@ public class Controlador implements ActionListener
 		if (e.getSource().equals(Menu.btnJugar)){
 			
 			Tetris t = new Tetris();
-			 t.jugar();
+			t.jugar();
 			Menu.getMiMenuRanking().alternar();
 			break;
 		}
