@@ -3,7 +3,6 @@ import java.awt.event.*;
 
 import org.apache.logging.log4j.core.pattern.TextRenderer;
 
-import com.zetcode.Board;
 import com.zetcode.FinPartida;
 import com.zetcode.Tetris;
 import com.zetcode.Extensiones.Menu;
@@ -13,7 +12,6 @@ public class Controlador implements ActionListener
 {
 	private static Controlador controler =null;
 
-	private int dir=0;
 
 	private Controlador() {};
 	
@@ -48,21 +46,16 @@ public class Controlador implements ActionListener
 			break;
         }
 		if (e.getSource().equals(Menu.btnJugar)){
-			
-			Tetris t = new Tetris();
-			t.jugar();
+			Tetris.jugar();
 			Menu.getMiMenuRanking().alternar();
 			break;
 		}
-       } 
-
-	}  
-	public void annadirPuntuacionAlRanking(int numLinesRemoved){
-		//Gestor_ranking.getmiGestorRanking().ingresarPuntuacion(Gestor_Usuarios.getmiGestorRanking().nombreUsuarioAct(), numLinesRemoved, dificultad);
-		 
-	}
-	public void cerrarPartida(){
-		Menu.getMiMenuRanking().alternar();
 		
+       } 
 	}
+		public void finalizarPartida(FinPartida f, String usuario, int puntuacion){
+			f.dispose();
+			Gestor_ranking.getmiGestorRanking().ingresarPuntuacion(usuario, puntuacion,"Fácil");
+			Menu.getMiMenuRanking().alternar();
+		}
 }

@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Tetris",
+            "request": "launch",
+            "mainClass": "com.zetcode.Tetris",
+            "projectName": "Tetris-Local"
+        },
+        {
+            "type": "java",
             "name": "Launch FinPartida",
             "request": "launch",
             "mainClass": "com.zetcode.FinPartida",

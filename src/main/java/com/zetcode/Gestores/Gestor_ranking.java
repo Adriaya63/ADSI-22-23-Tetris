@@ -118,6 +118,7 @@ public class Gestor_ranking {
               
           // Ejecutamos Query
           query.execute();
+          System.out.println("Se ha ingresado correctamente la puntuación en el ranking");
           }catch (SQLException sqle) { 
             System.out.println("Error en la ejecución:" 
           + sqle.getErrorCode() + " " + sqle.getMessage());    

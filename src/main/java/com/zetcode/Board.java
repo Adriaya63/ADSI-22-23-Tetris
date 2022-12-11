@@ -29,6 +29,8 @@ public class Board extends JPanel {
     private Shape curPiece;
     private Tetrominoe[] board;
     private Tetris parent;
+    private String usu;
+
     public Board(Tetris pParent) {
 
         initBoard(pParent);
@@ -179,22 +181,18 @@ public class Board extends JPanel {
         curPiece.setRandomShape();
         curX = BOARD_WIDTH / 2 + 1;
         curY = BOARD_HEIGHT - 1 + curPiece.minY();
-        
+
+
         if (!tryMove(curPiece, curX, curY)) {
-            
             curPiece.setShape(Tetrominoe.NoShape);
             timer.stop();
-            parent.cerrarFrame();
-            System.out.println(parent.getBoardStatus());
-           /*  if (!parent.getBoardStatus()){
-                Controlador.getControlador().Finalizar();
-            } */
-          /*   var msg = String.format("Game over. Score: %d", numLinesRemoved);
-            statusbar.setText(msg); */
-           
+            parent.dispose();
+            FinPartida f= new FinPartida();
+            f.hacerVisible(usu, numLinesRemoved);
+            
         }
     }
-
+    
     private boolean tryMove(Shape newPiece, int newX, int newY) {
        
         for (int i = 0; i < 4; i++) {

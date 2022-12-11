@@ -13,17 +13,22 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.h2.engine.Session.StaticSettings;
+
+import com.zetcode.Gestores.Controlador;
+
 public class FinPartida extends JFrame {
   private String userName;
   private int score;
   private Date date;
- 
-  
-  public FinPartida(String userName, int score) {
+  public static JButton btnContinuar;
+  private static FinPartida puntero;
+  public FinPartida(){}
+  public void hacerVisible(String userName, int score){
     this.userName = userName;
     this.score = score;
     this.date = new Date();
-  
+    FinPartida.puntero=this;
     
     // Configuramos la ventana
     setTitle("Datos de la partida");
@@ -50,20 +55,26 @@ public class FinPartida extends JFrame {
     JPanel buttonPanel = new JPanel();
     
     // Creamos el botón y lo configuramos
-    JButton continueButton = new JButton("Continuar");
-    continueButton.addActionListener(com.zetcode.Gestores.Controlador.getControlador());
-
+    btnContinuar = new JButton("Continuar");
+    btnContinuar.addActionListener(new btnP());
     
     // Añadimos el botón al panel
-    buttonPanel.add(continueButton);
-    
+    buttonPanel.add(btnContinuar);
     // Añadimos los paneles al marco
     add(userInfoPanel, BorderLayout.CENTER);
     add(buttonPanel, BorderLayout.SOUTH);
+    setVisible(true);
   }
+  private class btnP implements ActionListener {
+
+    @Override
+    public void actionPerformed(ActionEvent arg0) {
+      Controlador.getControlador().finalizarPartida(puntero,userName,score);
+      
+    }
+  }}
+ 
+    
   
-  public static void main(String[] args) {
-    FinPartida ui = new FinPartida("johndoe", 100);
-    ui.setVisible(true);
-  }
-}
+
+
