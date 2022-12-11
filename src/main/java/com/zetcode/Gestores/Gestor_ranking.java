@@ -25,11 +25,11 @@ public class Gestor_ranking {
     public JSONArray generarRanking(String dificultad, String usuario){
 
         Connection con = null;
-        String sURL = "jdbc:mariadb://localhost:3306/ADSI";
+        String sURL = "jdbc:h2:~/test";
         JSONArray jsonArray = new JSONArray(); 
         if(usuario!="Global"){
         try {
-          con = DriverManager.getConnection(sURL,"root","");
+          con = DriverManager.getConnection(sURL,"sa","1234");
           try (
             PreparedStatement query = con.prepareStatement("SELECT user, puntuacion from info_ranking where dificultad = ? AND user = ? AND ORDER BY puntuacion DESC")) {
                 query.setString(1, dificultad);   
@@ -67,7 +67,7 @@ public class Gestor_ranking {
     }
     else{
       try {
-        con = DriverManager.getConnection(sURL,"root","");
+        con = DriverManager.getConnection(sURL,"sa","1234");
         try (
           PreparedStatement query = con.prepareStatement("SELECT user, puntuacion from info_ranking where dificultad = ? ORDER BY puntuacion DESC")) {
               query.setString(1, dificultad);    
@@ -107,9 +107,9 @@ public class Gestor_ranking {
 
     public void ingresarPuntuacion(String usuario, int numLinesRemoved, String dificultad){
       Connection con = null;
-      String sURL = "jdbc:mariadb://localhost:3306/ADSI";
+      String sURL = "jdbc:h2:~/test";
       try {
-        con = DriverManager.getConnection(sURL,"root","");
+        con = DriverManager.getConnection(sURL,"sa","1234");
         try (
           PreparedStatement query = con.prepareStatement("INSERT INTO info_ranking VALUES(?,?,?)")) {
               query.setString(1, usuario);   

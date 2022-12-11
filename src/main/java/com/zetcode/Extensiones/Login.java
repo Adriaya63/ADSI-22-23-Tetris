@@ -36,9 +36,9 @@ public class Login extends JFrame {
 	private JPanel panel_4;
 	private JPanel panel_5;
 	private JLabel lblNewLabel_1;
-	private JTextField textField;
+	public static JTextField textFieldUser;
 	private JLabel lblNewLabel_1_1;
-	private JTextField textField_1;
+	public static JTextField textFieldPass;
 	public static JButton bLog;
 	public static JButton bVolver;
 	public static JButton bRegistro;
@@ -132,7 +132,7 @@ public class Login extends JFrame {
 		if (panel_3 == null) {
 			panel_3 = new JPanel();
 			panel_3.add(getLblNewLabel_1_1());
-			panel_3.add(getTextField_1());
+			panel_3.add(getTextFieldPass());
 		}
 		return panel_3;
 	}
@@ -140,7 +140,7 @@ public class Login extends JFrame {
 		if (panel_4 == null) {
 			panel_4 = new JPanel();
 			panel_4.add(getLblNewLabel_1());
-			panel_4.add(getTextField());
+			panel_4.add(getTextFieldUser());
 		}
 		return panel_4;
 	}
@@ -157,12 +157,12 @@ public class Login extends JFrame {
 		}
 		return lblNewLabel_1;
 	}
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setColumns(10);
+	private JTextField getTextFieldUser() {
+		if (textFieldUser == null) {
+			textFieldUser = new JTextField();
+			textFieldUser.setColumns(10);
 		}
-		return textField;
+		return textFieldUser;
 	}
 	private JLabel getLblNewLabel_1_1() {
 		if (lblNewLabel_1_1 == null) {
@@ -171,12 +171,12 @@ public class Login extends JFrame {
 		}
 		return lblNewLabel_1_1;
 	}
-	private JTextField getTextField_1() {
-		if (textField_1 == null) {
-			textField_1 = new JTextField();
-			textField_1.setColumns(10);
+	private JTextField getTextFieldPass() {
+		if (textFieldPass == null) {
+			textFieldPass = new JTextField();
+			textFieldPass.setColumns(10);
 		}
-		return textField_1;
+		return textFieldPass;
 	}
 	private JButton getBLog() {
 		if (bLog == null) {
