@@ -2,7 +2,10 @@ package com.zetcode.Gestores;
 
 import java.awt.event.*;
 
+import org.json.JSONObject;
+
 import com.zetcode.Tetris;
+import com.zetcode.Usuario_Conectado;
 import com.zetcode.Extensiones.Login;
 import com.zetcode.Extensiones.Menu;
 import com.zetcode.Extensiones.MenuRegistroInicio;
@@ -27,6 +30,12 @@ public class Controlador implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		while (true) {
+			if(e.getSource().equals(Login.bLog)){
+				String user = Login.textFieldUser.getText();
+				String pass = Login.textFieldPass.getText();
+				JSONObject userdata = Gestor_Usuarios.getMiGestorUser().buscarUser(user, pass);
+				Usuario_Conectado.geyMiUser().initUser(userdata);
+			}
 			if (e.getSource().equals(Login.bVolver)) {
 				Login.getMiLogin().alternar();
 				// MenuRegistroInicio.get
