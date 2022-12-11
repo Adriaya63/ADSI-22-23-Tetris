@@ -103,7 +103,7 @@ public class Controlador implements ActionListener
 	
 		public void finalizarPartida(FinPartida f, String usuario, int puntuacion,String dif){
 			f.dispose();
-			Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("fran", puntuacion, dif);
+			Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Jose", puntuacion, dif);
 			Menu.getMiMenuRanking().alternar();
 		}
 }

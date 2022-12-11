@@ -32,7 +32,7 @@ public class Board extends JPanel {
     private Shape curPiece;
     private Tetrominoe[] board;
     private Tetris parent;
-    private String usu="fran";
+    private String usu="Jose";
     private static  String dif;
     public Board(Tetris pParent, int pDif) {
         modificarTiempo(pDif);
