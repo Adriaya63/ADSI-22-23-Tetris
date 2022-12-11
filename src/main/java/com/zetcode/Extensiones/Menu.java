@@ -68,6 +68,7 @@ public class Menu extends JFrame
         panelbotones.add(btnPersonalizar);
         panelbotones.add(btnRanking);
         btnJugar.addActionListener(Controlador.getControlador());
+        btnNivel.addActionListener(Controlador.getControlador());
         btnRanking.addActionListener(Controlador.getControlador());
         JTextArea texto= new JTextArea();
         texto.append("Programa realizado para la asignatura de ADSI");

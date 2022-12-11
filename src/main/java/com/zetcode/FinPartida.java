@@ -23,11 +23,13 @@ public class FinPartida extends JFrame {
   private Date date;
   public static JButton btnContinuar;
   private static FinPartida puntero;
+  private String dif;
   public FinPartida(){}
-  public void hacerVisible(String userName, int score){
+  public void hacerVisible(String userName, int score, String dif){
     this.userName = userName;
     this.score = score;
     this.date = new Date();
+    this.dif=dif;
     FinPartida.puntero=this;
     
     // Configuramos la ventana
@@ -43,12 +45,14 @@ public class FinPartida extends JFrame {
     // Creamos los componentes para mostrar la información
     JLabel userNameLabel = new JLabel("Nombre de usuario: " + userName);
     JLabel scoreLabel = new JLabel("Puntuación: " + score);
+    JLabel dificultadlabel = new JLabel("Dificultad: " + dif);
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     JLabel dateLabel = new JLabel("Fecha: " + dateFormat.format(date));
     
     // Añadimos los componentes al panel
     userInfoPanel.add(userNameLabel);
     userInfoPanel.add(scoreLabel);
+    userInfoPanel.add(dificultadlabel);
     userInfoPanel.add(dateLabel);
     
     // Creamos un panel para el botón de continuar
@@ -69,7 +73,7 @@ public class FinPartida extends JFrame {
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
-      Controlador.getControlador().finalizarPartida(puntero,userName,score);
+      Controlador.getControlador().finalizarPartida(puntero,userName,score,dif);
       
     }
   }}

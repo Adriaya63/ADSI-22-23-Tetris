@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Niveles",
+            "request": "launch",
+            "mainClass": "com.zetcode.Niveles",
+            "projectName": "Tetris-Local"
+        },
+        {
+            "type": "java",
             "name": "Launch Tetris",
             "request": "launch",
             "mainClass": "com.zetcode.Tetris",

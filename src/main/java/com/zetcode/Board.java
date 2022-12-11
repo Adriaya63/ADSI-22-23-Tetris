@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.tools.Diagnostic;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -18,7 +20,8 @@ public class Board extends JPanel {
 
     private final int BOARD_WIDTH = 10;
     private final int BOARD_HEIGHT = 22;
-    private final int PERIOD_INTERVAL = 300;
+    private static int PERIOD_INTERVAL = 300;
+
     private Timer timer;
     private boolean isFallingFinished = false;
     private boolean isPaused = false;
@@ -29,15 +32,28 @@ public class Board extends JPanel {
     private Shape curPiece;
     private Tetrominoe[] board;
     private Tetris parent;
-    private String usu;
-
-    public Board(Tetris pParent) {
-
+    private String usu="fran";
+    private static  String dif;
+    public Board(Tetris pParent, int pDif) {
+        modificarTiempo(pDif);
         initBoard(pParent);
         this.parent=pParent;
 
     }
+    public static void modificarTiempo(int x){
+        PERIOD_INTERVAL=x;
+        if(x==150){
+            dif="Fácil";
+        }
+        if(x==300){
+            dif="Medio";
+        }
+        if(x==500){
+            dif="Difícil";
+        }
 
+        
+    }
     private void initBoard(Tetris parent) {
 
         setFocusable(true);
@@ -181,6 +197,7 @@ public class Board extends JPanel {
         curPiece.setRandomShape();
         curX = BOARD_WIDTH / 2 + 1;
         curY = BOARD_HEIGHT - 1 + curPiece.minY();
+        System.out.println(dif);
 
 
         if (!tryMove(curPiece, curX, curY)) {
@@ -188,7 +205,7 @@ public class Board extends JPanel {
             timer.stop();
             parent.dispose();
             FinPartida f= new FinPartida();
-            f.hacerVisible(usu, numLinesRemoved);
+            f.hacerVisible(usu, numLinesRemoved,dif);
             
         }
     }

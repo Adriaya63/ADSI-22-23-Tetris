@@ -47,7 +47,7 @@ private Ranking(){
         rbtn2=new JRadioButton("Medio",false);
         rbtn2.setActionCommand("Medio");
         rbtn3=new JRadioButton("Difícil",false);
-        rbtn3.setActionCommand("Dificil");
+        rbtn3.setActionCommand("Difícil");
         rbtn4=new JRadioButton("Absoluto",false);
         rbtn4.setActionCommand("Absoluto");
         grupo2 = new ButtonGroup();
