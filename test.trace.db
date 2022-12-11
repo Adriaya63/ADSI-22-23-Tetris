@@ -284,3 +284,7 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /home/fram/unive
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 34 more
+2022-12-11 13:58:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT nombre, puntuacion from info_ranking where dificultad = ? AND nombre = ? AND [*]ORDER BY puntuacion DESC"; se esperaba "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "SELECT nombre, puntuacion from info_ranking where dificultad = ? AND nombre = ? AND [*]ORDER BY puntuacion DESC"; expected "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+SELECT nombre, puntuacion from info_ranking where dificultad = ? AND nombre = ? AND ORDER BY puntuacion DESC [42001-214]
