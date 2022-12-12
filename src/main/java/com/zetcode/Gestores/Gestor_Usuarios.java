@@ -92,7 +92,7 @@ public class Gestor_Usuarios{
             String sURL = "jdbc:h2:./test";
             try{
                 con = DriverManager.getConnection(sURL, "sa", "1234");
-                try(PreparedStatement query = con.prepareStatement("INSERT INTO usuario VALUES(?,?,?,0)")){
+                try(PreparedStatement query = con.prepareStatement("INSERT INTO usuario VALUES(?,?,?,0,1,1)")){
                     query.setString(1, user);
                     query.setString(2, email);
                     query.setString(3, password);

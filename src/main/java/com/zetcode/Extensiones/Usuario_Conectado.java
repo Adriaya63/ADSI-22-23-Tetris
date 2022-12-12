@@ -1,6 +1,9 @@
 package com.zetcode.Extensiones;
 
 import org.json.JSONObject;
+import java.awt.Color;
+
+import com.zetcode.Gestores.Gestor_Personalizacion;
 
 public class Usuario_Conectado {
     private static Usuario_Conectado miUser;
@@ -8,7 +11,7 @@ public class Usuario_Conectado {
     private int admin;
     private String pass;
     private String pFondo;
-    private String pLadrillos;
+    private Color pLadrillos[];
 
     private Usuario_Conectado(){}
 
@@ -24,6 +27,8 @@ public class Usuario_Conectado {
         nombre = data.getString("NOMBRE");
         pass = data.getString("PSWD");
         admin =data.getInt("ADMIN");
+        pFondo = Gestor_Personalizacion.getGestorPer().getNombreFondo(data.getInt("FONDO"));
+        pLadrillos = Gestor_Personalizacion.getGestorPer().getColoresLad(data.getInt("LADRILLO"));
         return true;
         }
         return false;
@@ -33,5 +38,17 @@ public class Usuario_Conectado {
     }
     public int getAdmin(){
         return this.admin;
+    }
+    public String getpFondo() {
+        return pFondo;
+    }
+    public Color[] getpLadrillos() {
+        return pLadrillos;
+    }
+    public void cambiarFondo(int n){
+        pFondo = Gestor_Personalizacion.getGestorPer().cambiarFondo(n, nombre);
+    }
+    public void cambiarColores(int n) {
+        pLadrillos = Gestor_Personalizacion.getGestorPer().cambiarColores(n, nombre);
     }
 }

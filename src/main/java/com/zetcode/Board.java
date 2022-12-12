@@ -107,7 +107,7 @@ public class Board extends JPanel {
     // comentario
     @Override
     public void paintComponent(Graphics g) {
-        ImageIcon imagen = new ImageIcon(getClass().getResource(Gestor_Personalizacion.getGestorPer().imgName));
+        ImageIcon imagen = new ImageIcon(getClass().getResource(Usuario_Conectado.geyMiUser().getpFondo()));
         g.drawImage(imagen.getImage(), 0, 0, getWidth(),getHeight(),this);
         setOpaque(false);
 
@@ -283,7 +283,7 @@ public class Board extends JPanel {
 
     private void drawSquare(Graphics g, int x, int y, Tetrominoe shape) {
         //Modificar apariencia ladrillos.
-        Color colors[] = Gestor_Personalizacion.getGestorPer().colors;
+        Color colors[] = Usuario_Conectado.geyMiUser().getpLadrillos();
 
         var color = colors[shape.ordinal()];
 

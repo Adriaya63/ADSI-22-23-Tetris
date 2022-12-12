@@ -2474,3 +2474,163 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /home/adrian/Esc
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 48 more
+2022-12-12 23:45:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER TABLE USUARIO ADD FONDO INT[*](1) DEFAULT 1"
+Syntax error in SQL statement "ALTER TABLE USUARIO ADD FONDO INT[*](1) DEFAULT 1"; SQL statement:
+ALTER TABLE USUARIO ADD FONDO INT(1) DEFAULT 1 [42000-214]
+2022-12-12 23:48:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER TABLE USUARIO ADD FONDO INT[*](10)"
+Syntax error in SQL statement "ALTER TABLE USUARIO ADD FONDO INT[*](10)"; SQL statement:
+ALTER TABLE USUARIO ADD FONDO INT(10) [42000-214]
+2022-12-12 23:48:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER TABLE USUARIO ADD FONDO INT[*](10)"
+Syntax error in SQL statement "ALTER TABLE USUARIO ADD FONDO INT[*](10)"; SQL statement:
+ALTER TABLE USUARIO ADD FONDO INT(10) [42000-214]
+2022-12-12 23:50:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER TABLE USUARIO ADD FONDO INT[*](1)"
+Syntax error in SQL statement "ALTER TABLE USUARIO ADD FONDO INT[*](1)"; SQL statement:
+ALTER TABLE USUARIO ADD FONDO INT(1) [42000-214]
+2022-12-12 23:50:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER TABLE USUARIO ADD FONDO INT[*](1)"
+Syntax error in SQL statement "ALTER TABLE USUARIO ADD FONDO INT[*](1)"; SQL statement:
+ALTER TABLE USUARIO ADD FONDO INT(1) [42000-214]
+2022-12-12 23:51:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER TABLE USUARIO ADD FONDO INT[*](1)"
+Syntax error in SQL statement "ALTER TABLE USUARIO ADD FONDO INT[*](1)"; SQL statement:
+ALTER TABLE USUARIO ADD FONDO INT(1) [42000-214]
+2022-12-12 23:51:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER TABLE USUARIO ADD FONDO INT[*](1) DEFAULT 1"
+Syntax error in SQL statement "ALTER TABLE USUARIO ADD FONDO INT[*](1) DEFAULT 1"; SQL statement:
+ALTER TABLE USUARIO ADD FONDO INT(1) DEFAULT 1 [42000-214]
+2022-12-12 23:51:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Nombre de columna Duplicada "FONDO"
+Duplicate column name "FONDO"; SQL statement:
+ALTER TABLE USUARIO ADD FONDO INT DEFAULT 1 [42121-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.setColumns(Table.java:487)
+	at org.h2.table.TableBase.<init>(TableBase.java:73)
+	at org.h2.mvstore.db.MVTable.<init>(MVTable.java:139)
+	at org.h2.mvstore.db.Store.createTable(Store.java:219)
+	at org.h2.schema.Schema.createTable(Schema.java:776)
+	at org.h2.command.ddl.AlterTableAlterColumn.cloneTableStructure(AlterTableAlterColumn.java:454)
+	at org.h2.command.ddl.AlterTableAlterColumn.copyData(AlterTableAlterColumn.java:339)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:242)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1103)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1090)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2022-12-13 00:21:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: La cantidad de columnas no coincide
+Column count does not match; SQL statement:
+INSERT INTO usuario VALUES(?,?,?,0) [21002-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.command.dml.Insert.doPrepare(Insert.java:295)
+	at org.h2.command.dml.DataChangeStatement.prepare(DataChangeStatement.java:37)
+	at org.h2.command.Parser.prepareCommand(Parser.java:575)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:288)
+	at com.zetcode.Gestores.Gestor_Usuarios.insertarUsuario(Gestor_Usuarios.java:95)
+	at com.zetcode.Controlador.actionPerformed(Controlador.java:65)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at java.desktop/javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.desktop/java.awt.Component.processMouseEvent(Unknown Source)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.desktop/java.awt.Component.processEvent(Unknown Source)
+	at java.desktop/java.awt.Container.processEvent(Unknown Source)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
+	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
+2022-12-13 00:23:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Metodo permitido unicamente en un query. Use execute ó executeUpdate en lugar de executeQuery
+Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+UPDATE USUARIO SET FONDO=? WHERE NOMBRE=? [90002-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.command.Prepared.query(Prepared.java:256)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:251)
+	at org.h2.command.Command.executeQuery(Command.java:190)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:128)
+	at com.zetcode.Gestores.Gestor_Personalizacion.cambiarFondo(Gestor_Personalizacion.java:58)
+	at com.zetcode.Extensiones.Usuario_Conectado.cambiarFondo(Usuario_Conectado.java:49)
+	at com.zetcode.Controlador.actionPerformed(Controlador.java:213)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at java.desktop/javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.desktop/java.awt.Component.processMouseEvent(Unknown Source)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.desktop/java.awt.Component.processEvent(Unknown Source)
+	at java.desktop/java.awt.Container.processEvent(Unknown Source)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
+	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)

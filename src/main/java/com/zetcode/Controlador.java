@@ -210,7 +210,7 @@ public class Controlador implements ActionListener
 			break;
 		}
 		if(e.getSource().equals(IU_Fondo.bGuardar)){
-			Gestor_Personalizacion.getGestorPer().cambiarImgFondo(fondo);
+			Usuario_Conectado.geyMiUser().cambiarFondo(fondo);
 			break;
 		}
 		if(e.getSource().equals(IU_Fondo.rbFondo1)){fondo=1; break;}
@@ -222,7 +222,7 @@ public class Controlador implements ActionListener
 			break;
 		}
 		if(e.getSource().equals(IU_Ladrillos.bGuardar)){
-			Gestor_Personalizacion.getGestorPer().cambiarColor(colorLad);
+			Usuario_Conectado.geyMiUser().cambiarColores(colorLad);
 			break;
 		}
 		if(e.getSource().equals(IU_Ladrillos.bVolver)){

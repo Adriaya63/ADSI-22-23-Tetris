@@ -1,6 +1,12 @@
 package com.zetcode.Gestores;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.management.Query;
 
 public class Gestor_Personalizacion {
     private static Gestor_Personalizacion miPer;
@@ -37,11 +43,86 @@ public class Gestor_Personalizacion {
         else if(n==3){colors=colorsBlack;}
     }
 
+    public String cambiarFondo(int n, String user){
+        String rdo = "";
+        if(n==1){rdo="img/Fondo1.jpg";}
+        else if(n==2){rdo="img/Fondo2.jpg";}
+        else if(n==3){rdo="img/Fondo3.jpg";}
+        Connection con = null;
+        String sURL = "jdbc:h2:./test";
+        try {
+            con = DriverManager.getConnection(sURL, "sa", "1234");
+            try (PreparedStatement query = con.prepareStatement("UPDATE USUARIO SET FONDO=? WHERE NOMBRE=?")){
+                query.setInt(1, n);
+                query.setString(2, user);
+                query.executeUpdate();
+            } catch (SQLException sqle) {
+                System.out.println("Error en la ejecución:" 
+                + sqle.getErrorCode() + " " + sqle.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println("Error en la conexion: "+e.toString());
+        }finally{
+            try {
+                if(con!=null){con.close();}
+            } catch (Exception e) {
+                System.out.println("Error cerrando la conexion: "+e.toString());
+            }
+        }
+        return rdo;
+    }
+
+    public Color[] cambiarColores(int n, String user){
+        Color rdo[] = null;
+        if(n==1){rdo=colorsDefault;}
+        else if(n==2){rdo=colorsClasic;}
+        else if(n==3){rdo=colorsBlack;}
+        Connection con = null;
+        String sURL = "jdbc:h2:./test";
+        try {
+            con = DriverManager.getConnection(sURL, "sa", "1234");
+            try (PreparedStatement query = con.prepareStatement("UPDATE USUARIO SET LADRILLO=? WHERE NOMBRE=?")){
+                query.setInt(1, n);
+                query.setString(2, user);
+                query.executeUpdate();
+            } catch (SQLException sqle) {
+                System.out.println("Error en la ejecución:" 
+                + sqle.getErrorCode() + " " + sqle.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println("Error en la conexion: "+e.toString());
+        }finally{
+            try {
+                if(con!=null){con.close();}
+            } catch (Exception e) {
+                System.out.println("Error cerrando la conexion: "+e.toString());
+            }
+        }
+        return rdo;
+    }
+
     public void cambiarImgFondo(int n){
         if(n==1){imgName="img/Fondo1.jpg";}
         else if(n==2){imgName="img/Fondo2.jpg";}
         else if(n==3){imgName="img/Fondo3.jpg";}
     }
+
+    public String getNombreFondo(int n){
+        String img = "";
+        if(n==1){img = "img/Fondo1.jpg";}
+        else if(n==2){img = "img/Fondo2.jpg";}
+        else if(n==3){img = "img/Fondo3.jpg";}
+        return img;
+    }
+
+    public Color[] getColoresLad(int n){
+        Color colorLads[] = null;
+        if(n==1){colorLads = colorsDefault;}
+        else if(n==2){colorLads = colorsClasic;}
+        else if(n==3){colorLads = colorsBlack;}
+        return colorLads;
+    }
+
     
 
 }
