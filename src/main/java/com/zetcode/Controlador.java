@@ -1,6 +1,8 @@
 package com.zetcode;
 import java.awt.event.*;
 
+import javax.swing.JOptionPane;
+
 import org.apache.logging.log4j.core.pattern.TextRenderer;
 import org.h2.util.json.JSONObject;
 
@@ -151,6 +153,11 @@ public class Controlador implements ActionListener
 			MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
 
 			Registro.getMiRegitro().alternar();
+			break;
+		}
+		if (e.getSource().equals(Menu.btnEliminarUsuarios)) {
+			String nombre = JOptionPane.showInputDialog("Ingresa tu nombre: ");
+			Gestor_Usuarios.getMiGestorUser().eliminarUsuario(nombre);
 			break;
 		}
 		else{

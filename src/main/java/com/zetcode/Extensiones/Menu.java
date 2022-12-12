@@ -77,6 +77,7 @@ public class Menu extends JFrame
         btnJugar.addActionListener(Controlador.getControlador());
         btnNivel.addActionListener(Controlador.getControlador());
         btnRanking.addActionListener(Controlador.getControlador());
+        btnEliminarUsuarios.addActionListener(Controlador.getControlador());
         JTextArea texto= new JTextArea();
         texto.append("Programa realizado para la asignatura de ADSI");
         ImageIcon iconoEscalado = new ImageIcon (imagen.getScaledInstance(500,500,Image.SCALE_SMOOTH));
