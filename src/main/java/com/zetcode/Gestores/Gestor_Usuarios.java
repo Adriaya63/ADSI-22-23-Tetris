@@ -121,7 +121,7 @@ public class Gestor_Usuarios{
             String sURL = "jdbc:h2:./test";
             try{
                 con = DriverManager.getConnection(sURL, "sa", "1234");
-                try(PreparedStatement query = con.prepareStatement("Delete ")){
+                try(PreparedStatement query = con.prepareStatement("delete from usuario where nombre = ?")){
                     query.setString(1, user);
                     query.execute();
                     System.out.println("Usuario registrado;");
