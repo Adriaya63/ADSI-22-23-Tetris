@@ -10,26 +10,26 @@ import javax.swing.border.EmptyBorder;
 import com.zetcode.Controlador;
 
 import javax.swing.JLabel;
-import javax.swing.JDesktopPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
 
-public class IU_Personalizacion extends JFrame {
+public class IU_Sonido extends JFrame {
+	private static IU_Sonido miSon;
 
-	private static IU_Personalizacion miPer;
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
 	private JPanel panel;
-	public static JButton bAceptar;
+	public static JButton bGuardar;
 	public static JButton bVolver;
 	private JPanel panel_1;
-	public static JRadioButton rbSonido;
-	public static JRadioButton rbFondo;
-	public static JRadioButton rbLadrillos;
+	public static JRadioButton rdbtnNewRadioButton;
+	public static JRadioButton rdbtnNewRadioButton_1;
+	public static JRadioButton rdbtnNewRadioButton_2;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private boolean estado = false;
 
@@ -40,7 +40,7 @@ public class IU_Personalizacion extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					IU_Personalizacion frame = new IU_Personalizacion();
+					IU_Sonido frame = new IU_Sonido();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,17 +60,17 @@ public class IU_Personalizacion extends JFrame {
         }
     }
 
-	public static IU_Personalizacion getMiPer(){
-		if(miPer==null){
-			miPer = new IU_Personalizacion();
-		}
-		return miPer;
-	}
-
 	/**
 	 * Create the frame.
 	 */
-	private IU_Personalizacion() {
+	public static IU_Sonido getMiSon() {
+		if(miSon==null){
+			miSon = new IU_Sonido();
+		}
+		return miSon;
+	}
+
+	private IU_Sonido() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -78,31 +78,32 @@ public class IU_Personalizacion extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.add(getLblNewLabel(), BorderLayout.NORTH);
-		contentPane.add(getPanel_1(), BorderLayout.SOUTH);
-		contentPane.add(getPanel_1_1(), BorderLayout.CENTER);
+		contentPane.add(getPanel(), BorderLayout.SOUTH);
+		contentPane.add(getPanel_1(), BorderLayout.CENTER);
 	}
+
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
-			lblNewLabel = new JLabel("Menu Personalizaci\u00F3n");
-			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+			lblNewLabel = new JLabel("Personalizar Sonido");
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 23));
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 		return lblNewLabel;
 	}
-	private JPanel getPanel_1() {
+	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
-			panel.add(getBAceptar());
+			panel.add(getBGuardar());
 			panel.add(getBVolver());
 		}
 		return panel;
 	}
-	private JButton getBAceptar() {
-		if (bAceptar == null) {
-			bAceptar = new JButton("Aceptar");
-			bAceptar.addActionListener(Controlador.getControlador());
+	private JButton getBGuardar() {
+		if (bGuardar == null) {
+			bGuardar = new JButton("Guardar");
+			bGuardar.addActionListener(Controlador.getControlador());
 		}
-		return bAceptar;
+		return bGuardar;
 	}
 	private JButton getBVolver() {
 		if (bVolver == null) {
@@ -111,41 +112,38 @@ public class IU_Personalizacion extends JFrame {
 		}
 		return bVolver;
 	}
-	private JPanel getPanel_1_1() {
+	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
 			panel_1.setLayout(new GridLayout(3, 0, 0, 0));
-			panel_1.add(getRbFondo());
-			panel_1.add(getRbLadrillos());
-			panel_1.add(getRbSonido());
+			panel_1.add(getRdbtnNewRadioButton_1());
+			panel_1.add(getRdbtnNewRadioButton_2());
+			panel_1.add(getRdbtnNewRadioButton());
 		}
 		return panel_1;
 	}
-	private JRadioButton getRbSonido() {
-		if (rbSonido == null) {
-			rbSonido = new JRadioButton("Sonido");
-			buttonGroup.add(rbSonido);
-			rbSonido.setHorizontalAlignment(SwingConstants.CENTER);
-			rbSonido.addActionListener(Controlador.getControlador());
+	private JRadioButton getRdbtnNewRadioButton() {
+		if (rdbtnNewRadioButton == null) {
+			rdbtnNewRadioButton = new JRadioButton("New radio button");
+			buttonGroup.add(rdbtnNewRadioButton);
+			rdbtnNewRadioButton.setHorizontalAlignment(SwingConstants.CENTER);
 		}
-		return rbSonido;
+		return rdbtnNewRadioButton;
 	}
-	private JRadioButton getRbFondo() {
-		if (rbFondo == null) {
-			rbFondo = new JRadioButton("Fondo");
-			buttonGroup.add(rbFondo);
-			rbFondo.setHorizontalAlignment(SwingConstants.CENTER);
-			rbFondo.addActionListener(Controlador.getControlador());
+	private JRadioButton getRdbtnNewRadioButton_1() {
+		if (rdbtnNewRadioButton_1 == null) {
+			rdbtnNewRadioButton_1 = new JRadioButton("New radio button");
+			buttonGroup.add(rdbtnNewRadioButton_1);
+			rdbtnNewRadioButton_1.setHorizontalAlignment(SwingConstants.CENTER);
 		}
-		return rbFondo;
+		return rdbtnNewRadioButton_1;
 	}
-	private JRadioButton getRbLadrillos() {
-		if (rbLadrillos == null) {
-			rbLadrillos = new JRadioButton("Ladrillos");
-			buttonGroup.add(rbLadrillos);
-			rbLadrillos.setHorizontalAlignment(SwingConstants.CENTER);
-			rbLadrillos.addActionListener(Controlador.getControlador());
+	private JRadioButton getRdbtnNewRadioButton_2() {
+		if (rdbtnNewRadioButton_2 == null) {
+			rdbtnNewRadioButton_2 = new JRadioButton("New radio button");
+			buttonGroup.add(rdbtnNewRadioButton_2);
+			rdbtnNewRadioButton_2.setHorizontalAlignment(SwingConstants.CENTER);
 		}
-		return rbLadrillos;
+		return rdbtnNewRadioButton_2;
 	}
 }

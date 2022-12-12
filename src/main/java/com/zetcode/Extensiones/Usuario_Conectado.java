@@ -19,10 +19,14 @@ public class Usuario_Conectado {
         return miUser;
     }
 
-    public void initUser(JSONObject data){
+    public boolean initUser(JSONObject data){
+        if(data.length()>0){
         nombre = data.getString("NOMBRE");
         pass = data.getString("PSWD");
         admin =data.getInt("ADMIN");
+        return true;
+        }
+        return false;
     }
     public String getNombre(){
         return this.nombre;

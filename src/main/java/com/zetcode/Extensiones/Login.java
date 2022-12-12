@@ -23,7 +23,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+import java.awt.*;
 public class Login extends JFrame {
 
 
@@ -44,7 +44,7 @@ public class Login extends JFrame {
 	public static JButton bRegistro;
 	private static Login miLogin;
 	private boolean estado=false;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -83,10 +83,13 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
-		setSize(500, 500);
-      	setLocationRelativeTo(null);
+		Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = pantalla.height;
+        int width = pantalla.width;
+        setSize(width/2, height/2);		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setLocationRelativeTo(null);
+		
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -133,19 +136,20 @@ public class Login extends JFrame {
 	private JPanel getPanel_3() {
 		if (panel_3 == null) {
 			panel_3 = new JPanel();
-			panel_3.add(getLblNewLabel_1_1());
-			panel_3.add(getTextFieldPass());
+			panel_3.add(getLblNewLabel_1());
+			panel_3.add(getTextFieldUser());
 		}
 		return panel_3;
 	}
 	private JPanel getPanel_4() {
-		if (panel_4 == null) {
-			panel_4 = new JPanel();
-			panel_4.add(getLblNewLabel_1());
-			panel_4.add(getTextFieldUser());
-		}
-		return panel_4;
+
+	if (panel_4 == null) {
+		panel_4 = new JPanel();
+		panel_4.add(getLblNewLabel_1_1());
+		panel_4.add(getTextFieldPass());
 	}
+	return panel_4;
+}
 	private JPanel getPanel_5() {
 		if (panel_5 == null) {
 			panel_5 = new JPanel();
