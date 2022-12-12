@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import java.awt.*;
 public class Registro extends JFrame {
 
 	private JPanel contentPane;
@@ -80,8 +80,12 @@ public class Registro extends JFrame {
 	 * Create the frame.
 	 */
 	public Registro() {
+		Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = pantalla.height;
+        int width = pantalla.width;
+        setSize(width/2, height/2);		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

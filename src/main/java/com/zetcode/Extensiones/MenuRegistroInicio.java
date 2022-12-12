@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.*;
 
 public class MenuRegistroInicio extends JFrame {
 
@@ -54,8 +55,14 @@ public class MenuRegistroInicio extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuRegistroInicio() {
+		
+		Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = pantalla.height;
+        int width = pantalla.width;
+        setSize(width/2, height/2);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setLocationRelativeTo(null);
+		
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(51, 204, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

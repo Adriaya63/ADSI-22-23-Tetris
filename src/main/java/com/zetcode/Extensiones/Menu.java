@@ -13,7 +13,6 @@ import java.awt.*;
 
 public class Menu extends JFrame
 {
-    private JPanel contentPane;
     public static JButton btnRanking;
     public static JButton btnJugar;
     public static JButton btnNivel;
@@ -87,9 +86,7 @@ public class Menu extends JFrame
 
     }
 
-    public static void main(String args[]) {
-        Menu.getMiMenu().alternar();
-        }
+   
 
 
 }
