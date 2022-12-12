@@ -4,6 +4,7 @@ import com.zetcode.Extensiones.Usuario_Conectado;
 import com.zetcode.Gestores.Gestor_Personalizacion;
 import com.zetcode.Shape.Tetrominoe;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -106,6 +107,9 @@ public class Board extends JPanel {
     // comentario
     @Override
     public void paintComponent(Graphics g) {
+        ImageIcon imagen = new ImageIcon(getClass().getResource(Gestor_Personalizacion.getGestorPer().imgName));
+        g.drawImage(imagen.getImage(), 0, 0, getWidth(),getHeight(),this);
+        setOpaque(false);
 
         super.paintComponent(g);
         doDrawing(g);
