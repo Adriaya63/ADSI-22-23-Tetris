@@ -51,7 +51,7 @@ public class Controlador implements ActionListener
 					Menu.getMiMenu().alternar();
 					Login.getMiLogin().alternar();
 				}
-				
+
 				
 			}
 			if (e.getSource().equals(Login.bVolver)) {
@@ -156,7 +156,7 @@ public class Controlador implements ActionListener
             }
             else if(Niveles.getBtn_facil().isSelected()){
 				Niveles.getNiveles().dispose();
-				Tetris.jugar(150);
+				Tetris.jugar(500);
             }
 			break;
         }

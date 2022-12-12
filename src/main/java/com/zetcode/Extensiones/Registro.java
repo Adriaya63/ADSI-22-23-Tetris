@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import com.zetcode.Controlador;
@@ -34,7 +35,7 @@ public class Registro extends JFrame {
 	private JLabel lblNewLabel_1;
 	public static JTextField textFieldUser;
 	private JLabel lblNewLabel_1_1;
-	public static JTextField textFieldPass;
+	public static JPasswordField textFieldPass;
 	public static JButton bReg;
 	public static JButton bVolver;
 	public static JButton bLog;
@@ -187,7 +188,7 @@ public class Registro extends JFrame {
 
 	private JTextField getTextFieldPass() {
 		if (textFieldPass == null) {
-			textFieldPass = new JTextField();
+			textFieldPass = new JPasswordField();
 			textFieldPass.setColumns(10);
 		}
 		return textFieldPass;

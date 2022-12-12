@@ -41,13 +41,13 @@ public class Board extends JPanel {
     }
     public static void modificarTiempo(int x){
         PERIOD_INTERVAL=x;
-        if(x==150){
+        if(x==500){
             dif="Fácil";
         }
         if(x==300){
             dif="Medio";
         }
-        if(x==500){
+        if(x==150){
             dif="Difícil";
         }
 
