@@ -211,6 +211,8 @@ public class Controlador implements ActionListener
 		}
 		if(e.getSource().equals(IU_Fondo.bGuardar)){
 			Usuario_Conectado.geyMiUser().cambiarFondo(fondo);
+			IU_Fondo.getMiFondo().alternar();
+			Menu.getMiMenu().alternar();
 			break;
 		}
 		if(e.getSource().equals(IU_Fondo.rbFondo1)){fondo=1; break;}
@@ -223,6 +225,8 @@ public class Controlador implements ActionListener
 		}
 		if(e.getSource().equals(IU_Ladrillos.bGuardar)){
 			Usuario_Conectado.geyMiUser().cambiarColores(colorLad);
+			IU_Ladrillos.getMiLad().alternar();
+			Menu.getMiMenu().alternar();
 			break;
 		}
 		if(e.getSource().equals(IU_Ladrillos.bVolver)){
