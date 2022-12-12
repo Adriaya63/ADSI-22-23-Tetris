@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.Extensiones.Usuario_Conectado;
 import com.zetcode.Shape.Tetrominoe;
 
 import javax.swing.JLabel;
@@ -31,7 +32,6 @@ public class Board extends JPanel {
     private Shape curPiece;
     private Tetrominoe[] board;
     private Tetris parent;
-    private String usu="Jose";
     private static  String dif;
     public Board(Tetris pParent, int pDif) {
         modificarTiempo(pDif);
@@ -204,7 +204,7 @@ public class Board extends JPanel {
             timer.stop();
             parent.dispose();
             FinPartida f= new FinPartida();
-            f.hacerVisible(usu, numLinesRemoved,dif);
+            f.hacerVisible(Usuario_Conectado.geyMiUser().getNombre(), numLinesRemoved,dif);
             
         }
     }

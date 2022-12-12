@@ -18,6 +18,7 @@ public class Menu extends JFrame
     public static JButton btnJugar;
     public static JButton btnNivel;
     public static JButton btnPersonalizar;
+    public static JButton btnEliminarUsuarios;
     private static Menu miMenuRanking;
     private boolean estado=false;
     
@@ -64,10 +65,15 @@ public class Menu extends JFrame
         this.btnNivel= new JButton("Seleccionar Nivel");
         this.btnPersonalizar= new JButton("Personalizar Apariencia");
         this.btnRanking= new JButton("Ranking");
+        this.btnEliminarUsuarios= new JButton("Eliminar Usuario");
         panelbotones.add(btnJugar);
         panelbotones.add(btnNivel);
         panelbotones.add(btnPersonalizar);
         panelbotones.add(btnRanking);
+        if(Usuario_Conectado.geyMiUser().getAdmin()==1){
+            panelbotones.setLayout(new GridLayout(5,1));
+            panelbotones.add(btnEliminarUsuarios);
+        }
         btnJugar.addActionListener(Controlador.getControlador());
         btnNivel.addActionListener(Controlador.getControlador());
         btnRanking.addActionListener(Controlador.getControlador());

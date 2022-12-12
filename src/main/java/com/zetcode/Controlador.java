@@ -2,10 +2,16 @@ package com.zetcode;
 import java.awt.event.*;
 
 import org.apache.logging.log4j.core.pattern.TextRenderer;
+import org.h2.util.json.JSONObject;
 
+import com.zetcode.Extensiones.Login;
 import com.zetcode.Extensiones.Menu;
+import com.zetcode.Extensiones.MenuRegistroInicio;
 import com.zetcode.Extensiones.Niveles;
 import com.zetcode.Extensiones.Ranking;
+import com.zetcode.Extensiones.Registro;
+import com.zetcode.Extensiones.Usuario_Conectado;
+import com.zetcode.Gestores.Gestor_Usuarios;
 import com.zetcode.Gestores.Gestor_ranking;
 
 public class Controlador implements ActionListener
@@ -26,6 +32,47 @@ public class Controlador implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
         while(true){
+			if(e.getSource().equals(Login.bLog)){
+				String user = Login.textFieldUser.getText();
+				String pass = Login.textFieldPass.getText();
+				org.json.JSONObject userdata = Gestor_Usuarios.getMiGestorUser().buscarUser(user, pass);
+				Usuario_Conectado.geyMiUser().initUser(userdata);
+				Menu.getMiMenu().alternar();
+				Login.getMiLogin().alternar();
+			}
+			if (e.getSource().equals(Login.bVolver)) {
+				Login.getMiLogin().alternar();
+				// MenuRegistroInicio.get
+				MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
+				break;
+			}
+			if(e.getSource().equals(Registro.bReg)){
+				String user = Registro.textFieldUser.getText();
+				if(!Gestor_Usuarios.getMiGestorUser().existeUser(user)){
+					String pass = Registro.textFieldPass.getText();
+					String email = Registro.textFieldEmail.getText();
+					Gestor_Usuarios.getMiGestorUser().insertarUsuario(user, pass, email);
+				}else{System.out.println("El usuario ya existe");}
+				break;
+			}
+			if (e.getSource().equals(Registro.bVolver)) {
+				Registro.getMiRegitro().alternar();
+				MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
+
+				break;
+			}
+			if (e.getSource().equals(Registro.bLog)) {
+				Registro.getMiRegitro().alternar();
+				Login.getMiLogin().alternar();
+
+				break;
+			}
+			if (e.getSource().equals(Login.bRegistro)) {
+				Login.getMiLogin().alternar();
+				Registro.getMiRegitro().alternar();
+				// Registro.alternar
+				break;
+			}
         if (e.getSource().equals(Menu.btnRanking)) {
 			Ranking.getmiRanking().alternar();
 			
@@ -93,7 +140,19 @@ public class Controlador implements ActionListener
 				Tetris.jugar(150);
             }
 			break;
-        } 
+        }
+		if (e.getSource().equals(MenuRegistroInicio.btnNewButton)) {
+			MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
+
+			Login.getMiLogin().alternar();
+			break;
+		}
+		if (e.getSource().equals(MenuRegistroInicio.btnNewButton_1)) {
+			MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
+
+			Registro.getMiRegitro().alternar();
+			break;
+		}
 		else{
 			break;
 		}       
@@ -102,7 +161,7 @@ public class Controlador implements ActionListener
 	
 		public void finalizarPartida(FinPartida f, String usuario, int puntuacion,String dif){
 			f.dispose();
-			Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Jose", puntuacion, dif);
+			Gestor_ranking.getmiGestorRanking().ingresarPuntuacion(Usuario_Conectado.geyMiUser().getNombre(), puntuacion, dif);
 			Menu.getMiMenu().alternar();
 		}
 }
