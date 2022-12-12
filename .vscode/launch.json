@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch MenuRegistroInicio",
+            "request": "launch",
+            "mainClass": "com.zetcode.Extensiones.MenuRegistroInicio",
+            "projectName": "Tetris-Local"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
