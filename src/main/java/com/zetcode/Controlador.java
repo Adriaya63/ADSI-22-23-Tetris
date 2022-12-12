@@ -1,14 +1,12 @@
-package com.zetcode.Gestores;
+package com.zetcode;
 import java.awt.event.*;
 
 import org.apache.logging.log4j.core.pattern.TextRenderer;
 
-import com.zetcode.Board;
-import com.zetcode.FinPartida;
-import com.zetcode.Niveles;
-import com.zetcode.Tetris;
 import com.zetcode.Extensiones.Menu;
+import com.zetcode.Extensiones.Niveles;
 import com.zetcode.Extensiones.Ranking;
+import com.zetcode.Gestores.Gestor_ranking;
 
 public class Controlador implements ActionListener
 {
@@ -31,7 +29,7 @@ public class Controlador implements ActionListener
         if (e.getSource().equals(Menu.btnRanking)) {
 			Ranking.getmiRanking().alternar();
 			
-			Menu.getMiMenuRanking().alternar();
+			Menu.getMiMenu().alternar();
 			break;
         }
 		if (e.getSource().equals(Ranking.btnVer)) {
@@ -42,14 +40,14 @@ public class Controlador implements ActionListener
 			break;
         }
 		if (e.getSource().equals(Ranking.btnVolver)) {
-			Menu.getMiMenuRanking().alternar();
+			Menu.getMiMenu().alternar();
 			
 			Ranking.getmiRanking().alternar();
 			break;
         }
 		if (e.getSource().equals(Menu.btnJugar)){
 			Niveles.getNiveles().hacerVisible();;
-			Menu.getMiMenuRanking().alternar();
+			Menu.getMiMenu().alternar();
 			break;
 		}
 
@@ -74,7 +72,8 @@ public class Controlador implements ActionListener
         if(e.getSource().equals(Niveles.getBtn_volver()))
         {
             System.out.println("BOTON VOLVER SELECCIONADO\n");
-            Menu.getMiMenuRanking().alternar();
+			Niveles.getNiveles().dispose();
+            Menu.getMiMenu().alternar();
 			break;
             
         }
@@ -104,6 +103,6 @@ public class Controlador implements ActionListener
 		public void finalizarPartida(FinPartida f, String usuario, int puntuacion,String dif){
 			f.dispose();
 			Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Jose", puntuacion, dif);
-			Menu.getMiMenuRanking().alternar();
+			Menu.getMiMenu().alternar();
 		}
 }

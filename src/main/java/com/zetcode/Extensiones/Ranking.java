@@ -4,7 +4,7 @@ package com.zetcode.Extensiones;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.zetcode.Gestores.Controlador;
+import com.zetcode.Controlador;
 
 import javax.swing.*;
 import java.awt.*;

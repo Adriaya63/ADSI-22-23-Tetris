@@ -1,6 +1,5 @@
 package com.zetcode;
 
-import com.zetcode.Gestores.Controlador;
 import com.zetcode.Shape.Tetrominoe;
 
 import javax.swing.JLabel;

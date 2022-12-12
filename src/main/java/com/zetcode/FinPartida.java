@@ -15,8 +15,6 @@ import javax.swing.JPanel;
 
 import org.h2.engine.Session.StaticSettings;
 
-import com.zetcode.Gestores.Controlador;
-
 public class FinPartida extends JFrame {
   private String userName;
   private int score;

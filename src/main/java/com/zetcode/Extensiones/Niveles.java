@@ -1,9 +1,9 @@
-package com.zetcode;
+package com.zetcode.Extensiones;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import com.zetcode.Gestores.Controlador;
+import com.zetcode.Controlador;
 
 import java.awt.*;
 
@@ -31,9 +31,15 @@ public class Niveles extends JFrame {
 
     }
     public void hacerVisible(){
+        Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        int height = pantalla.height;
+        int width = pantalla.width;
+        setSize(width/2, height/2);		
+        setLocationRelativeTo(null);		
         setSize(300,400);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         setBounds(100, 100, 605, 397);
         panelmain = new JPanel();
         panelmain.setBorder(new EmptyBorder(5, 5, 5, 5));

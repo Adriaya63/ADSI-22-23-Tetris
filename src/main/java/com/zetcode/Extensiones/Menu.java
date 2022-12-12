@@ -4,7 +4,8 @@ package com.zetcode.Extensiones;
 
 import javax.swing.border.EmptyBorder;
 
-import com.zetcode.Gestores.Controlador;
+import com.zetcode.Controlador;
+
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.*;
@@ -25,7 +26,7 @@ public class Menu extends JFrame
     {
         this.configurar();
     }
-    public static Menu getMiMenuRanking()
+    public static Menu getMiMenu()
     {
         if(miMenuRanking == null)
         {
@@ -80,7 +81,7 @@ public class Menu extends JFrame
     }
 
     public static void main(String args[]) {
-        Menu.getMiMenuRanking().alternar();
+        Menu.getMiMenu().alternar();
         }
 
 
