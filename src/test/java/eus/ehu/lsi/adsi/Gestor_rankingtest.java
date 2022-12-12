@@ -75,4 +75,5 @@ public class Gestor_rankingtest {
 		org.json.JSONArray json8 = Gestor_ranking.getmiGestorRanking().generarRanking("Difícil", "Global");
 		assertNotNull(json8);
 	}
+	
 }
