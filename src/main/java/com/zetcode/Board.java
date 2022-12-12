@@ -1,6 +1,7 @@
 package com.zetcode;
 
 import com.zetcode.Extensiones.Usuario_Conectado;
+import com.zetcode.Gestores.Gestor_Personalizacion;
 import com.zetcode.Shape.Tetrominoe;
 
 import javax.swing.JLabel;
@@ -196,7 +197,7 @@ public class Board extends JPanel {
         curPiece.setRandomShape();
         curX = BOARD_WIDTH / 2 + 1;
         curY = BOARD_HEIGHT - 1 + curPiece.minY();
-        System.out.println(dif);
+        
 
 
         if (!tryMove(curPiece, curX, curY)) {
@@ -277,12 +278,8 @@ public class Board extends JPanel {
     }
 
     private void drawSquare(Graphics g, int x, int y, Tetrominoe shape) {
-
-        Color colors[] = { new Color(0, 0, 0), new Color(204, 102, 102),
-                new Color(102, 204, 102), new Color(102, 102, 204),
-                new Color(204, 204, 102), new Color(204, 102, 204),
-                new Color(102, 204, 204), new Color(218, 170, 0)
-        };
+        //Modificar apariencia ladrillos.
+        Color colors[] = Gestor_Personalizacion.getGestorPer().colors;
 
         var color = colors[shape.ordinal()];
 
@@ -299,6 +296,7 @@ public class Board extends JPanel {
         g.drawLine(x + squareWidth() - 1, y + squareHeight() - 1,
                 x + squareWidth() - 1, y + 1);
     }
+
 
     private class GameCycle implements ActionListener {
 

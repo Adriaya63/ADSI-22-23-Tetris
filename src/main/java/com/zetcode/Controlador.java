@@ -3,8 +3,6 @@ import java.awt.event.*;
 
 import javax.swing.JOptionPane;
 
-import org.apache.logging.log4j.core.pattern.TextRenderer;
-import org.h2.util.json.JSONObject;
 
 import com.zetcode.Extensiones.IU_Fondo;
 import com.zetcode.Extensiones.IU_Ladrillos;
@@ -25,7 +23,6 @@ public class Controlador implements ActionListener
 {
 	private static Controlador controler =null;
 
-	private int dir=0;
 	private int seleccionPer=0;
 	private int colorLad=0;
 	private int fondo=0;

@@ -42,6 +42,6 @@ public class Gestor_Personalizacion {
         else if(n==2){imgName="img/Fondo2.jpg";}
         else if(n==3){imgName="img/Fondo3.jpg";}
     }
-
+    
 
 }
