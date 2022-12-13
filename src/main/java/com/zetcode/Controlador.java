@@ -86,7 +86,6 @@ public class Controlador implements ActionListener
 			}
         if (e.getSource().equals(Menu.btnRanking)) {
 			Ranking.getmiRanking().alternar();
-			
 			Menu.getMiMenu().alternar();
 			break;
         }
