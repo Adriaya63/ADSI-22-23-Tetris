@@ -56,15 +56,13 @@ public class MenuRegistroInicio extends JFrame {
 	 */
 	public MenuRegistroInicio() {
 		
-		Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
-		int height = pantalla.height;
-        int width = pantalla.width;
-        setSize(450, 300);
+		
+        setSize(435, 300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		
+		setResizable(false);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(51, 204, 255));
+		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -75,7 +73,7 @@ public class MenuRegistroInicio extends JFrame {
 		if (panel == null) {
 			panel = new JPanel();
 			
-			panel.setBackground(new Color(0, 204, 255));
+			
 			panel.setLayout(null);
 			panel.add(getBtnNewButton());
 			panel.add(getBtnNewButton_1());
