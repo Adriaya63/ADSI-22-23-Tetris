@@ -25,8 +25,6 @@ public class Gestor_ranking {
 
     public JSONArray generarRanking(String dificultad, String usuario){
         String consulta="";
-        Connection con = null;
-        String sURL = "jdbc:h2:./test";
         JSONArray jsonArray = new JSONArray(); 
         if(dificultad=="Absoluto" && usuario!="Global"){
           consulta= "SELECT nombre, puntuacion from info_ranking where nombre ='"+ usuario +"' ORDER BY puntuacion DESC";
@@ -41,11 +39,8 @@ public class Gestor_ranking {
           consulta= "SELECT nombre, puntuacion from info_ranking ORDER BY puntuacion DESC";
         }
         try {
-          con = DriverManager.getConnection(sURL,"sa","1234");
-            System.out.println(consulta);
-            Statement s = con.createStatement();
-            ResultSet rs = s.executeQuery(consulta);
-            
+          
+            ResultSet rs = BD.selectSql(consulta);
             // Recorremos el resultado
             while (rs.next()){
                 int columns = rs.getMetaData().getColumnCount();
@@ -61,49 +56,15 @@ public class Gestor_ranking {
               System.out.println("Error en la ejecución:" 
             + sqle.getErrorCode() + " " + sqle.getMessage());    
             }
-        finally {
-          try {
-            // Cerramos posibles conexiones abiertas
-            if (con!=null) con.close();    
-          } catch (Exception e) {
-            System.out.println("Error cerrando conexiones: "
-              + e.toString());
-          } 
-        }
+        
         return jsonArray;
     }
     
 
 
     public void ingresarPuntuacion(String usuario, int numLinesRemoved, String dificultad){
-      Connection con = null;
-      String sURL = "jdbc:h2:./test";
-      try {
-        con = DriverManager.getConnection(sURL,"sa","1234");
-        try (
-          PreparedStatement query = con.prepareStatement("INSERT INTO info_ranking VALUES(?,?,?)")) {
-              query.setString(1, usuario);  
-              query.setInt(2, numLinesRemoved); 
-              query.setString(3, dificultad);
-              
-          // Ejecutamos Query
-          query.execute();
-          System.out.println("Se ha ingresado correctamente la puntuación en el ranking");
-          }catch (SQLException sqle) { 
-            System.out.println("Error en la ejecución:" 
-          + sqle.getErrorCode() + " " + sqle.getMessage());    
-          }
-      } catch (Exception e) { 
-        System.out.println("Error en la conexión:" + e.toString() );
-      } finally {
-        try {
-          // Cerramos posibles conexiones abiertas
-          if (con!=null) con.close();    
-        } catch (Exception e) {
-          System.out.println("Error cerrando conexiones: "
-            + e.toString());
-        } 
-      }
+      String consulta= String.format("INSERT INTO info_ranking VALUES('%s','%d','%s')", usuario,numLinesRemoved,dificultad);
+      BD.sqlvoid(consulta);
       
   
     }

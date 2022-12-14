@@ -9,7 +9,7 @@ import com.zetcode.Controlador;
 import javax.swing.*;
 import java.awt.*;
 
-public class Ranking extends JFrame {
+public class IU_Ranking extends JFrame {
     private JPanel panelBotones= new JPanel();
     private JPanel panelBotonestipos= new JPanel(new GridLayout(1,2));
     public static JButton btnVolver;
@@ -23,10 +23,10 @@ public class Ranking extends JFrame {
     public static JButton btnVer;
     private ButtonGroup grupo2 ;
     private ButtonGroup grupo1;
-    private static Ranking miRanking;
+    private static IU_Ranking miRanking;
     private JPanel ranking =new JPanel(new GridLayout(1,2));
     private String[] columnas = {"Puesto","Nombre","puntuación"};
-private Ranking(){
+private IU_Ranking(){
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         int height = pantalla.height;
         int width = pantalla.width;
@@ -76,9 +76,9 @@ private Ranking(){
         
         
     }
-public static Ranking  getmiRanking(){
+public static IU_Ranking  getmiRanking(){
     if(miRanking == null){
-        miRanking= new Ranking();
+        miRanking= new IU_Ranking();
     }
     return miRanking ;
 }

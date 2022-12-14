@@ -12,7 +12,7 @@ import com.zetcode.Extensiones.Login;
 import com.zetcode.Extensiones.Menu;
 import com.zetcode.Extensiones.MenuRegistroInicio;
 import com.zetcode.Extensiones.Niveles;
-import com.zetcode.Extensiones.Ranking;
+import com.zetcode.Extensiones.IU_Ranking;
 import com.zetcode.Extensiones.Registro;
 import com.zetcode.Extensiones.Usuario_Conectado;
 import com.zetcode.Gestores.Gestor_Personalizacion;
@@ -85,26 +85,26 @@ public class Controlador implements ActionListener
 				break;
 			}
         if (e.getSource().equals(Menu.btnRanking)) {
-			Ranking.getmiRanking().alternar();
+			IU_Ranking.getmiRanking().alternar();
 			Menu.getMiMenu().alternar();
 			break;
         }
-		if (e.getSource().equals(Ranking.btnVer)) {
-			String tipo= Ranking.getmiRanking().getTip();
-			String dif = Ranking.getmiRanking().getdif();
+		if (e.getSource().equals(IU_Ranking.btnVer)) {
+			String tipo= IU_Ranking.getmiRanking().getTip();
+			String dif = IU_Ranking.getmiRanking().getdif();
 			System.out.println(dif);
 			if(tipo=="Global"){
-				Ranking.getmiRanking().Update(Gestor_ranking.getmiGestorRanking().generarRanking(dif,tipo));
+				IU_Ranking.getmiRanking().Update(Gestor_ranking.getmiGestorRanking().generarRanking(dif,tipo));
 			}
 			else{
-				Ranking.getmiRanking().Update(Gestor_ranking.getmiGestorRanking().generarRanking(dif,Usuario_Conectado.geyMiUser().getNombre()));
+				IU_Ranking.getmiRanking().Update(Gestor_ranking.getmiGestorRanking().generarRanking(dif,Usuario_Conectado.geyMiUser().getNombre()));
 			}
 			break;
         }
-		if (e.getSource().equals(Ranking.btnVolver)) {
+		if (e.getSource().equals(IU_Ranking.btnVolver)) {
 			Menu.getMiMenu().alternar();
 			
-			Ranking.getmiRanking().alternar();
+			IU_Ranking.getmiRanking().alternar();
 			break;
         }
 		if (e.getSource().equals(Menu.btnJugar)){

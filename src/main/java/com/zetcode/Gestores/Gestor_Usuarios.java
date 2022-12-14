@@ -5,9 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
+
 
 
 
@@ -22,46 +23,28 @@ public class Gestor_Usuarios{
         return miGestorUser;
     }
 
-    public boolean existeUser(String user){
-        boolean enc = false;
+    public boolean existeUser(String user) {
         if(user!=null){
-            Connection con = null;
-            String sURL = "jdbc:h2:./test";
-            try {
-                con = DriverManager.getConnection(sURL, "sa", "1234");
-                try (PreparedStatement query = con.prepareStatement("SELECT FROM usuario WHERE user=?")){
-                    query.setString(1, user);
-                    ResultSet rs = query.executeQuery();
-                    enc = rs.next();
-                }catch (SQLException sqle) { 
-                    System.out.println("Error en la ejecución:" 
-                  + sqle.getErrorCode() + " " + sqle.getMessage());    
-                }   
-            } catch (Exception e) {
-               System.out.println("Error en la conexión:" + e.toString() ); 
-            }finally{
-                try {
-                    // Cerramos posibles conexiones abiertas
-                    if (con!=null) con.close();    
-                  } catch (Exception e) {
-                    System.out.println("Error cerrando conexiones: "
-                      + e.toString());
-                  }  
+            String consulta = String.format("SELECT FROM usuario WHERE user='%s'",user);
+            ResultSet rs = BD.selectSql(consulta);
+            try{
+            if(rs.next()){
+                return true;
+            }
+             
+            }catch (Exception e) {
+                System.out.println("Error en la conexión");
             }
         }
-        return enc;
+        return false;
     }
 
     public JSONObject buscarUser(String user, String pass){
-        Connection con = null;
-        String sURL = "jdbc:h2:./test";
-        JSONObject userData = new JSONObject(); 
+        String consulta= String.format("SELECT * FROM usuario WHERE Nombre='%s' AND pswd='%s'", user,pass);
+        JSONObject userData=new JSONObject();
         try {
-            con = DriverManager.getConnection(sURL, "sa", "1234");
-            try (PreparedStatement query = con.prepareStatement("SELECT * FROM usuario WHERE Nombre=? AND pswd=?")){
-                query.setString(1, user);
-                query.setString(2, pass);
-                ResultSet rs = query.executeQuery();
+                
+                ResultSet rs = BD.selectSql(consulta);
                 if(rs.next()){
                     int col = rs.getMetaData().getColumnCount();
                     for(int i=0;i<col;i++){
@@ -73,46 +56,15 @@ public class Gestor_Usuarios{
             } catch (SQLException sqle) {
                 System.out.println("Error en la ejecución:" 
                 + sqle.getErrorCode() + " " + sqle.getMessage());             }
-        } catch (Exception e) {
-            System.out.println("Error en la conexión:" + e.toString() );
-        }finally{
-            try {
-                if (con!=null){con.close();}
-            } catch (Exception e) {
-                System.out.println("Error cerrando conexiones: "
-                + e.toString());
-            }
-        }
         return userData;
     }
 
     public void insertarUsuario(String user, String password, String email){
         if(user!=null && password!=null && email!=null){
-            Connection con = null;
-            String sURL = "jdbc:h2:./test";
-            try{
-                con = DriverManager.getConnection(sURL, "sa", "1234");
-                try(PreparedStatement query = con.prepareStatement("INSERT INTO usuario VALUES(?,?,?,0,1,1)")){
-                    query.setString(1, user);
-                    query.setString(2, email);
-                    query.setString(3, password);
-                    query.execute();
-                    System.out.println("Usuario registrado;");
-                }catch(SQLException sqle){
-                    System.out.println("Error en la ejecución:" 
-                + sqle.getErrorCode() + " " + sqle.getMessage());
-                }
-            }catch(Exception e){
-                System.out.println("Error en la conexion: "+e.toString());
-            }finally{
-                try {
-                    if(con!=null){con.close();}
-                } catch (Exception e) {
-                    System.out.println("Error cerrando la conexion: "+e.toString());
-                }
-            }
-        }else{
-            System.out.println("Credenciales ingresadas de forma erronea.");
+            String consulta = String.format("INSERT INTO usuario VALUES('%s', '%s', '%s',0,1,1)",user,email,password);
+            
+            BD.sqlvoid(consulta);
+            System.out.println("registered");
         }
     }
     public void eliminarUsuario(String user){
@@ -142,4 +94,7 @@ public class Gestor_Usuarios{
             System.out.println("Credenciales ingresadas de forma erronea.");
         }
     }
-    }
+  
+    
+    
+}
