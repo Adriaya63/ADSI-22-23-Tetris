@@ -4,31 +4,33 @@ package com.zetcode.Extensiones;
 
 import javax.swing.border.EmptyBorder;
 
-import com.zetcode.Gestores.Controlador;
+import com.zetcode.Controlador;
+
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.*;
 import java.awt.*;
 
-public class Menu extends JFrame
+public class IU_Menu extends JFrame
 {
     public static JButton btnRanking;
     public static JButton btnJugar;
     public static JButton btnNivel;
     public static JButton btnPersonalizar;
-    private static Menu miMenuRanking;
+    public static JButton btnEliminarUsuarios;
+    private static IU_Menu miMenuRanking;
     private boolean estado=false;
     
 
-    private Menu()
+    private IU_Menu()
     {
         this.configurar();
     }
-    public static Menu getMiMenuRanking()
+    public static IU_Menu getMiMenu()
     {
         if(miMenuRanking == null)
         {
-            miMenuRanking = new Menu();
+            miMenuRanking = new IU_Menu();
         }
         return miMenuRanking;
     }
@@ -62,12 +64,20 @@ public class Menu extends JFrame
         this.btnNivel= new JButton("Seleccionar Nivel");
         this.btnPersonalizar= new JButton("Personalizar Apariencia");
         this.btnRanking= new JButton("Ranking");
+        this.btnEliminarUsuarios= new JButton("Eliminar Usuario");
         panelbotones.add(btnJugar);
         panelbotones.add(btnNivel);
         panelbotones.add(btnPersonalizar);
         panelbotones.add(btnRanking);
+        if(Usuario_Conectado.geyMiUser().getAdmin()==1){
+            panelbotones.setLayout(new GridLayout(5,1));
+            panelbotones.add(btnEliminarUsuarios);
+        }
         btnJugar.addActionListener(Controlador.getControlador());
+        btnNivel.addActionListener(Controlador.getControlador());
         btnRanking.addActionListener(Controlador.getControlador());
+        btnPersonalizar.addActionListener(Controlador.getControlador());
+        btnEliminarUsuarios.addActionListener(Controlador.getControlador());
         JTextArea texto= new JTextArea();
         texto.append("Programa realizado para la asignatura de ADSI");
         ImageIcon iconoEscalado = new ImageIcon (imagen.getScaledInstance(500,500,Image.SCALE_SMOOTH));
@@ -77,9 +87,7 @@ public class Menu extends JFrame
 
     }
 
-    public static void main(String args[]) {
-        Menu.getMiMenuRanking().alternar();
-        }
+   
 
 
 }

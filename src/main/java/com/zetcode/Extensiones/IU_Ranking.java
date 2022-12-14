@@ -4,12 +4,12 @@ package com.zetcode.Extensiones;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.zetcode.Gestores.Controlador;
+import com.zetcode.Controlador;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Ranking extends JFrame {
+public class IU_Ranking extends JFrame {
     private JPanel panelBotones= new JPanel();
     private JPanel panelBotonestipos= new JPanel(new GridLayout(1,2));
     public static JButton btnVolver;
@@ -23,10 +23,10 @@ public class Ranking extends JFrame {
     public static JButton btnVer;
     private ButtonGroup grupo2 ;
     private ButtonGroup grupo1;
-    private static Ranking miRanking;
+    private static IU_Ranking miRanking;
     private JPanel ranking =new JPanel(new GridLayout(1,2));
     private String[] columnas = {"Puesto","Nombre","puntuación"};
-private Ranking(){
+private IU_Ranking(){
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         int height = pantalla.height;
         int width = pantalla.width;
@@ -47,7 +47,7 @@ private Ranking(){
         rbtn2=new JRadioButton("Medio",false);
         rbtn2.setActionCommand("Medio");
         rbtn3=new JRadioButton("Difícil",false);
-        rbtn3.setActionCommand("Dificil");
+        rbtn3.setActionCommand("Difícil");
         rbtn4=new JRadioButton("Absoluto",false);
         rbtn4.setActionCommand("Absoluto");
         grupo2 = new ButtonGroup();
@@ -76,9 +76,9 @@ private Ranking(){
         
         
     }
-public static Ranking  getmiRanking(){
+public static IU_Ranking  getmiRanking(){
     if(miRanking == null){
-        miRanking= new Ranking();
+        miRanking= new IU_Ranking();
     }
     return miRanking ;
 }
@@ -99,7 +99,7 @@ public void Update(JSONArray json){
     String puntuacion;
     for(int i=0;i<=json.length()-1;i++){
         objeto = json.getJSONObject(i);
-        user= objeto.getString("user");
+        user= objeto.getString("nombre");
         puntuacion= String.valueOf(objeto.getInt("puntuacion"));
         String[] f= {String.valueOf(i+1),user,puntuacion};
         a[i]=f;

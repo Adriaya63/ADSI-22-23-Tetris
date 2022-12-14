@@ -1,12 +1,16 @@
 package com.zetcode;
 
-import com.zetcode.Gestores.Controlador;
+import com.zetcode.Extensiones.Usuario_Conectado;
+import com.zetcode.Gestores.Gestor_Personalizacion;
 import com.zetcode.Shape.Tetrominoe;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.tools.Diagnostic;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -18,7 +22,7 @@ public class Board extends JPanel {
 
     private final int BOARD_WIDTH = 10;
     private final int BOARD_HEIGHT = 22;
-    private final int PERIOD_INTERVAL = 300;
+    private static int PERIOD_INTERVAL = 300;
 
     private Timer timer;
     private boolean isFallingFinished = false;
@@ -29,12 +33,28 @@ public class Board extends JPanel {
     private JLabel statusbar;
     private Shape curPiece;
     private Tetrominoe[] board;
+    private Tetris parent;
+    private static  String dif;
+    public Board(Tetris pParent, int pDif) {
+        modificarTiempo(pDif);
+        initBoard(pParent);
+        this.parent=pParent;
 
-    public Board(Tetris parent) {
-
-        initBoard(parent);
     }
+    public static void modificarTiempo(int x){
+        PERIOD_INTERVAL=x;
+        if(x==500){
+            dif="Fácil";
+        }
+        if(x==300){
+            dif="Medio";
+        }
+        if(x==150){
+            dif="Difícil";
+        }
 
+        
+    }
     private void initBoard(Tetris parent) {
 
         setFocusable(true);
@@ -87,6 +107,9 @@ public class Board extends JPanel {
     // comentario
     @Override
     public void paintComponent(Graphics g) {
+        ImageIcon imagen = new ImageIcon(getClass().getResource(Usuario_Conectado.geyMiUser().getpFondo()));
+        g.drawImage(imagen.getImage(), 0, 0, getWidth(),getHeight(),this);
+        setOpaque(false);
 
         super.paintComponent(g);
         doDrawing(g);
@@ -166,7 +189,6 @@ public class Board extends JPanel {
             int y = curY - curPiece.y(i);
             board[(y * BOARD_WIDTH) + x] = curPiece.getShape();
         }
-
         removeFullLines();
 
         if (!isFallingFinished) {
@@ -176,38 +198,38 @@ public class Board extends JPanel {
     }
 
     private void newPiece() {
-
         curPiece.setRandomShape();
         curX = BOARD_WIDTH / 2 + 1;
         curY = BOARD_HEIGHT - 1 + curPiece.minY();
+        
+
 
         if (!tryMove(curPiece, curX, curY)) {
-
             curPiece.setShape(Tetrominoe.NoShape);
             timer.stop();
-
-            var msg = String.format("Game over. Score: %d", numLinesRemoved);
-            statusbar.setText(msg);
-            Controlador.getControlador().annadirPuntuacionAlRanking(numLinesRemoved);
-            JOptionPane.showMessageDialog(new JOptionPane(),"Puntuacion ingresada");
+            parent.dispose();
+            FinPartida f= new FinPartida();
+            f.hacerVisible(Usuario_Conectado.geyMiUser().getNombre(), numLinesRemoved,dif);
+            
         }
     }
-
+    
     private boolean tryMove(Shape newPiece, int newX, int newY) {
-
+       
         for (int i = 0; i < 4; i++) {
-
+            
             int x = newX + newPiece.x(i);
             int y = newY - newPiece.y(i);
-
-            if (x < 0 || x >= BOARD_WIDTH || y < 0 || y >= BOARD_HEIGHT) {
-
+            
+                
+          
+            if (x < 0 || x >= BOARD_WIDTH ||  y < 0 || y >= BOARD_HEIGHT) {
                 return false;
             }
+           
 
             if (shapeAt(x, y) != Tetrominoe.NoShape) {
-
-                return false;
+                 return false;
             }
         }
 
@@ -223,7 +245,7 @@ public class Board extends JPanel {
     private void removeFullLines() {
 
         int numFullLines = 0;
-
+        
         for (int i = BOARD_HEIGHT - 1; i >= 0; i--) {
 
             boolean lineIsFull = true;
@@ -260,12 +282,8 @@ public class Board extends JPanel {
     }
 
     private void drawSquare(Graphics g, int x, int y, Tetrominoe shape) {
-
-        Color colors[] = { new Color(0, 0, 0), new Color(204, 102, 102),
-                new Color(102, 204, 102), new Color(102, 102, 204),
-                new Color(204, 204, 102), new Color(204, 102, 204),
-                new Color(102, 204, 204), new Color(218, 170, 0)
-        };
+        //Modificar apariencia ladrillos.
+        Color colors[] = Usuario_Conectado.geyMiUser().getpLadrillos();
 
         var color = colors[shape.ordinal()];
 
@@ -282,6 +300,7 @@ public class Board extends JPanel {
         g.drawLine(x + squareWidth() - 1, y + squareHeight() - 1,
                 x + squareWidth() - 1, y + 1);
     }
+
 
     private class GameCycle implements ActionListener {
 
