@@ -8,12 +8,12 @@ import com.zetcode.Extensiones.IU_Fondo;
 import com.zetcode.Extensiones.IU_Ladrillos;
 import com.zetcode.Extensiones.IU_Personalizacion;
 import com.zetcode.Extensiones.IU_Sonido;
-import com.zetcode.Extensiones.Login;
-import com.zetcode.Extensiones.Menu;
-import com.zetcode.Extensiones.MenuRegistroInicio;
-import com.zetcode.Extensiones.Niveles;
+import com.zetcode.Extensiones.IU_Login;
+import com.zetcode.Extensiones.IU_Menu;
+import com.zetcode.Extensiones.IU_MenuRegistroInicio;
+import com.zetcode.Extensiones.IU_Niveles;
 import com.zetcode.Extensiones.IU_Ranking;
-import com.zetcode.Extensiones.Registro;
+import com.zetcode.Extensiones.IU_Registro;
 import com.zetcode.Extensiones.Usuario_Conectado;
 import com.zetcode.Gestores.Gestor_Personalizacion;
 import com.zetcode.Gestores.Gestor_Usuarios;
@@ -40,53 +40,53 @@ public class Controlador implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
         while(true){
-			if(e.getSource().equals(Login.bLog)){
-				String user = Login.textFieldUser.getText();
-				String pass = Login.textFieldPass.getText();
+			if(e.getSource().equals(IU_Login.bLog)){
+				String user = IU_Login.textFieldUser.getText();
+				String pass = IU_Login.textFieldPass.getText();
 				org.json.JSONObject userdata = Gestor_Usuarios.getMiGestorUser().buscarUser(user, pass);
 				if(Usuario_Conectado.geyMiUser().initUser(userdata)){
-					Menu.getMiMenu().alternar();
-					Login.getMiLogin().alternar();
+					IU_Menu.getMiMenu().alternar();
+					IU_Login.getMiLogin().alternar();
 				}
 
 				
 			}
-			if (e.getSource().equals(Login.bVolver)) {
-				Login.getMiLogin().alternar();
+			if (e.getSource().equals(IU_Login.bVolver)) {
+				IU_Login.getMiLogin().alternar();
 				// MenuRegistroInicio.get
-				MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
+				IU_MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
 				break;
 			}
-			if(e.getSource().equals(Registro.bReg)){
-				String user = Registro.textFieldUser.getText();
+			if(e.getSource().equals(IU_Registro.bReg)){
+				String user = IU_Registro.textFieldUser.getText();
 				if(!Gestor_Usuarios.getMiGestorUser().existeUser(user)){
-					String pass = Registro.textFieldPass.getText();
-					String email = Registro.textFieldEmail.getText();
+					String pass = IU_Registro.textFieldPass.getText();
+					String email = IU_Registro.textFieldEmail.getText();
 					Gestor_Usuarios.getMiGestorUser().insertarUsuario(user, pass, email);
 				}else{System.out.println("El usuario ya existe");}
 				break;
 			}
-			if (e.getSource().equals(Registro.bVolver)) {
-				Registro.getMiRegitro().alternar();
-				MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
+			if (e.getSource().equals(IU_Registro.bVolver)) {
+				IU_Registro.getMiRegitro().alternar();
+				IU_MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
 
 				break;
 			}
-			if (e.getSource().equals(Registro.bLog)) {
-				Registro.getMiRegitro().alternar();
-				Login.getMiLogin().alternar();
+			if (e.getSource().equals(IU_Registro.bLog)) {
+				IU_Registro.getMiRegitro().alternar();
+				IU_Login.getMiLogin().alternar();
 
 				break;
 			}
-			if (e.getSource().equals(Login.bRegistro)) {
-				Login.getMiLogin().alternar();
-				Registro.getMiRegitro().alternar();
+			if (e.getSource().equals(IU_Login.bRegistro)) {
+				IU_Login.getMiLogin().alternar();
+				IU_Registro.getMiRegitro().alternar();
 				// Registro.alternar
 				break;
 			}
-        if (e.getSource().equals(Menu.btnRanking)) {
+        if (e.getSource().equals(IU_Menu.btnRanking)) {
 			IU_Ranking.getmiRanking().alternar();
-			Menu.getMiMenu().alternar();
+			IU_Menu.getMiMenu().alternar();
 			break;
         }
 		if (e.getSource().equals(IU_Ranking.btnVer)) {
@@ -102,80 +102,80 @@ public class Controlador implements ActionListener
 			break;
         }
 		if (e.getSource().equals(IU_Ranking.btnVolver)) {
-			Menu.getMiMenu().alternar();
+			IU_Menu.getMiMenu().alternar();
 			
 			IU_Ranking.getmiRanking().alternar();
 			break;
         }
-		if (e.getSource().equals(Menu.btnJugar)){
-			Niveles.getNiveles().hacerVisible();;
-			Menu.getMiMenu().alternar();
+		if (e.getSource().equals(IU_Menu.btnJugar)){
+			IU_Niveles.getNiveles().hacerVisible();;
+			IU_Menu.getMiMenu().alternar();
 			break;
 		}
 
-        if(e.getSource().equals(Niveles.getBtn_facil()))
+        if(e.getSource().equals(IU_Niveles.getBtn_facil()))
 		{
 			System.out.println("BOTON FACIL SELECCIONADO\n");
-			Niveles.getBtn_seleccionar().setEnabled(true);
+			IU_Niveles.getBtn_seleccionar().setEnabled(true);
 			break;
 		}
-        if(e.getSource().equals(Niveles.getBtn_medio()))
+        if(e.getSource().equals(IU_Niveles.getBtn_medio()))
         {
             System.out.println("BOTON MEDIO SELECCIONADO\n");
-            Niveles.getBtn_seleccionar().setEnabled(true);
+            IU_Niveles.getBtn_seleccionar().setEnabled(true);
 			break;
         }    
-        if(e.getSource().equals(Niveles.getBtn_dificil()))
+        if(e.getSource().equals(IU_Niveles.getBtn_dificil()))
         {
             System.out.println("BOTON DIFICIL SELECCIONADO\n");
-            Niveles.getBtn_seleccionar().setEnabled(true);
+            IU_Niveles.getBtn_seleccionar().setEnabled(true);
 			break;
         }
-        if(e.getSource().equals(Niveles.getBtn_volver()))
+        if(e.getSource().equals(IU_Niveles.getBtn_volver()))
         {
             System.out.println("BOTON VOLVER SELECCIONADO\n");
-			Niveles.getNiveles().dispose();
-            Menu.getMiMenu().alternar();
+			IU_Niveles.getNiveles().dispose();
+            IU_Menu.getMiMenu().alternar();
 			break;
             
         }
-        if(e.getSource().equals(Niveles.getBtn_seleccionar()))
+        if(e.getSource().equals(IU_Niveles.getBtn_seleccionar()))
         {
             System.out.println("BOTON SELECCIONAR SELECCIONADO\n");
-            if(Niveles.getBtn_dificil().isSelected()){
-				Niveles.getNiveles().dispose();
+            if(IU_Niveles.getBtn_dificil().isSelected()){
+				IU_Niveles.getNiveles().dispose();
                 Tetris.jugar(150);
             }
-			if(Niveles.getBtn_medio().isSelected()){
-				Niveles.getNiveles().dispose();
+			if(IU_Niveles.getBtn_medio().isSelected()){
+				IU_Niveles.getNiveles().dispose();
                 Tetris.jugar(300);
             }
-            else if(Niveles.getBtn_facil().isSelected()){
-				Niveles.getNiveles().dispose();
+            else if(IU_Niveles.getBtn_facil().isSelected()){
+				IU_Niveles.getNiveles().dispose();
 				Tetris.jugar(500);
             }
 			break;
         }
-		if (e.getSource().equals(MenuRegistroInicio.btnNewButton)) {
-			MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
+		if (e.getSource().equals(IU_MenuRegistroInicio.btnNewButton)) {
+			IU_MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
 
-			Login.getMiLogin().alternar();
+			IU_Login.getMiLogin().alternar();
 			break;
 		}
-		if (e.getSource().equals(MenuRegistroInicio.btnNewButton_1)) {
-			MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
+		if (e.getSource().equals(IU_MenuRegistroInicio.btnNewButton_1)) {
+			IU_MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
 
-			Registro.getMiRegitro().alternar();
+			IU_Registro.getMiRegitro().alternar();
 			break;
 		}
-		if (e.getSource().equals(Menu.btnEliminarUsuarios)) {
+		if (e.getSource().equals(IU_Menu.btnEliminarUsuarios)) {
 			String nombre = JOptionPane.showInputDialog("Ingresa tu nombre: ");
 			Gestor_Usuarios.getMiGestorUser().eliminarUsuario(nombre);
 			break;
 		}
-		if(e.getSource().equals(Menu.btnPersonalizar)){
+		if(e.getSource().equals(IU_Menu.btnPersonalizar)){
 			IU_Personalizacion.getMiPer().alternar();
-			Menu.getMiMenu().alternar();
+			IU_Menu.getMiMenu().alternar();
 			break;
 		}
 		if(e.getSource().equals(IU_Personalizacion.bAceptar)){
@@ -193,7 +193,7 @@ public class Controlador implements ActionListener
 		}
 		if(e.getSource().equals(IU_Personalizacion.bVolver)){
 			IU_Personalizacion.getMiPer().alternar();
-			Menu.getMiMenu().alternar();
+			IU_Menu.getMiMenu().alternar();
 			break;
 		}
 		if(e.getSource().equals(IU_Personalizacion.rbFondo)){
@@ -211,7 +211,7 @@ public class Controlador implements ActionListener
 		if(e.getSource().equals(IU_Fondo.bGuardar)){
 			Usuario_Conectado.geyMiUser().cambiarFondo(fondo);
 			IU_Fondo.getMiFondo().alternar();
-			Menu.getMiMenu().alternar();
+			IU_Menu.getMiMenu().alternar();
 			break;
 		}
 		if(e.getSource().equals(IU_Fondo.rbFondo1)){fondo=1; break;}
@@ -225,7 +225,7 @@ public class Controlador implements ActionListener
 		if(e.getSource().equals(IU_Ladrillos.bGuardar)){
 			Usuario_Conectado.geyMiUser().cambiarColores(colorLad);
 			IU_Ladrillos.getMiLad().alternar();
-			Menu.getMiMenu().alternar();
+			IU_Menu.getMiMenu().alternar();
 			break;
 		}
 		if(e.getSource().equals(IU_Ladrillos.bVolver)){
@@ -253,6 +253,6 @@ public class Controlador implements ActionListener
 		public void finalizarPartida(FinPartida f, String usuario, int puntuacion,String dif){
 			f.dispose();
 			Gestor_ranking.getmiGestorRanking().ingresarPuntuacion(Usuario_Conectado.geyMiUser().getNombre(), puntuacion, dif);
-			Menu.getMiMenu().alternar();
+			IU_Menu.getMiMenu().alternar();
 		}
 }
