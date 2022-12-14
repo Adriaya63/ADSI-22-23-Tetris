@@ -47,8 +47,6 @@ public class IU_Menu extends JFrame
     public void configurar()
     {
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
-        ImageIcon icono = new javax.swing.ImageIcon(getClass().getResource("tetris.png"));
-        Image imagen = icono.getImage();
         int height = pantalla.height;
         int width = pantalla.width;
         setSize(width/2, height/2);		
@@ -80,10 +78,18 @@ public class IU_Menu extends JFrame
         btnEliminarUsuarios.addActionListener(Controlador.getControlador());
         JTextArea texto= new JTextArea();
         texto.append("Programa realizado para la asignatura de ADSI");
-        ImageIcon iconoEscalado = new ImageIcon (imagen.getScaledInstance(500,500,Image.SCALE_SMOOTH));
         JLabel jLabel1 = new JLabel();
-        jLabel1.setIcon(iconoEscalado);
-        paneltexto.add(jLabel1);
+        try {
+            ImageIcon icono = new javax.swing.ImageIcon(getClass().getResource("../img/tetris.png"));
+            Image imagen = icono.getImage();
+            
+            ImageIcon iconoEscalado = new ImageIcon (imagen.getScaledInstance(500,500,Image.SCALE_SMOOTH));
+            jLabel1.setIcon(iconoEscalado);
+            paneltexto.add(jLabel1);
+        } catch (Exception e) {
+            System.out.println("Imagen no encontrada");
+        }
+       
 
     }
 
