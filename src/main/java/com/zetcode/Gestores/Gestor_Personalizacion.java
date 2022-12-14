@@ -37,27 +37,8 @@ public class Gestor_Personalizacion {
         if(n==1){rdo="img/Fondo1.jpg";}
         else if(n==2){rdo="img/Fondo2.jpg";}
         else if(n==3){rdo="img/Fondo3.jpg";}
-        Connection con = null;
-        String sURL = "jdbc:h2:./test";
-        try {
-            con = DriverManager.getConnection(sURL, "sa", "1234");
-            try (PreparedStatement query = con.prepareStatement("UPDATE USUARIO SET FONDO=? WHERE NOMBRE=?")){
-                query.setInt(1, n);
-                query.setString(2, user);
-                query.executeUpdate();
-            } catch (SQLException sqle) {
-                System.out.println("Error en la ejecución:" 
-                + sqle.getErrorCode() + " " + sqle.getMessage());
-            }
-        } catch (Exception e) {
-            System.out.println("Error en la conexion: "+e.toString());
-        }finally{
-            try {
-                if(con!=null){con.close();}
-            } catch (Exception e) {
-                System.out.println("Error cerrando la conexion: "+e.toString());
-            }
-        }
+        String consulta = String.format("UPDATE USUARIO SET FONDO='%d' WHERE NOMBRE='%s'", n,user);
+        BD.sqlvoid(consulta);
         return rdo;
     }
 
@@ -66,27 +47,8 @@ public class Gestor_Personalizacion {
         if(n==1){rdo=colorsDefault;}
         else if(n==2){rdo=colorsClasic;}
         else if(n==3){rdo=colorsBlack;}
-        Connection con = null;
-        String sURL = "jdbc:h2:./test";
-        try {
-            con = DriverManager.getConnection(sURL, "sa", "1234");
-            try (PreparedStatement query = con.prepareStatement("UPDATE USUARIO SET LADRILLO=? WHERE NOMBRE=?")){
-                query.setInt(1, n);
-                query.setString(2, user);
-                query.executeUpdate();
-            } catch (SQLException sqle) {
-                System.out.println("Error en la ejecución:" 
-                + sqle.getErrorCode() + " " + sqle.getMessage());
-            }
-        } catch (Exception e) {
-            System.out.println("Error en la conexion: "+e.toString());
-        }finally{
-            try {
-                if(con!=null){con.close();}
-            } catch (Exception e) {
-                System.out.println("Error cerrando la conexion: "+e.toString());
-            }
-        }
+        String consulta = String.format("UPDATE USUARIO SET LADRILLO='%d' WHERE NOMBRE='%s'", n,user);
+        BD.sqlvoid(consulta);
         return rdo;
     }
 

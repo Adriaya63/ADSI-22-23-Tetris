@@ -125,12 +125,12 @@ public class BD {
     public static ResultSet selectSql(String pC) { //SELECT
     	ResultSet rs = null;
     	try {
-            if (conexion != null) {
+            /* if (conexion != null) {
                 conexion.close();
             }
-            if (consulta != null) {
+            if (pC != null) {
                 consulta.close();
-            }
+            } */
             conexion = BD.getConnection();
     		consulta = conexion.createStatement();
     		rs = consulta.executeQuery(pC);
