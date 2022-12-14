@@ -20,17 +20,17 @@ public class Tetris extends JFrame {
 
     private JLabel statusbar;
 
-    public Tetris(int dif) {
+    public Tetris() {
 
-        initUI(dif);
+        initUI();
     }
 
-    private void initUI(int dif) {
+    private void initUI() {
 
         statusbar = new JLabel(" 0");
         add(statusbar, BorderLayout.SOUTH);
 
-        var board = new Board(this,dif);
+        var board = new Board(this);
         add(board);
         board.start();
 
@@ -45,12 +45,12 @@ public class Tetris extends JFrame {
         return statusbar;
     }
 
-    public static void jugar(int dif){
+    public static void jugar(){
 
     	logger.info("Playing");
         EventQueue.invokeLater(() -> {
 
-            var game = new Tetris(dif);
+            var game = new Tetris();
             game.setVisible(true);
             
         });

@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.checkerframework.checker.units.qual.s;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Reader;

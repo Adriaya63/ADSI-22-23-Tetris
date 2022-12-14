@@ -20,8 +20,8 @@ import java.awt.event.KeyEvent;
 
 public class Board extends JPanel {
 
-    private final int BOARD_WIDTH = 10;
-    private final int BOARD_HEIGHT = 22;
+    private  static int BOARD_WIDTH = 10;
+    private  static int BOARD_HEIGHT = 22;
     private static int PERIOD_INTERVAL = 300;
 
     private Timer timer;
@@ -35,24 +35,29 @@ public class Board extends JPanel {
     private Tetrominoe[] board;
     private Tetris parent;
     private static  String dif;
-    public Board(Tetris pParent, int pDif) {
-        modificarTiempo(pDif);
+    public Board(Tetris pParent ) {
+        modificarNivel();
         initBoard(pParent);
         this.parent=pParent;
 
     }
-    public static void modificarTiempo(int x){
-        PERIOD_INTERVAL=x;
-        if(x==500){
-            dif="Fácil";
+    public static void modificarNivel(){
+        String nivel = Usuario_Conectado.geyMiUser().getNivel();
+        switch(nivel){
+            case "Fácil":
+            PERIOD_INTERVAL=500;
+            break;
+            case "Medio":
+            PERIOD_INTERVAL=300;
+            BOARD_WIDTH =15;
+            BOARD_HEIGHT =33;
+            break;
+            case "Difícil":
+            PERIOD_INTERVAL=150;
+            BOARD_WIDTH =44;
+            BOARD_HEIGHT =20;
+            break;
         }
-        if(x==300){
-            dif="Medio";
-        }
-        if(x==150){
-            dif="Difícil";
-        }
-
         
     }
     private void initBoard(Tetris parent) {
@@ -209,7 +214,7 @@ public class Board extends JPanel {
             timer.stop();
             parent.dispose();
             FinPartida f= new FinPartida();
-            f.hacerVisible(Usuario_Conectado.geyMiUser().getNombre(), numLinesRemoved,dif);
+            f.hacerVisible(Usuario_Conectado.geyMiUser().getNombre(), numLinesRemoved,Usuario_Conectado.geyMiUser().getNivel());
             
         }
     }

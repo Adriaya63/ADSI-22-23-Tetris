@@ -9,6 +9,8 @@ import java.sql.Statement;
 
 import org.json.JSONObject;
 
+import com.zetcode.Extensiones.Usuario_Conectado;
+
 
 
 
@@ -68,30 +70,13 @@ public class Gestor_Usuarios{
         }
     }
     public void eliminarUsuario(String user){
-        if(user!=null){
-            Connection con = null;
-            String sURL = "jdbc:h2:./test";
-            try{
-                con = DriverManager.getConnection(sURL, "sa", "1234");
-                try(PreparedStatement query = con.prepareStatement("delete from usuario where nombre = ?")){
-                    query.setString(1, user);
-                    query.execute();
-                    System.out.println("Usuario registrado;");
-                }catch(SQLException sqle){
-                    System.out.println("Error en la ejecución:" 
-                + sqle.getErrorCode() + " " + sqle.getMessage());
-                }
-            }catch(Exception e){
-                System.out.println("Error en la conexion: "+e.toString());
-            }finally{
-                try {
-                    if(con!=null){con.close();}
-                } catch (Exception e) {
-                    System.out.println("Error cerrando la conexion: "+e.toString());
-                }
-            }
-        }else{
-            System.out.println("Credenciales ingresadas de forma erronea.");
+        if(user!="admin" && user!=Usuario_Conectado.geyMiUser().getNombre()){
+            String consulta= String.format("delete from usuario where nombre ='%s'", user);
+            BD.sqlvoid(consulta);
+            System.out.println("Jugador eliminado");
+        }
+        else{
+            System.out.println("Este jugador no se puede eliminar"); 
         }
     }
   

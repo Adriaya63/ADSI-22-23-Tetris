@@ -17,6 +17,7 @@ import com.zetcode.Extensiones.IU_Registro;
 import com.zetcode.Extensiones.Usuario_Conectado;
 import com.zetcode.Gestores.Gestor_Personalizacion;
 import com.zetcode.Gestores.Gestor_Usuarios;
+import com.zetcode.Gestores.Gestor_niveles;
 import com.zetcode.Gestores.Gestor_ranking;
 
 public class Controlador implements ActionListener
@@ -108,8 +109,8 @@ public class Controlador implements ActionListener
 			break;
         }
 		if (e.getSource().equals(IU_Menu.btnJugar)){
-			IU_Niveles.getNiveles().hacerVisible();;
 			IU_Menu.getMiMenu().alternar();
+			Tetris.jugar();
 			break;
 		}
 
@@ -144,15 +145,18 @@ public class Controlador implements ActionListener
             System.out.println("BOTON SELECCIONAR SELECCIONADO\n");
             if(IU_Niveles.getBtn_dificil().isSelected()){
 				IU_Niveles.getNiveles().dispose();
-                Tetris.jugar(150);
+                Gestor_niveles.getMiGestorNiveles().CambiarNivel("Difícil");
+				IU_Menu.getMiMenu().alternar();
             }
 			if(IU_Niveles.getBtn_medio().isSelected()){
 				IU_Niveles.getNiveles().dispose();
-                Tetris.jugar(300);
+                Gestor_niveles.getMiGestorNiveles().CambiarNivel("Medio");
+				IU_Menu.getMiMenu().alternar();
             }
             else if(IU_Niveles.getBtn_facil().isSelected()){
 				IU_Niveles.getNiveles().dispose();
-				Tetris.jugar(500);
+				Gestor_niveles.getMiGestorNiveles().CambiarNivel("Fácil");
+				IU_Menu.getMiMenu().alternar();
             }
 			break;
         }
@@ -171,6 +175,11 @@ public class Controlador implements ActionListener
 		if (e.getSource().equals(IU_Menu.btnEliminarUsuarios)) {
 			String nombre = JOptionPane.showInputDialog("Ingresa tu nombre: ");
 			Gestor_Usuarios.getMiGestorUser().eliminarUsuario(nombre);
+			break;
+		}
+		if (e.getSource().equals(IU_Menu.btnNivel)) {
+			IU_Niveles.getNiveles().hacerVisible();
+			IU_Menu.getMiMenu().alternar();
 			break;
 		}
 		if(e.getSource().equals(IU_Menu.btnPersonalizar)){
