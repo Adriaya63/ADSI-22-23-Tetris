@@ -22,6 +22,15 @@ CREATE TABLE INFO_RANKING(
     REFERENCES RANKING(Dificultad)
     ON DELETE CASCADE
 );
+CREATE TABLE partidaguardada (
+  num int NOT NULL DEFAULT '0',
+  nombre varchar NOT NULL DEFAULT ' ',
+  partida blob DEFAULT NULL,
+  fecha datetime DEFAULT NULL,
+  PRIMARY KEY (num, usuarionombre),
+  KEY nombre (nombre),
+  CONSTRAINT Usuario FOREIGN KEY (nombre) REFERENCES usuario (nombre) ON DELETE CASCADE ON UPDATE CASCADE
+);
 INSERT INTO USUARIO VALUES('admin','admin@admin.com','admin',1,1,1);
 INSERT INTO RANKING VALUES('Fácil');
 INSERT INTO RANKING VALUES('Medio');
