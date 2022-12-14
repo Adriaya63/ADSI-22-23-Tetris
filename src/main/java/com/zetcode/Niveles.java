@@ -19,10 +19,12 @@ public class Niveles extends JFrame {
    public Niveles(String title){
         super(title);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(1,2));
 		setBounds(100, 100, 605, 397);
-		panelmain = new JPanel();
+        panelmain = new JPanel();
 		panelmain.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(panelmain);
+        
         grupo.add(getBtn_facil());
         grupo.add(getBtn_medio());
         grupo.add(getBtn_dificil()); 

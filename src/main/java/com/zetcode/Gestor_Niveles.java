@@ -54,10 +54,15 @@ public class Gestor_Niveles implements ActionListener {
             System.out.println("BOTON SELECCIONAR SELECCIONADO\n");
             if(Niveles.getBtn_dificil().isSelected()){
                 Board.modificarTiempo(150);
+                Board.modificarAnchoAlto(20,44);
             }
             else if(Niveles.getBtn_facil().isSelected()){
                 Board.modificarTiempo(500);
             }
+            else{
+                Board.modificarAnchoAlto(15, 33);
+            }
+            
             Tetris.main(null);
                        
         }        

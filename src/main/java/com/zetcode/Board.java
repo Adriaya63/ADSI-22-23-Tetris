@@ -14,8 +14,8 @@ import java.awt.event.KeyEvent;
 
 public class Board extends JPanel {
 
-    private final int BOARD_WIDTH = 10;
-    private final int BOARD_HEIGHT = 22;
+    private static int BOARD_WIDTH = 10;
+    private static int BOARD_HEIGHT = 22;
     private static int PERIOD_INTERVAL = 300;
 
     private Timer timer;
@@ -34,6 +34,12 @@ public class Board extends JPanel {
     }
     public static void modificarTiempo(int x){
         PERIOD_INTERVAL=x;
+    }
+
+    public static void modificarAnchoAlto(int x, int y){
+         BOARD_WIDTH = x;
+         BOARD_HEIGHT= y;
+       
     }
     private void initBoard(Tetris parent) {
 
