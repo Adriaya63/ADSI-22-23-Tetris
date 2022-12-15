@@ -1,5 +1,7 @@
 package eus.ehu.lsi.adsi;
 
+import com.zetcode.Gestores.BD;
+import com.zetcode.Gestores.Gestor_Usuarios;
 import com.zetcode.Gestores.Gestor_ranking;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,10 +23,12 @@ public class Gestor_rankingtest {
 
     @Test
     public void insertarNuevaPuntuacionTest() {
+        BD.initTest();
         //Comprobamos el numero de puntuaciones que hay en el ranking
         org.json.JSONArray json = Gestor_ranking.getmiGestorRanking().generarRanking("Absoluto", "Global");
         int n = json.length();
         //Generamos una nueva puntuacion
+        Gestor_Usuarios.getMiGestorUser().insertarUsuario("Jose", "1234", "jose@gmail.com");
         Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Jose", 99, "Fácil");
         org.json.JSONArray json2 = Gestor_ranking.getmiGestorRanking().generarRanking("Absoluto", "Global");
         int n2 = json2.length();
@@ -50,6 +54,7 @@ public class Gestor_rankingtest {
     @Test
     public void rankingsTest() {
         //Ranking Histórico y global
+        BD.initTest();
         org.json.JSONArray json = Gestor_ranking.getmiGestorRanking().generarRanking("Absoluto", "Global");
         assertNotNull(json);
         //Ranking Histórico y personal
@@ -73,6 +78,7 @@ public class Gestor_rankingtest {
         //Ranking Difícl y Global
         org.json.JSONArray json8 = Gestor_ranking.getmiGestorRanking().generarRanking("Difícil", "Global");
         assertNotNull(json8);
-    }
+    
 
+}
 }

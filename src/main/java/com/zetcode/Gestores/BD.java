@@ -39,7 +39,7 @@ public class BD {
         }
     }
 
-    private static void inicializar(Boolean esTest) {
+    private static void inicializar(Boolean t) {
         inicializado = true;
         String JDBC_DRIVER = "org.h2.Driver";
         try {
@@ -50,10 +50,11 @@ public class BD {
         }
 
         try {
-            //Para los test
-            if (esTest) {
+            //Data base en memoria para las pruebas unitarias
+            if (t) {
                 dir = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1";
             } else {
+                //Guarda la database en test.mv.db
                 dir = "jdbc:h2:" + new File("tetris").getCanonicalPath();
             }
         } catch (Exception e) {
@@ -63,13 +64,14 @@ public class BD {
         Boolean existe = false;
         Connection conn = null;
         Statement stat = null;
+        //Comprobacion para saber si existe la bd
         try {
             conn = BD.getConnection();
             stat = conn.createStatement();
             ResultSet prueba = stat.executeQuery("SELECT * FROM Usuario");
             existe = true;
             prueba.next();
-            String a = prueba.getString("nombre");
+            String n = prueba.getString("nombre");
             conn.close();
             stat.close();
         } catch (Exception e) {
@@ -86,7 +88,6 @@ public class BD {
 
         if (!existe) {
             try {
-
                 conn = BD.getConnection();
                 ScriptRunner scriptR = new ScriptRunner(conn);
                 Reader reader = new BufferedReader(new FileReader("tetrisBD.sql"));
@@ -121,12 +122,12 @@ public class BD {
     public static ResultSet selectSql(String pC) { //SELECT
         ResultSet rs = null;
         try {
-            /* if (conexion != null) {
+             if (conexion != null) {
                 conexion.close();
             }
             if (pC != null) {
                 consulta.close();
-            } */
+            } 
             conexion = BD.getConnection();
             consulta = conexion.createStatement();
             rs = consulta.executeQuery(pC);
