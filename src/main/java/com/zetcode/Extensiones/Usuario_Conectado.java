@@ -57,4 +57,7 @@ public class Usuario_Conectado {
     public static void modNivel(String pNivel){
         nivel = pNivel;
     }
+    public static void cerrarSesion(){
+        miUser=null;
+    }
 }

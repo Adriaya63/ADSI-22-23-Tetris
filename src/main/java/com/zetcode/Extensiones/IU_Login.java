@@ -43,24 +43,14 @@ public class IU_Login extends JFrame {
 	public static JButton bLog;
 	public static JButton bVolver;
 	public static JButton bRegistro;
+	public static JButton btnRecuperarPassword;
 	private static IU_Login miLogin;
 	private boolean estado=false;
 	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					IU_Login frame = new IU_Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 	public static IU_Login getMiLogin()
     {
         if(miLogin == null)
@@ -108,12 +98,21 @@ public class IU_Login extends JFrame {
 		}
 		return lblNewLabel;
 	}
+	private JButton getBtnRecuperarPswd(){
+		if(btnRecuperarPassword==null){
+			btnRecuperarPassword= new JButton("Recuperar Contraseña");
+			btnRecuperarPassword.addActionListener(Controlador.getControlador());
+		}
+		return btnRecuperarPassword;
+		
+	}
 	private JPanel getPanel_2() {
 		if (panel == null) {
 			panel = new JPanel();
 			panel.add(getBLog());
 			panel.add(getBVolver());
 			panel.add(getBRegistro());
+			panel.add(getBtnRecuperarPswd());
 		}
 		return panel;
 	}
@@ -205,6 +204,10 @@ public class IU_Login extends JFrame {
 			bRegistro.addActionListener(Controlador.getControlador());
 		}
 		return bRegistro;
+	}
+	public void cerrar(){
+		dispose();
+		miLogin=null;
 	}
 
 }

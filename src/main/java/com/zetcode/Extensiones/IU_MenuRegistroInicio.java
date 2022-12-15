@@ -30,9 +30,7 @@ public class IU_MenuRegistroInicio extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		IU_MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
-	}
+
 
 	public static IU_MenuRegistroInicio getMiMenuRegistroInicio() {
 		if (miMenuRegistroInicio == null) {

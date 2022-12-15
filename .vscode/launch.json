@@ -4,7 +4,20 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-    
+        {
+            "type": "java",
+            "name": "Launch EmailSenderService",
+            "request": "launch",
+            "mainClass": "com.zetcode.Extensiones.EmailSenderService",
+            "projectName": "Tetris-Local"
+        },
+        {
+            "type": "java",
+            "name": "Launch IU_Registro",
+            "request": "launch",
+            "mainClass": "com.zetcode.Extensiones.IU_Registro",
+            "projectName": "Tetris-Local"
+        },
         {
             "type": "java",
             "name": "Launch Registro",

@@ -6,9 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 
+import org.apache.ibatis.annotations.Select;
 import org.json.JSONObject;
 
+import com.zetcode.Extensiones.EmailSenderService;
 import com.zetcode.Extensiones.Usuario_Conectado;
 
 
@@ -24,7 +27,16 @@ public class Gestor_Usuarios{
         }
         return miGestorUser;
     }
-
+    public void changepassword(String pPswd){
+        if(pPswd!=""){
+            String consulta = String.format("Update usuario set pswd ='%s' where nombre ='%s'", pPswd,Usuario_Conectado.geyMiUser().getNombre());
+            BD.sqlvoid(consulta);
+            System.out.println("Contraseña actualizada");
+        }
+        else{
+            System.out.println("Contraseña no válida");
+        }
+    }
     public boolean existeUser(String user) {
         if(user!=null){
             String consulta = String.format("SELECT FROM usuario WHERE user='%s'",user);
@@ -79,6 +91,36 @@ public class Gestor_Usuarios{
             System.out.println("Este jugador no se puede eliminar"); 
         }
     }
+    public void cambiarPswd(String usuario){
+        String email ="";
+        if(usuario!=""){
+            String consulta = String.format("Select email from usuario where nombre='%s'", usuario);
+            try {
+                ResultSet rs = BD.selectSql(consulta);
+                rs.next();
+                email = rs.getString("email");
+            } 
+            catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            Random random = new Random();
+        
+            // Crea una cadena vacía donde se almacenará la contraseña
+            String password = "";
+        
+            // Genera 20 caracteres aleatorios y agrégalos a la contraseña
+            for (int i = 0; i < 20; i++) {
+                int character = random.nextInt(26); // Genera un número aleatorio entre 0 y 25
+                password += (char) ('a' + character); // Convierte el número en un carácter y agrégalo a la contraseña
+            }
+            EmailSenderService e = new EmailSenderService();
+            e.enviarConGMail(email, "Nueva contraseña", password);
+            System.out.print("Se ha enviado un mail a la persona asociada a la cuenta");
+        }
+        
+    }
+  
   
     
     

@@ -41,13 +41,24 @@ public class Controlador implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
         while(true){
+			if(e.getSource().equals(IU_Menu.btncloseSession)){
+				Usuario_Conectado.cerrarSesion();
+				IU_Menu.getMiMenu().alternar();
+				
+				IU_MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
+			}
+			if(e.getSource().equals(IU_Menu.btnPswd)){
+				String pswd = JOptionPane.showInputDialog("Ingresa tu la nueva contraseña ");
+				Gestor_Usuarios.getMiGestorUser().changepassword(pswd);
+						
+						}
 			if(e.getSource().equals(IU_Login.bLog)){
 				String user = IU_Login.textFieldUser.getText();
 				String pass = IU_Login.textFieldPass.getText();
 				org.json.JSONObject userdata = Gestor_Usuarios.getMiGestorUser().buscarUser(user, pass);
 				if(Usuario_Conectado.geyMiUser().initUser(userdata)){
 					IU_Menu.getMiMenu().alternar();
-					IU_Login.getMiLogin().alternar();
+					IU_Login.getMiLogin().cerrar();
 				}
 
 				
@@ -165,6 +176,10 @@ public class Controlador implements ActionListener
 
 			IU_Login.getMiLogin().alternar();
 			break;
+		}
+		if (e.getSource().equals(IU_Login.getMiLogin().btnRecuperarPassword)) {
+			String nombre = JOptionPane.showInputDialog("Ingresa el usuario asociado: ");
+			Gestor_Usuarios.getMiGestorUser().cambiarPswd(nombre);
 		}
 		if (e.getSource().equals(IU_MenuRegistroInicio.btnNewButton_1)) {
 			IU_MenuRegistroInicio.getMiMenuRegistroInicio().alternar();

@@ -18,7 +18,10 @@ public class IU_Menu extends JFrame
     public static JButton btnNivel;
     public static JButton btnPersonalizar;
     public static JButton btnEliminarUsuarios;
+    public static JButton btnPswd;
+    public static JButton btncloseSession;
     private static IU_Menu miMenuRanking;
+    ;
     private boolean estado=false;
     
 
@@ -55,7 +58,7 @@ public class IU_Menu extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(1,2));
         JPanel paneltexto=new JPanel(new GridLayout(1,1));
-        JPanel panelbotones=new JPanel(new GridLayout(4,1));
+        JPanel panelbotones=new JPanel(new GridLayout(6,1));
         add(paneltexto);
         add(panelbotones);
         this.btnJugar= new JButton("Jugar");
@@ -63,19 +66,25 @@ public class IU_Menu extends JFrame
         this.btnPersonalizar= new JButton("Personalizar Apariencia");
         this.btnRanking= new JButton("Ranking");
         this.btnEliminarUsuarios= new JButton("Eliminar Usuario");
+        this.btnPswd= new JButton("Cambiar Contraseña");
+        this.btncloseSession = new JButton("Cerrar sesión");
         panelbotones.add(btnJugar);
         panelbotones.add(btnNivel);
         panelbotones.add(btnPersonalizar);
         panelbotones.add(btnRanking);
+        panelbotones.add(btnPswd);
+        panelbotones.add(btncloseSession);
         if(Usuario_Conectado.geyMiUser().getAdmin()==1){
-            panelbotones.setLayout(new GridLayout(5,1));
+            panelbotones.setLayout(new GridLayout(7,1));
             panelbotones.add(btnEliminarUsuarios);
+            btnEliminarUsuarios.addActionListener(Controlador.getControlador());
         }
         btnJugar.addActionListener(Controlador.getControlador());
         btnNivel.addActionListener(Controlador.getControlador());
         btnRanking.addActionListener(Controlador.getControlador());
         btnPersonalizar.addActionListener(Controlador.getControlador());
-        btnEliminarUsuarios.addActionListener(Controlador.getControlador());
+        btnPswd.addActionListener(Controlador.getControlador());
+        this.btncloseSession.addActionListener(Controlador.getControlador());
         JTextArea texto= new JTextArea();
         texto.append("Programa realizado para la asignatura de ADSI");
         JLabel jLabel1 = new JLabel();

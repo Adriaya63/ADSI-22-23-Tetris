@@ -234,4 +234,10 @@ public class IU_Registro extends JFrame {
 		}
 		return lblNewLabel_1_1_1;
 	}
+	public void cerrar(){
+		miRegistro=null;
+		textFieldUser=null;
+		textFieldPass=null;
+		dispose();
+	}
 }
