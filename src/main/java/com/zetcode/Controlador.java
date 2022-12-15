@@ -179,7 +179,7 @@ public class Controlador implements ActionListener
 		}
 		if (e.getSource().equals(IU_Login.getMiLogin().btnRecuperarPassword)) {
 			String nombre = JOptionPane.showInputDialog("Ingresa el usuario asociado: ");
-			Gestor_Usuarios.getMiGestorUser().cambiarPswd(nombre);
+			Gestor_Usuarios.getMiGestorUser().recuperarPswd(nombre);
 		}
 		if (e.getSource().equals(IU_MenuRegistroInicio.btnNewButton_1)) {
 			IU_MenuRegistroInicio.getMiMenuRegistroInicio().alternar();

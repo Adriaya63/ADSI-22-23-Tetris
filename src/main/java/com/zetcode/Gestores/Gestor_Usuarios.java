@@ -93,7 +93,7 @@ public class Gestor_Usuarios{
             System.out.println("Este jugador no se puede eliminar"); 
         }
     }
-    public void cambiarPswd(String usuario){
+    public void recuperarPswd(String usuario){
         String email ="";
         if(usuario!=""){
             String consulta = String.format("Select email from usuario where nombre='%s'", usuario);
