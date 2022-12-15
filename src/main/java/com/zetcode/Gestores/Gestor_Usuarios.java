@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 import org.apache.ibatis.annotations.Select;
 import org.json.JSONObject;
 
@@ -107,16 +109,24 @@ public class Gestor_Usuarios{
             Random random = new Random();
         
             // Crea una cadena vacía donde se almacenará la contraseña
-            String password = "";
+            String codigo = "";
         
             // Genera 20 caracteres aleatorios y agrégalos a la contraseña
             for (int i = 0; i < 20; i++) {
                 int character = random.nextInt(26); // Genera un número aleatorio entre 0 y 25
-                password += (char) ('a' + character); // Convierte el número en un carácter y agrégalo a la contraseña
+                codigo += (char) ('a' + character); // Convierte el número en un carácter y agrégalo a la contraseña
             }
-            EmailSenderService e = new EmailSenderService();
-            e.enviarConGMail(email, "Nueva contraseña", password);
-            System.out.print("Se ha enviado un mail a la persona asociada a la cuenta");
+            EmailSenderService.enviarConGMail(email, "Código para restablecer la contraseña", "Introduzca este código para cambiar la contraseña: "+codigo);
+            System.out.print("Se ha enviado un mail a la persona asociada a la cuenta \n");
+            String codigo2 = JOptionPane.showInputDialog("Ingrese el código que le ha llegado al email ");
+            if(codigo.equals(codigo2)){
+                String npass = JOptionPane.showInputDialog("Ingrese la nueva contraseña ");
+                String consulta2 = String.format("Update usuario set pswd ='%s' where nombre ='%s'", npass,usuario);
+                BD.sqlvoid(consulta2);
+                System.out.println("Contraseña actualizada");
+            }
+			
+            
         }
         
     }
