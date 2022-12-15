@@ -24,7 +24,7 @@ CREATE TABLE INFO_RANKING(
 );
 CREATE TABLE partidaguardada (
   num int NOT NULL DEFAULT '0',
-  nombre varchar NOT NULL DEFAULT ' ',
+  nombre varchar (20) NOT NULL DEFAULT ' ',
   partida blob DEFAULT NULL,
   fecha datetime DEFAULT NULL,
   PRIMARY KEY (num, usuarionombre),

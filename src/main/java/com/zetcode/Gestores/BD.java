@@ -1,17 +1,13 @@
 package com.zetcode.Gestores;
 
 
-import java.io.File;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.DriverManager;
-import java.sql.Statement;
 import org.apache.ibatis.jdbc.ScriptRunner;
-import org.checkerframework.checker.units.qual.s;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.Reader;
-import java.io.FileNotFoundException;
+
+import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class BD {
     static Statement consulta = null;
@@ -90,23 +86,23 @@ public class BD {
 
         if (!existe) {
             try {
-            
+
                 conn = BD.getConnection();
                 ScriptRunner scriptR = new ScriptRunner(conn);
-                Reader reader= new BufferedReader(new FileReader("tetrisBD.sql"));
+                Reader reader = new BufferedReader(new FileReader("tetrisBD.sql"));
                 scriptR.runScript(reader);
                 try {
                     conn.close();
-                } catch(Exception e) {
+                } catch (Exception e) {
                 }
             } catch (FileNotFoundException e) {
                 System.err.println(e);
             }
         }
     }
-    
+
     public static void sqlvoid(String pConsulta) { //INSERT, UPDATE, DELETE
-    	try {
+        try {
             if (conexion != null) {
                 conexion.close();
             }
@@ -114,17 +110,17 @@ public class BD {
                 consulta.close();
             }
             conexion = BD.getConnection();
-    		consulta = conexion.createStatement();
-    		consulta.execute(pConsulta);
-    	} catch (Exception e) {
+            consulta = conexion.createStatement();
+            consulta.execute(pConsulta);
+        } catch (Exception e) {
             e.printStackTrace();
-    		System.err.println(e);
-    	}
+            System.err.println(e);
+        }
     }
-    
+
     public static ResultSet selectSql(String pC) { //SELECT
-    	ResultSet rs = null;
-    	try {
+        ResultSet rs = null;
+        try {
             /* if (conexion != null) {
                 conexion.close();
             }
@@ -132,12 +128,12 @@ public class BD {
                 consulta.close();
             } */
             conexion = BD.getConnection();
-    		consulta = conexion.createStatement();
-    		rs = consulta.executeQuery(pC);
-    	} catch (Exception e) {
+            consulta = conexion.createStatement();
+            rs = consulta.executeQuery(pC);
+        } catch (Exception e) {
             e.printStackTrace();
-    		System.err.println(e);
-    	}
-    	return rs;
+            System.err.println(e);
+        }
+        return rs;
     }
 }

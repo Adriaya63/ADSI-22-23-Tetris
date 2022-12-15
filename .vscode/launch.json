@@ -1,105 +1,105 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Launch EmailSenderService",
-            "request": "launch",
-            "mainClass": "com.zetcode.Extensiones.EmailSenderService",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch IU_Registro",
-            "request": "launch",
-            "mainClass": "com.zetcode.Extensiones.IU_Registro",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch Registro",
-            "request": "launch",
-            "mainClass": "com.zetcode.Extensiones.Registro",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch Login",
-            "request": "launch",
-            "mainClass": "com.zetcode.Extensiones.Login",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch MenuRegistroInicio",
-            "request": "launch",
-            "mainClass": "com.zetcode.Extensiones.MenuRegistroInicio",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "mainClass": "com.zetcode.Main",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch Niveles",
-            "request": "launch",
-            "mainClass": "com.zetcode.Niveles",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch Tetris",
-            "request": "launch",
-            "mainClass": "com.zetcode.Tetris",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch FinPartida",
-            "request": "launch",
-            "mainClass": "com.zetcode.FinPartida",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Launch IU_Personalizacion",
-            "request": "launch",
-            "mainClass": "com.zetcode.Extensiones.IU_Personalizacion",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch Menu",
-            "request": "launch",
-            "mainClass": "com.zetcode.Extensiones.Menu",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch Niveles",
-            "request": "launch",
-            "mainClass": "com.zetcode.Extensiones.Niveles",
-            "projectName": "Tetris-Local"
-        },
-        {
-            "type": "java",
-            "name": "Launch PantallaInicio",
-            "request": "launch",
-            "mainClass": "com.zetcode.Extensiones.PantallaInicio",
-            "projectName": "Tetris-Local"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch EmailSenderService",
+      "request": "launch",
+      "mainClass": "com.zetcode.Extensiones.EmailSenderService",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch IU_Registro",
+      "request": "launch",
+      "mainClass": "com.zetcode.Extensiones.IU_Registro",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch Registro",
+      "request": "launch",
+      "mainClass": "com.zetcode.Extensiones.Registro",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch Login",
+      "request": "launch",
+      "mainClass": "com.zetcode.Extensiones.Login",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch MenuRegistroInicio",
+      "request": "launch",
+      "mainClass": "com.zetcode.Extensiones.MenuRegistroInicio",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch Main",
+      "request": "launch",
+      "mainClass": "com.zetcode.Main",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch Niveles",
+      "request": "launch",
+      "mainClass": "com.zetcode.Niveles",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch Tetris",
+      "request": "launch",
+      "mainClass": "com.zetcode.Tetris",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch FinPartida",
+      "request": "launch",
+      "mainClass": "com.zetcode.FinPartida",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "type": "java",
+      "name": "Launch IU_Personalizacion",
+      "request": "launch",
+      "mainClass": "com.zetcode.Extensiones.IU_Personalizacion",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch Menu",
+      "request": "launch",
+      "mainClass": "com.zetcode.Extensiones.Menu",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch Niveles",
+      "request": "launch",
+      "mainClass": "com.zetcode.Extensiones.Niveles",
+      "projectName": "Tetris-Local"
+    },
+    {
+      "type": "java",
+      "name": "Launch PantallaInicio",
+      "request": "launch",
+      "mainClass": "com.zetcode.Extensiones.PantallaInicio",
+      "projectName": "Tetris-Local"
+    }
+  ]
 }

@@ -1,23 +1,24 @@
 package com.zetcode.Extensiones;
- 
-import java.util.Properties;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
- 
+import java.util.Properties;
+
 public class EmailSenderService {
-    public EmailSenderService(){
+    public EmailSenderService() {
 
     }
-	public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
+
+    public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
         //La dirección de correo de envío
         String remitente = "cuentaexamenfran@gmail.com";
         //La clave de aplicación obtenida según se explica en este artículo:
         String claveemail = "cctohkectyohlbdt";
-    
+
         Properties props = System.getProperties();
         props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
         props.put("mail.smtp.user", remitente);
@@ -25,10 +26,10 @@ public class EmailSenderService {
         props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
         props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
         props.put("mail.smtp.port", "587"); //El puerto SMTP seguro de Google
-    
+
         Session session = Session.getDefaultInstance(props);
         MimeMessage message = new MimeMessage(session);
-    
+
         try {
             message.setFrom(new InternetAddress(remitente));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));   //Se podrían añadir varios de la misma manera
@@ -38,11 +39,10 @@ public class EmailSenderService {
             transport.connect("smtp.gmail.com", remitente, claveemail);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-        }
-        catch (MessagingException me) {
+        } catch (MessagingException me) {
             me.printStackTrace();   //Si se produce un error
         }
-      }
-     
- 
+    }
+
+
 }

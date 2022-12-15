@@ -2,12 +2,12 @@ package com.zetcode;
 
 import java.util.Random;
 
-import javax.swing.JLabel;
-
 public class Shape {
 
-    protected enum Tetrominoe { NoShape, ZShape, SShape, LineShape,
-        TShape, SquareShape, LShape, MirroredLShape }
+    protected enum Tetrominoe {
+        NoShape, ZShape, SShape, LineShape,
+        TShape, SquareShape, LShape, MirroredLShape
+    }
 
     private Tetrominoe pieceShape;
     private int coords[][];
@@ -23,15 +23,15 @@ public class Shape {
 
         coords = new int[4][2];
 
-        coordsTable = new int[][][] {
-                { { 0, 0 },   { 0, 0 },   { 0, 0 },   { 0, 0 } },
-                { { 0, -1 },  { 0, 0 },   { -1, 0 },  { -1, 1 } },
-                { { 0, -1 },  { 0, 0 },   { 1, 0 },   { 1, 1 } },
-                { { 0, -1 },  { 0, 0 },   { 0, 1 },   { 0, 2 } },
-                { { -1, 0 },  { 0, 0 },   { 1, 0 },   { 0, 1 } },
-                { { 0, 0 },   { 1, 0 },   { 0, 1 },   { 1, 1 } },
-                { { -1, -1 }, { 0, -1 },  { 0, 0 },   { 0, 1 } },
-                { { 1, -1 },  { 0, -1 },  { 0, 0 },   { 0, 1 } }
+        coordsTable = new int[][][]{
+                {{0, 0}, {0, 0}, {0, 0}, {0, 0}},
+                {{0, -1}, {0, 0}, {-1, 0}, {-1, 1}},
+                {{0, -1}, {0, 0}, {1, 0}, {1, 1}},
+                {{0, -1}, {0, 0}, {0, 1}, {0, 2}},
+                {{-1, 0}, {0, 0}, {1, 0}, {0, 1}},
+                {{0, 0}, {1, 0}, {0, 1}, {1, 1}},
+                {{-1, -1}, {0, -1}, {0, 0}, {0, 1}},
+                {{1, -1}, {0, -1}, {0, 0}, {0, 1}}
         };
 
         setShape(Tetrominoe.NoShape);
@@ -39,7 +39,7 @@ public class Shape {
 
     protected void setShape(Tetrominoe shape) {
 
-        for (int i = 0; i < 4 ; i++) {
+        for (int i = 0; i < 4; i++) {
 
             for (int j = 0; j < 2; ++j) {
 
@@ -50,11 +50,25 @@ public class Shape {
         pieceShape = shape;
     }
 
-    private void setX(int index, int x) { coords[index][0] = x; }
-    private void setY(int index, int y) { coords[index][1] = y; }
-    public int x(int index) { return coords[index][0]; }
-    public int y(int index) { return coords[index][1]; }
-    public Tetrominoe getShape()  { return pieceShape; }
+    private void setX(int index, int x) {
+        coords[index][0] = x;
+    }
+
+    private void setY(int index, int y) {
+        coords[index][1] = y;
+    }
+
+    public int x(int index) {
+        return coords[index][0];
+    }
+
+    public int y(int index) {
+        return coords[index][1];
+    }
+
+    public Tetrominoe getShape() {
+        return pieceShape;
+    }
 
     public void setRandomShape() {
 
@@ -69,7 +83,7 @@ public class Shape {
 
         int m = coords[0][0];
 
-        for (int i=0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
 
             m = Math.min(m, coords[i][0]);
         }
@@ -82,7 +96,7 @@ public class Shape {
 
         int m = coords[0][1];
 
-        for (int i=0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
 
             m = Math.min(m, coords[i][1]);
         }
@@ -127,5 +141,5 @@ public class Shape {
 
         return result;
     }
- 
+
 }

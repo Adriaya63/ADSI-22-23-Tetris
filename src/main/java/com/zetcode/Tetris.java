@@ -1,12 +1,10 @@
 package com.zetcode;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javax.swing.*;
+import java.awt.*;
 
 /*
 Java Tetris game clone
@@ -15,8 +13,8 @@ Author: Jan Bodnar
 Website: https://zetcode.com
  */
 public class Tetris extends JFrame {
-	
-	private static final Logger logger = LogManager.getLogger(Tetris.class);
+
+    private static final Logger logger = LogManager.getLogger(Tetris.class);
 
     private JLabel statusbar;
 
@@ -45,15 +43,15 @@ public class Tetris extends JFrame {
         return statusbar;
     }
 
-    public static void jugar(){
+    public static void jugar() {
 
-    	logger.info("Playing");
+        logger.info("Playing");
         EventQueue.invokeLater(() -> {
 
             var game = new Tetris();
             game.setVisible(true);
-            
+
         });
     }
-   
+
 }

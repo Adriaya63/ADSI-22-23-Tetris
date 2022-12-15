@@ -1,18 +1,10 @@
 package com.zetcode;
 
 import com.zetcode.Extensiones.Usuario_Conectado;
-import com.zetcode.Gestores.Gestor_Personalizacion;
 import com.zetcode.Shape.Tetrominoe;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-import javax.tools.Diagnostic;
-
-import java.awt.Color;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -20,8 +12,8 @@ import java.awt.event.KeyEvent;
 
 public class Board extends JPanel {
 
-    private  static int BOARD_WIDTH = 10;
-    private  static int BOARD_HEIGHT = 22;
+    private static int BOARD_WIDTH = 10;
+    private static int BOARD_HEIGHT = 22;
     private static int PERIOD_INTERVAL = 300;
 
     private Timer timer;
@@ -34,34 +26,37 @@ public class Board extends JPanel {
     private Shape curPiece;
     private Tetrominoe[] board;
     private Tetris parent;
-    private static  String dif;
-    public Board(Tetris pParent ) {
+    private static String dif;
+
+    public Board(Tetris pParent) {
         modificarNivel();
         initBoard(pParent);
-        this.parent=pParent;
+        this.parent = pParent;
 
     }
-    public static void modificarNivel(){
+
+    public static void modificarNivel() {
         String nivel = Usuario_Conectado.geyMiUser().getNivel();
-        switch(nivel){
+        switch (nivel) {
             case "Fácil":
-            PERIOD_INTERVAL=500;
-            BOARD_WIDTH =10;
-            BOARD_HEIGHT =22;
-            break;
+                PERIOD_INTERVAL = 500;
+                BOARD_WIDTH = 10;
+                BOARD_HEIGHT = 22;
+                break;
             case "Medio":
-            PERIOD_INTERVAL=300;
-            BOARD_WIDTH =15;
-            BOARD_HEIGHT =33;
-            break;
+                PERIOD_INTERVAL = 300;
+                BOARD_WIDTH = 15;
+                BOARD_HEIGHT = 33;
+                break;
             case "Difícil":
-            PERIOD_INTERVAL=150;
-            BOARD_WIDTH =20;
-            BOARD_HEIGHT =33;
-            break;
+                PERIOD_INTERVAL = 150;
+                BOARD_WIDTH = 20;
+                BOARD_HEIGHT = 33;
+                break;
         }
-        
+
     }
+
     private void initBoard(Tetris parent) {
 
         setFocusable(true);
@@ -115,7 +110,7 @@ public class Board extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         ImageIcon imagen = new ImageIcon(getClass().getResource(Usuario_Conectado.geyMiUser().getpFondo()));
-        g.drawImage(imagen.getImage(), 0, 0, getWidth(),getHeight(),this);
+        g.drawImage(imagen.getImage(), 0, 0, getWidth(), getHeight(), this);
         setOpaque(false);
 
         super.paintComponent(g);
@@ -208,35 +203,33 @@ public class Board extends JPanel {
         curPiece.setRandomShape();
         curX = BOARD_WIDTH / 2 + 1;
         curY = BOARD_HEIGHT - 1 + curPiece.minY();
-        
 
 
         if (!tryMove(curPiece, curX, curY)) {
             curPiece.setShape(Tetrominoe.NoShape);
             timer.stop();
             parent.dispose();
-            FinPartida f= new FinPartida();
-            f.hacerVisible(Usuario_Conectado.geyMiUser().getNombre(), numLinesRemoved,Usuario_Conectado.geyMiUser().getNivel());
-            
+            FinPartida f = new FinPartida();
+            f.hacerVisible(Usuario_Conectado.geyMiUser().getNombre(), numLinesRemoved, Usuario_Conectado.geyMiUser().getNivel());
+
         }
     }
-    
+
     private boolean tryMove(Shape newPiece, int newX, int newY) {
-       
+
         for (int i = 0; i < 4; i++) {
-            
+
             int x = newX + newPiece.x(i);
             int y = newY - newPiece.y(i);
-            
-                
-          
-            if (x < 0 || x >= BOARD_WIDTH ||  y < 0 || y >= BOARD_HEIGHT) {
+
+
+            if (x < 0 || x >= BOARD_WIDTH || y < 0 || y >= BOARD_HEIGHT) {
                 return false;
             }
-           
+
 
             if (shapeAt(x, y) != Tetrominoe.NoShape) {
-                 return false;
+                return false;
             }
         }
 
@@ -252,7 +245,7 @@ public class Board extends JPanel {
     private void removeFullLines() {
 
         int numFullLines = 0;
-        
+
         for (int i = BOARD_HEIGHT - 1; i >= 0; i--) {
 
             boolean lineIsFull = true;
