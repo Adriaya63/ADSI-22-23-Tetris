@@ -44,6 +44,7 @@ public class Controlador implements ActionListener
 			if(e.getSource().equals(IU_Menu.btncloseSession)){
 				Usuario_Conectado.cerrarSesion();
 				IU_Menu.getMiMenu().alternar();
+			
 				
 				IU_MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
 			}

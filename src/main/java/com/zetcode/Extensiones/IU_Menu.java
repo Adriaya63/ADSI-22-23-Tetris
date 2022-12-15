@@ -1,9 +1,5 @@
 package com.zetcode.Extensiones;
 
-
-
-
-
 import com.zetcode.Controlador;
 
 import java.awt.Image;
@@ -54,7 +50,7 @@ public class IU_Menu extends JFrame
         int width = pantalla.width;
         setSize(width/2, height/2);		
         setLocationRelativeTo(null);		
-        setTitle("Menú ");
+        setTitle("Menú de "+Usuario_Conectado.geyMiUser().getNombre());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(1,2));
         JPanel paneltexto=new JPanel(new GridLayout(1,1));
@@ -102,6 +98,7 @@ public class IU_Menu extends JFrame
 
     }
 
+   
    
 
 

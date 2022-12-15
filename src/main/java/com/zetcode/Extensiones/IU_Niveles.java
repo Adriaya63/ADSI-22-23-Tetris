@@ -38,9 +38,6 @@ public class IU_Niveles extends JFrame {
         setLocationRelativeTo(null);		
         setSize(300,400);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        setBounds(100, 100, 605, 397);
         panelmain = new JPanel();
         panelmain.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(panelmain);
@@ -53,7 +50,6 @@ public class IU_Niveles extends JFrame {
         panelmain.add(getBtn_medio());     setSize(300,400);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 605, 397);
         panelmain = new JPanel();
         panelmain.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(panelmain);
