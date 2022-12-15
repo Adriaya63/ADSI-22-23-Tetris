@@ -2,7 +2,7 @@ package com.zetcode.Extensiones;
 
 
 
-import javax.swing.border.EmptyBorder;
+
 
 import com.zetcode.Controlador;
 
@@ -61,13 +61,13 @@ public class IU_Menu extends JFrame
         JPanel panelbotones=new JPanel(new GridLayout(6,1));
         add(paneltexto);
         add(panelbotones);
-        this.btnJugar= new JButton("Jugar");
-        this.btnNivel= new JButton("Seleccionar Nivel");
-        this.btnPersonalizar= new JButton("Personalizar Apariencia");
-        this.btnRanking= new JButton("Ranking");
-        this.btnEliminarUsuarios= new JButton("Eliminar Usuario");
-        this.btnPswd= new JButton("Cambiar Contraseña");
-        this.btncloseSession = new JButton("Cerrar sesión");
+        IU_Menu.btnJugar= new JButton("Jugar");
+        btnNivel= new JButton("Seleccionar Nivel");
+        btnPersonalizar= new JButton("Personalizar Apariencia");
+        btnRanking= new JButton("Ranking");
+        btnEliminarUsuarios= new JButton("Eliminar Usuario");
+        btnPswd= new JButton("Cambiar Contraseña");
+        btncloseSession = new JButton("Cerrar sesión");
         panelbotones.add(btnJugar);
         panelbotones.add(btnNivel);
         panelbotones.add(btnPersonalizar);
@@ -84,7 +84,7 @@ public class IU_Menu extends JFrame
         btnRanking.addActionListener(Controlador.getControlador());
         btnPersonalizar.addActionListener(Controlador.getControlador());
         btnPswd.addActionListener(Controlador.getControlador());
-        this.btncloseSession.addActionListener(Controlador.getControlador());
+        btncloseSession.addActionListener(Controlador.getControlador());
         JTextArea texto= new JTextArea();
         texto.append("Programa realizado para la asignatura de ADSI");
         JLabel jLabel1 = new JLabel();

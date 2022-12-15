@@ -9,12 +9,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
  
 public class EmailSenderService {
-   
-	private final Properties properties = new Properties();
-	
-	private String password;
- 
-	private Session session;
     public EmailSenderService(){
 
     }

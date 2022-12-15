@@ -1,18 +1,11 @@
 package com.zetcode.Gestores;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Random;
-
 import javax.swing.JOptionPane;
-
-import org.apache.ibatis.annotations.Select;
 import org.json.JSONObject;
-
 import com.zetcode.Extensiones.EmailSenderService;
 import com.zetcode.Extensiones.Usuario_Conectado;
 

@@ -1,29 +1,18 @@
 package com.zetcode.Extensiones;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
-
 import com.zetcode.Controlador;
-
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.GridLayout;
-import javax.swing.JRadioButton;
 import java.awt.Color;
 import javax.swing.JTextField;
-import javax.swing.JList;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 public class IU_Login extends JFrame {
 

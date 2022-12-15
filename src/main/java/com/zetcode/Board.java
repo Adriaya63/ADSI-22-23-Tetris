@@ -46,6 +46,8 @@ public class Board extends JPanel {
         switch(nivel){
             case "Fácil":
             PERIOD_INTERVAL=500;
+            BOARD_WIDTH =10;
+            BOARD_HEIGHT =22;
             break;
             case "Medio":
             PERIOD_INTERVAL=300;
@@ -54,8 +56,8 @@ public class Board extends JPanel {
             break;
             case "Difícil":
             PERIOD_INTERVAL=150;
-            BOARD_WIDTH =44;
-            BOARD_HEIGHT =20;
+            BOARD_WIDTH =20;
+            BOARD_HEIGHT =33;
             break;
         }
         
