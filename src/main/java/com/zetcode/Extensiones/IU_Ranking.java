@@ -94,7 +94,7 @@ public class IU_Ranking extends JFrame {
         }
     }
 
-    public void Update(JSONArray json) {
+    public void updateT(JSONArray json) {
         Object[][] a = new Object[json.length()][2];
         JSONObject objeto;
         String user;
