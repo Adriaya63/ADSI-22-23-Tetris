@@ -68,6 +68,12 @@ public class Gestor_rankingtest {
         //Visualizamos el ranking seleccionado
         IU_Ranking.getmiRanking().updateT(json);
         IU_Ranking.getmiRanking().alternar();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            
+            e.printStackTrace();
+        } 
         IU_Ranking.getmiRanking().alternar();
         //Ranking Histórico y personal 
         //Insertamos un jugador y logeamos con un usuario.
@@ -81,6 +87,12 @@ public class Gestor_rankingtest {
         //Visualizamos el ranking seleccionado
         IU_Ranking.getmiRanking().updateT(json2);
         IU_Ranking.getmiRanking().alternar();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            
+            e.printStackTrace();
+        } 
         IU_Ranking.getmiRanking().alternar();
         assertNotNull(json2);
         //Ranking facil y personal
@@ -91,6 +103,12 @@ public class Gestor_rankingtest {
         //Visualizamos el ranking seleccionado
         IU_Ranking.getmiRanking().updateT(json3);
         IU_Ranking.getmiRanking().alternar();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            
+            e.printStackTrace();
+        } 
         IU_Ranking.getmiRanking().alternar();
         assertNotNull(json3);
         //Ranking Medio y personal
@@ -99,6 +117,12 @@ public class Gestor_rankingtest {
         org.json.JSONArray json4 = Gestor_ranking.getmiGestorRanking().generarRanking("Medio", Usuario_Conectado.geyMiUser().getNombre());
         IU_Ranking.getmiRanking().updateT(json4);
         IU_Ranking.getmiRanking().alternar();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            
+            e.printStackTrace();
+        } 
         IU_Ranking.getmiRanking().alternar();
         assertNotNull(json4);
         //Ranking Difícl y personal
@@ -107,18 +131,36 @@ public class Gestor_rankingtest {
         org.json.JSONArray json5 = Gestor_ranking.getmiGestorRanking().generarRanking("Difícil",  Usuario_Conectado.geyMiUser().getNombre());
         IU_Ranking.getmiRanking().updateT(json5);
         IU_Ranking.getmiRanking().alternar();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            
+            e.printStackTrace();
+        } 
         IU_Ranking.getmiRanking().alternar();
         assertNotNull(json5);
         //Ranking facil y Global
         org.json.JSONArray json6 = Gestor_ranking.getmiGestorRanking().generarRanking("Fácil", "Global");
         IU_Ranking.getmiRanking().updateT(json6);
         IU_Ranking.getmiRanking().alternar();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            
+            e.printStackTrace();
+        } 
         IU_Ranking.getmiRanking().alternar();
         //Ranking Medio y Global
         Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Jose", 99, "Medio");
         org.json.JSONArray json7 = Gestor_ranking.getmiGestorRanking().generarRanking("Medio", "Global");
         IU_Ranking.getmiRanking().updateT(json7);
         IU_Ranking.getmiRanking().alternar();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            
+            e.printStackTrace();
+        } 
         IU_Ranking.getmiRanking().alternar();
         assertNotNull(json7);
         //Ranking Difícl y Global
@@ -126,6 +168,12 @@ public class Gestor_rankingtest {
         org.json.JSONArray json8 = Gestor_ranking.getmiGestorRanking().generarRanking("Difícil", "Global");
         IU_Ranking.getmiRanking().updateT(json8);
         IU_Ranking.getmiRanking().alternar();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            
+            e.printStackTrace();
+        } 
         IU_Ranking.getmiRanking().alternar();
         assertNotNull(json8);
     
