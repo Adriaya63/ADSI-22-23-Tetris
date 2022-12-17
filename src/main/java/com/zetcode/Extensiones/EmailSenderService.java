@@ -15,9 +15,9 @@ public class EmailSenderService {
 
     public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
         //La dirección de correo de envío
-        String remitente = "cuentaexamenfran@gmail.com";
+        String remitente = "adsitetris@gmail.com";
         //La clave de aplicación obtenida según se explica en este artículo:
-        String claveemail = "cctohkectyohlbdt";
+        String claveemail = "mivcxjylyghgfezi";
 
         Properties props = System.getProperties();
         props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google

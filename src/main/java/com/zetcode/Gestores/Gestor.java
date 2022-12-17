@@ -96,7 +96,6 @@ public class Gestor implements ActionListener {
             if (e.getSource().equals(IU_Ranking.btnVer)) {
                 String tipo = IU_Ranking.getmiRanking().getTip();
                 String dif = IU_Ranking.getmiRanking().getdif();
-                System.out.println(dif);
                 if (tipo == "Global") {
                     IU_Ranking.getmiRanking().Update(Gestor_ranking.getmiGestorRanking().generarRanking(dif, tipo));
                 } else {

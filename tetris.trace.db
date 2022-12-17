@@ -1,12 +1,12 @@
-2022-12-15 18:54:20 jdbc[3]: exception
+2022-12-17 16:34:17 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIO" not found (this database is empty); SQL statement:
 SELECT * FROM Usuario [42104-214]
-2022-12-15 18:54:20 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE TABLE partidaguardada (\000a  num int NOT NULL DEFAULT '0',\000a  nombre varchar NOT NULL DEFAULT ' ',\000a  partida blob DEFAULT NULL,\000a  fecha datetime DEFAULT NULL,\000a  PRIMARY KEY (num, usuarionombre),\000a  [*]KEY nombre (nombre),\000a  CONSTRAINT Usuario FOREIGN KEY (nombre) REFERENCES usuario (nombre) ON DELETE CASCADE ON UPDATE CASCADE\000a)\000a"; se esperaba "identifier"
-Syntax error in SQL statement "CREATE TABLE partidaguardada (\000a  num int NOT NULL DEFAULT '0',\000a  nombre varchar NOT NULL DEFAULT ' ',\000a  partida blob DEFAULT NULL,\000a  fecha datetime DEFAULT NULL,\000a  PRIMARY KEY (num, usuarionombre),\000a  [*]KEY nombre (nombre),\000a  CONSTRAINT Usuario FOREIGN KEY (nombre) REFERENCES usuario (nombre) ON DELETE CASCADE ON UPDATE CASCADE\000a)\000a"; expected "identifier"; SQL statement:
+2022-12-17 16:34:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE TABLE partidaguardada (\000a  num int NOT NULL DEFAULT '0',\000a  nombre varchar (20) NOT NULL DEFAULT ' ',\000a  partida blob DEFAULT NULL,\000a  fecha datetime DEFAULT NULL,\000a  PRIMARY KEY (num, usuarionombre),\000a  [*]KEY nombre (nombre),\000a  CONSTRAINT Usuario FOREIGN KEY (nombre) REFERENCES usuario (nombre) ON DELETE CASCADE ON UPDATE CASCADE\000a)\000a"; se esperaba "identifier"
+Syntax error in SQL statement "CREATE TABLE partidaguardada (\000a  num int NOT NULL DEFAULT '0',\000a  nombre varchar (20) NOT NULL DEFAULT ' ',\000a  partida blob DEFAULT NULL,\000a  fecha datetime DEFAULT NULL,\000a  PRIMARY KEY (num, usuarionombre),\000a  [*]KEY nombre (nombre),\000a  CONSTRAINT Usuario FOREIGN KEY (nombre) REFERENCES usuario (nombre) ON DELETE CASCADE ON UPDATE CASCADE\000a)\000a"; expected "identifier"; SQL statement:
 CREATE TABLE partidaguardada (
   num int NOT NULL DEFAULT '0',
-  nombre varchar NOT NULL DEFAULT ' ',
+  nombre varchar (20) NOT NULL DEFAULT ' ',
   partida blob DEFAULT NULL,
   fecha datetime DEFAULT NULL,
   PRIMARY KEY (num, usuarionombre),
@@ -14,58 +14,3 @@ CREATE TABLE partidaguardada (
   CONSTRAINT Usuario FOREIGN KEY (nombre) REFERENCES usuario (nombre) ON DELETE CASCADE ON UPDATE CASCADE
 )
  [42001-214]
-2022-12-15 18:54:33 jdbc[5]: null
-org.h2.message.DbException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
-The connection was not closed by the application and is garbage collected [90018-214]
-	at org.h2.message.DbException.get(DbException.java:223)
-	at org.h2.message.DbException.get(DbException.java:199)
-	at org.h2.message.DbException.get(DbException.java:188)
-	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:190)
-	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:132)
-	at org.h2.Driver.connect(Driver.java:59)
-	at java.sql/java.sql.DriverManager.getConnection(Unknown Source)
-	at java.sql/java.sql.DriverManager.getConnection(Unknown Source)
-	at com.zetcode.Gestores.BD.getConnection(BD.java:27)
-	at com.zetcode.Gestores.BD.selectSql(BD.java:130)
-	at com.zetcode.Gestores.Gestor_Usuarios.buscarUser(Gestor_Usuarios.java:58)
-	at com.zetcode.Gestores.Gestor.actionPerformed(Gestor.java:48)
-	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
-	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
-	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
-	at java.desktop/javax.swing.DefaultButtonModel.setPressed(Unknown Source)
-	at java.desktop/javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
-	at java.desktop/java.awt.Component.processMouseEvent(Unknown Source)
-	at java.desktop/javax.swing.JComponent.processMouseEvent(Unknown Source)
-	at java.desktop/java.awt.Component.processEvent(Unknown Source)
-	at java.desktop/java.awt.Container.processEvent(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
-	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Window.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
-	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
-	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
-	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
-	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
-	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
-	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
-	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
-The connection was not closed by the application and is garbage collected [90018-214]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:678)
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
-	... 47 more

@@ -125,7 +125,7 @@ public class BD {
              if (conexion != null) {
                 conexion.close();
             }
-            if (pC != null) {
+            if (consulta!= null) {
                 consulta.close();
             } 
             conexion = BD.getConnection();
