@@ -81,7 +81,7 @@ public class Gestor_Usuarios {
     }
 
     public void eliminarUsuario(String user) {
-        if (user != "admin" && user != Usuario_Conectado.geyMiUser().getNombre()) {
+        if (!user.equals("admin") && user!= Usuario_Conectado.geyMiUser().getNombre()) {
             String consulta = String.format("delete from usuario where nombre ='%s'", user);
             BD.sqlvoid(consulta);
             System.out.println("Jugador eliminado");

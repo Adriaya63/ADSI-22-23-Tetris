@@ -3,13 +3,10 @@ package eus.ehu.lsi.adsi;
 import com.zetcode.Extensiones.IU_Ranking;
 import com.zetcode.Extensiones.Usuario_Conectado;
 import com.zetcode.Gestores.BD;
-import com.zetcode.Gestores.Gestor;
 import com.zetcode.Gestores.Gestor_Usuarios;
 import com.zetcode.Gestores.Gestor_ranking;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.h2.util.json.JSONArray;
-import org.h2.util.json.JSONObject;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
