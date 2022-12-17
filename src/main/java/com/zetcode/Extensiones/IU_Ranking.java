@@ -86,6 +86,8 @@ public class IU_Ranking extends JFrame {
 
     public void alternar() {
         if (estado) {
+            JSONArray j = new JSONArray();
+            updateT(j);
             setVisible(false);
             estado = false;
         } else {
