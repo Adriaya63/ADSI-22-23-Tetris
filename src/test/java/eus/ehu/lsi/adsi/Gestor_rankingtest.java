@@ -26,7 +26,7 @@ public class Gestor_rankingtest {
     public void insertarNuevaPuntuacionTest() {
         //Iniciamos una BD temporal para los test
         BD.initTest();
-        //Comprobamos el numero de puntuaciones que hay en el ranking
+        //Comprobamos el numero de puntuaciones que hay en el ranking 
         org.json.JSONArray json = Gestor_ranking.getmiGestorRanking().generarRanking("Absoluto", "Global");
         int n = json.length();
         //Generamos una nueva puntuacion
@@ -34,6 +34,7 @@ public class Gestor_rankingtest {
         Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Jose", 99, "Fácil");
         org.json.JSONArray json2 = Gestor_ranking.getmiGestorRanking().generarRanking("Absoluto", "Global");
         int n2 = json2.length();
+        //Como acabamos de insertar una puntuacion en el ranking el tamaño de n2 debe ser mayor en una unidad a n1
         assertEquals(n + 1, n2);
         //Insertar una puntuacion de un jugador que no existe
         org.json.JSONArray json3 = Gestor_ranking.getmiGestorRanking().generarRanking("Absoluto", "Global");
@@ -75,6 +76,7 @@ public class Gestor_rankingtest {
             e.printStackTrace();
         } 
         IU_Ranking.getmiRanking().alternar();
+        assertNotNull(json);
         //Ranking Histórico y personal 
         //Insertamos un jugador y logeamos con un usuario.
         Gestor_Usuarios.getMiGestorUser().insertarUsuario("Fran", "1234", "fragonzcuriel@gmail.com");
@@ -151,6 +153,7 @@ public class Gestor_rankingtest {
             e.printStackTrace();
         } 
         IU_Ranking.getmiRanking().alternar();
+        assertNotNull(json6);
         //Ranking Medio y Global
         Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Jose", 99, "Medio");
         Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Mario", 15, "Medio");
