@@ -194,10 +194,7 @@ public class Gestor implements ActionListener {
                 } else if (seleccionPer == 2) {
                     IU_Ladrillos.getMiLad().alternar();
                     IU_Personalizacion.getMiPer().alternar();
-                } else if (seleccionPer == 3) {
-                    IU_Sonido.getMiSon().alternar();
-                    IU_Personalizacion.getMiPer().alternar();
-                }
+                } 
                 break;
             }
             if (e.getSource().equals(IU_Personalizacion.bVolver)) {
@@ -211,10 +208,6 @@ public class Gestor implements ActionListener {
             }
             if (e.getSource().equals(IU_Personalizacion.rbLadrillos)) {
                 seleccionPer = 2;
-                break;
-            }
-            if (e.getSource().equals(IU_Personalizacion.rbSonido)) {
-                seleccionPer = 3;
                 break;
             }
             if (e.getSource().equals(IU_Fondo.bGuardar)) {
@@ -263,14 +256,7 @@ public class Gestor implements ActionListener {
                 colorLad = 3;
                 break;
             }
-            if (e.getSource().equals(IU_Sonido.bGuardar)) {
-                break;
-            }
-            if (e.getSource().equals(IU_Sonido.bVolver)) {
-                IU_Sonido.getMiSon().alternar();
-                IU_Personalizacion.getMiPer().alternar();
-                break;
-            } else {
+             else {
                 break;
             }
         }
