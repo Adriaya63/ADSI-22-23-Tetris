@@ -14,71 +14,70 @@ public class IU_Niveles extends JFrame {
     private static ButtonGroup grupo = new ButtonGroup();
     private static JButton btn_volver;
     private static JButton btn_Seleccionar;
-    private JLabel lbl_facil;
-    private JLabel lbl_medio;
-    private JLabel lbl_dificil;
-    private JPanel panelmain = new JPanel();
+    private JPanel panelmain;
+    private JPanel panel ;
+    private JPanel panel2 ;
     private static IU_Niveles minivel;
+    private JLabel titulo;
 
     public static IU_Niveles getNiveles() {
         if (minivel == null) {
             minivel = new IU_Niveles();
         }
         return minivel;
-    }
-
-    public IU_Niveles() {
-
-    }
+    }   
 
     public void hacerVisible() {
-        Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
-        int height = pantalla.height;
-        int width = pantalla.width;
-        setSize(width / 2, height / 2);
-        setLocationRelativeTo(null);
-        setSize(300, 400);
-        setVisible(true);
-        panelmain = new JPanel();
-        panelmain.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(panelmain);
-        grupo.add(getBtn_facil());
-        grupo.add(getBtn_medio());
-        grupo.add(getBtn_dificil());
-        panelmain.add(getLbl_facil());
-        panelmain.add(getBtn_facil());
-        panelmain.add(getLbl_medio());
-        panelmain.add(getBtn_medio());
-        setSize(300, 400);
-        setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);        
+        setVisible(true);
         panelmain = new JPanel();
         panelmain.setBorder(new EmptyBorder(5, 5, 5, 5));
+        panelmain.setLayout(new BorderLayout(0, 0)); // 
         setContentPane(panelmain);
         grupo.add(getBtn_facil());
         grupo.add(getBtn_medio());
         grupo.add(getBtn_dificil());
-        panelmain.add(getLbl_facil());
-        panelmain.add(getBtn_facil());
-        panelmain.add(getLbl_medio());
-        panelmain.add(getBtn_medio());
-        panelmain.add(getLbl_dificil());
-        panelmain.add(getBtn_dificil());
-
-        panelmain.add(getBtn_volver());
-        panelmain.add(getBtn_seleccionar());
-        panelmain.add(getLbl_dificil());
-        panelmain.add(getBtn_dificil());
-
-        panelmain.add(getBtn_volver());
-        panelmain.add(getBtn_seleccionar());
+        panelmain.add(getPanel1(), BorderLayout.SOUTH);
+        panelmain.add(getPanel2(), BorderLayout.CENTER);
+        panelmain.add(getLbltitulo(), BorderLayout.NORTH);
     }
 
+    private JPanel getPanel1(){
+        if (panel == null) {
+            panel = new JPanel();
+            panel.add(getBtn_volver());
+            panel.add(getBtn_seleccionar());
+            
+        }
+        return panel;
+    }
+
+    private JPanel getPanel2() {
+        if (panel2 == null) {
+            panel2 = new JPanel();
+            panel2.setLayout(new GridLayout(3, 0, 0, 0));
+            panel2.add(getBtn_facil());
+            panel2.add(getBtn_medio());
+            panel2.add(getBtn_dificil());
+        }
+        return panel2;
+    }
+
+    private JLabel getLbltitulo() {
+        if (titulo == null) {
+            titulo = new JLabel("Men\u00FA Niveles");
+            titulo.setFont(new Font("Tahoma", Font.BOLD, 20));
+            titulo.setHorizontalAlignment(SwingConstants.CENTER);
+        }
+        return titulo;
+    }
 
     public static JRadioButton getBtn_facil() {
         if (btn_facil == null) {
             btn_facil = new JRadioButton("Facil");
             btn_facil.setEnabled(true);
+            btn_facil.setHorizontalAlignment(SwingConstants.CENTER);
             btn_facil.addActionListener(Gestor.getGestor());
         }
         return btn_facil;
@@ -88,6 +87,7 @@ public class IU_Niveles extends JFrame {
         if (btn_medio == null) {
             btn_medio = new JRadioButton("Medio");
             btn_medio.setEnabled(true);
+            btn_medio.setHorizontalAlignment(SwingConstants.CENTER);
             btn_medio.addActionListener(Gestor.getGestor());
         }
         return btn_medio;
@@ -97,6 +97,7 @@ public class IU_Niveles extends JFrame {
         if (btn_dificil == null) {
             btn_dificil = new JRadioButton("Dificil");
             btn_dificil.setEnabled(true);
+            btn_dificil.setHorizontalAlignment(SwingConstants.CENTER);
             btn_dificil.addActionListener(Gestor.getGestor());
         }
         return btn_dificil;
@@ -119,27 +120,4 @@ public class IU_Niveles extends JFrame {
         }
         return btn_Seleccionar;
     }
-
-    private JLabel getLbl_facil() {
-        if (lbl_facil == null) {
-            lbl_facil = new JLabel("Nivel facil");
-        }
-        return lbl_facil;
-    }
-
-    private JLabel getLbl_medio() {
-        if (lbl_medio == null) {
-            lbl_medio = new JLabel("Nivel normal");
-        }
-        return lbl_medio;
-    }
-
-    private JLabel getLbl_dificil() {
-        if (lbl_dificil == null) {
-            lbl_dificil = new JLabel("Nivel dificil");
-        }
-        return lbl_dificil;
-    }
-
-
 }
