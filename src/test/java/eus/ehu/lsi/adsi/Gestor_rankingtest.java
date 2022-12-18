@@ -55,6 +55,8 @@ public class Gestor_rankingtest {
 
     @Test
     public void rankingsTest() {
+
+        //Pruebas programadas para que se muestren por pantalla los diferentes ranking
         //Ranking Histórico y global 
         //Iniciamos una BD temporal para los test
         BD.initTest();
