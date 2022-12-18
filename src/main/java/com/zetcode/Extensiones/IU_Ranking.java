@@ -105,7 +105,7 @@ public class IU_Ranking extends JFrame {
             objeto = json.getJSONObject(i);
             user = objeto.getString("nombre");
             puntuacion = String.valueOf(objeto.getInt("puntuacion"));
-            String[] f = {String.valueOf(i + 1), user, puntuacion};
+            String[] f = {String.valueOf(i + 1 + "º"), user, puntuacion};
             a[i] = f;
         }
         ranking.removeAll();
