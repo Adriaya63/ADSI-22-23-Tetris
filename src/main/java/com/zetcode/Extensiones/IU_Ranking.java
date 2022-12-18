@@ -86,6 +86,8 @@ public class IU_Ranking extends JFrame {
 
     public void alternar() {
         if (estado) {
+            JSONArray j = new JSONArray();
+            updateT(j);
             setVisible(false);
             estado = false;
         } else {
@@ -94,7 +96,7 @@ public class IU_Ranking extends JFrame {
         }
     }
 
-    public void Update(JSONArray json) {
+    public void updateT(JSONArray json) {
         Object[][] a = new Object[json.length()][2];
         JSONObject objeto;
         String user;
@@ -103,7 +105,7 @@ public class IU_Ranking extends JFrame {
             objeto = json.getJSONObject(i);
             user = objeto.getString("nombre");
             puntuacion = String.valueOf(objeto.getInt("puntuacion"));
-            String[] f = {String.valueOf(i + 1), user, puntuacion};
+            String[] f = {String.valueOf(i + 1 + "º"), user, puntuacion};
             a[i] = f;
         }
         ranking.removeAll();

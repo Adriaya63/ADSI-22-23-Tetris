@@ -35,6 +35,7 @@ public class IU_Menu extends JFrame {
             setVisible(false);
             estado = false;
         } else {
+            setTitle("Menú de " + Usuario_Conectado.geyMiUser().getNombre());
             setVisible(true);
             estado = true;
         }

@@ -16,7 +16,6 @@ public class IU_Personalizacion extends JFrame {
     public static JButton bAceptar;
     public static JButton bVolver;
     private JPanel panel_1;
-    public static JRadioButton rbSonido;
     public static JRadioButton rbFondo;
     public static JRadioButton rbLadrillos;
     private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -110,19 +109,8 @@ public class IU_Personalizacion extends JFrame {
             panel_1.setLayout(new GridLayout(3, 0, 0, 0));
             panel_1.add(getRbFondo());
             panel_1.add(getRbLadrillos());
-            panel_1.add(getRbSonido());
         }
         return panel_1;
-    }
-
-    private JRadioButton getRbSonido() {
-        if (rbSonido == null) {
-            rbSonido = new JRadioButton("Sonido");
-            buttonGroup.add(rbSonido);
-            rbSonido.setHorizontalAlignment(SwingConstants.CENTER);
-            rbSonido.addActionListener(Gestor.getGestor());
-        }
-        return rbSonido;
     }
 
     private JRadioButton getRbFondo() {

@@ -27,9 +27,8 @@ CREATE TABLE partidaguardada (
   nombre varchar (20) NOT NULL DEFAULT ' ',
   partida blob DEFAULT NULL,
   fecha datetime DEFAULT NULL,
-  PRIMARY KEY (num, usuarionombre),
-  KEY nombre (nombre),
-  CONSTRAINT Usuario FOREIGN KEY (nombre) REFERENCES usuario (nombre) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (num, nombre),
+  FOREIGN KEY (nombre) REFERENCES usuario (nombre) ON DELETE CASCADE ON UPDATE CASCADE
 );
 INSERT INTO USUARIO VALUES('admin','admin@admin.com','admin',1,1,1);
 INSERT INTO RANKING VALUES('Fácil');

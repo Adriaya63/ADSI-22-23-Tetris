@@ -38,7 +38,7 @@ public class Gestor implements ActionListener {
                 IU_MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
             }
             if (e.getSource().equals(IU_Menu.btnPswd)) {
-                String pswd = JOptionPane.showInputDialog("Ingresa tu la nueva contraseña ");
+                String pswd = JOptionPane.showInputDialog("Ingresa la nueva contraseña ");
                 Gestor_Usuarios.getMiGestorUser().changepassword(pswd);
 
             }
@@ -67,6 +67,7 @@ public class Gestor implements ActionListener {
                     Gestor_Usuarios.getMiGestorUser().insertarUsuario(user, pass, email);
                 } else {
                     System.out.println("El usuario ya existe");
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe", "El usuario ya existe", JOptionPane.WARNING_MESSAGE);
                 }
                 break;
             }
@@ -96,11 +97,10 @@ public class Gestor implements ActionListener {
             if (e.getSource().equals(IU_Ranking.btnVer)) {
                 String tipo = IU_Ranking.getmiRanking().getTip();
                 String dif = IU_Ranking.getmiRanking().getdif();
-                System.out.println(dif);
                 if (tipo == "Global") {
-                    IU_Ranking.getmiRanking().Update(Gestor_ranking.getmiGestorRanking().generarRanking(dif, tipo));
+                    IU_Ranking.getmiRanking().updateT(Gestor_ranking.getmiGestorRanking().generarRanking(dif, tipo));
                 } else {
-                    IU_Ranking.getmiRanking().Update(Gestor_ranking.getmiGestorRanking().generarRanking(dif, Usuario_Conectado.geyMiUser().getNombre()));
+                    IU_Ranking.getmiRanking().updateT(Gestor_ranking.getmiGestorRanking().generarRanking(dif, Usuario_Conectado.geyMiUser().getNombre()));
                 }
                 break;
             }
@@ -194,10 +194,7 @@ public class Gestor implements ActionListener {
                 } else if (seleccionPer == 2) {
                     IU_Ladrillos.getMiLad().alternar();
                     IU_Personalizacion.getMiPer().alternar();
-                } else if (seleccionPer == 3) {
-                    IU_Sonido.getMiSon().alternar();
-                    IU_Personalizacion.getMiPer().alternar();
-                }
+                } 
                 break;
             }
             if (e.getSource().equals(IU_Personalizacion.bVolver)) {
@@ -211,10 +208,6 @@ public class Gestor implements ActionListener {
             }
             if (e.getSource().equals(IU_Personalizacion.rbLadrillos)) {
                 seleccionPer = 2;
-                break;
-            }
-            if (e.getSource().equals(IU_Personalizacion.rbSonido)) {
-                seleccionPer = 3;
                 break;
             }
             if (e.getSource().equals(IU_Fondo.bGuardar)) {
@@ -263,14 +256,7 @@ public class Gestor implements ActionListener {
                 colorLad = 3;
                 break;
             }
-            if (e.getSource().equals(IU_Sonido.bGuardar)) {
-                break;
-            }
-            if (e.getSource().equals(IU_Sonido.bVolver)) {
-                IU_Sonido.getMiSon().alternar();
-                IU_Personalizacion.getMiPer().alternar();
-                break;
-            } else {
+             else {
                 break;
             }
         }
