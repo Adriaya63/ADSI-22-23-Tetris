@@ -60,6 +60,7 @@ public class Gestor_rankingtest {
         BD.initTest();
         //Insertamos un usuario y una puntuación el la BD
         Gestor_Usuarios.getMiGestorUser().insertarUsuario("Jose", "1234", "jose@gmail.com");
+        Gestor_Usuarios.getMiGestorUser().insertarUsuario("Mario", "1234", "Mario@gmail.com");
         Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Jose", 99, "Fácil");
         org.json.JSONArray json = Gestor_ranking.getmiGestorRanking().generarRanking("Absoluto", "Global");
         //Visualizamos el ranking seleccionado
@@ -137,6 +138,7 @@ public class Gestor_rankingtest {
         IU_Ranking.getmiRanking().alternar();
         assertNotNull(json5);
         //Ranking facil y Global
+        Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Mario", 11, "Fácil");
         org.json.JSONArray json6 = Gestor_ranking.getmiGestorRanking().generarRanking("Fácil", "Global");
         IU_Ranking.getmiRanking().updateT(json6);
         IU_Ranking.getmiRanking().alternar();
@@ -149,6 +151,7 @@ public class Gestor_rankingtest {
         IU_Ranking.getmiRanking().alternar();
         //Ranking Medio y Global
         Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Jose", 99, "Medio");
+        Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Mario", 15, "Medio");
         org.json.JSONArray json7 = Gestor_ranking.getmiGestorRanking().generarRanking("Medio", "Global");
         IU_Ranking.getmiRanking().updateT(json7);
         IU_Ranking.getmiRanking().alternar();
@@ -162,6 +165,7 @@ public class Gestor_rankingtest {
         assertNotNull(json7);
         //Ranking Difícl y Global
         Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Jose", 99, "Difícil");
+        Gestor_ranking.getmiGestorRanking().ingresarPuntuacion("Mario", 17, "Difícil");
         org.json.JSONArray json8 = Gestor_ranking.getmiGestorRanking().generarRanking("Difícil", "Global");
         IU_Ranking.getmiRanking().updateT(json8);
         IU_Ranking.getmiRanking().alternar();
