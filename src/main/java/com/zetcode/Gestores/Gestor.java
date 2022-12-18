@@ -38,7 +38,7 @@ public class Gestor implements ActionListener {
                 IU_MenuRegistroInicio.getMiMenuRegistroInicio().alternar();
             }
             if (e.getSource().equals(IU_Menu.btnPswd)) {
-                String pswd = JOptionPane.showInputDialog("Ingresa tu la nueva contraseña ");
+                String pswd = JOptionPane.showInputDialog("Ingresa la nueva contraseña ");
                 Gestor_Usuarios.getMiGestorUser().changepassword(pswd);
 
             }
@@ -67,6 +67,7 @@ public class Gestor implements ActionListener {
                     Gestor_Usuarios.getMiGestorUser().insertarUsuario(user, pass, email);
                 } else {
                     System.out.println("El usuario ya existe");
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe", "El usuario ya existe", JOptionPane.WARNING_MESSAGE);
                 }
                 break;
             }

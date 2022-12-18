@@ -1,5 +1,4 @@
 package eus.ehu.lsi.adsi;
-
 import com.zetcode.Extensiones.IU_Ranking;
 import com.zetcode.Extensiones.Usuario_Conectado;
 import com.zetcode.Gestores.BD;
@@ -25,6 +24,7 @@ public class Gestor_rankingtest {
 
     @Test
     public void insertarNuevaPuntuacionTest() {
+        //Iniciamos una BD temporal para los test
         BD.initTest();
         //Comprobamos el numero de puntuaciones que hay en el ranking
         org.json.JSONArray json = Gestor_ranking.getmiGestorRanking().generarRanking("Absoluto", "Global");

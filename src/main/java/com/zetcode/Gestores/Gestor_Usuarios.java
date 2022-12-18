@@ -36,7 +36,7 @@ public class Gestor_Usuarios {
 
     public boolean existeUser(String user) {
         if (user != null) {
-            String consulta = String.format("SELECT FROM usuario WHERE user='%s'", user);
+            String consulta = String.format("SELECT email FROM usuario WHERE nombre='%s'", user);
             ResultSet rs = BD.selectSql(consulta);
             try {
                 if (rs.next()) {
@@ -73,11 +73,19 @@ public class Gestor_Usuarios {
 
     public void insertarUsuario(String user, String password, String email) {
         if (user != null && password != null && email != null) {
+            if(!existeUser(user)){
             String consulta = String.format("INSERT INTO usuario VALUES('%s', '%s', '%s',0,1,1)", user, email, password);
-
-            BD.sqlvoid(consulta);
+            try{
+                BD.sqlvoid(consulta);
+            } catch (Exception e) {
+                System.out.println("");
+            }
+            
             System.out.println("registered");
         }
+
+    }
+   
     }
 
     public void eliminarUsuario(String user) {
