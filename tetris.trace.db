@@ -1,3 +1,0 @@
-2022-12-18 19:48:58 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUARIO" not found (this database is empty); SQL statement:
-SELECT * FROM Usuario [42104-214]
