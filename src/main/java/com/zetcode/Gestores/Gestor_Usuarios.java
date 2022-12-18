@@ -25,12 +25,15 @@ public class Gestor_Usuarios {
     }
 
     public void changepassword(String pPswd) {
-        if (pPswd != "") {
+        try {
+        if (!pPswd.equals("")) {
             String consulta = String.format("Update usuario set pswd ='%s' where nombre ='%s'", pPswd, Usuario_Conectado.geyMiUser().getNombre());
             BD.sqlvoid(consulta);
             System.out.println("Contraseña actualizada");
         } else {
             System.out.println("Contraseña no válida");
+        }  } catch (Exception e) {
+            
         }
     }
 
